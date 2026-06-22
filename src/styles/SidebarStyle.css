@@ -1,0 +1,143 @@
+/* Sidebar Container */
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffffff 0%, #f7f7f7 100%);
+  color: #fff;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Logo Styles */
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 1.5rem 1.5rem;
+  margin: 0;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, #fff, #ffd89b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 1px;
+}
+
+/* Navigation Container */
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem 1rem;
+  gap: 0.5rem;
+}
+
+/* Navigation Links */
+.sidebar nav a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover Effect */
+.sidebar nav a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transform: translateX(5px);
+}
+
+/* Active Link State */
+.sidebar nav a.active {
+  background: linear-gradient(135deg, rgba(255, 107, 139, 0.2), rgba(255, 180, 98, 0.2));
+  color: #ffb462;
+  border-left: 3px solid #ffb462;
+}
+
+/* Add shiny effect on hover */
+.sidebar nav a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.sidebar nav a:hover::before {
+  left: 100%;
+}
+
+/* Icon and Text Spacing */
+.sidebar nav a span {
+  margin-left: 8px;
+}
+
+/* Optional: Add scrollbar styling */
+.sidebar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 80px;
+    transition: all 0.3s ease;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .sidebar nav a {
+    justify-content: center;
+    padding: 0.75rem;
+  }
+
+  .sidebar nav a span {
+    display: none;
+  }
+}
+
+/* Optional: Tooltip on hover for collapsed sidebar */
+@media (max-width: 768px) {
+  .sidebar nav a:hover::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 80px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 1000;
+  }
+}

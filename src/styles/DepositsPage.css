@@ -1,0 +1,399 @@
+/* Container */
+.deposits-container {
+  min-height: 100vh;
+  background: #fafafa;
+  padding: 40px 20px;
+}
+
+.deposits-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Header */
+.deposits-header {
+  margin-bottom: 32px;
+}
+.toast-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-width: 280px;
+  max-width: 400px;
+
+  padding: 14px 18px;
+
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.15);
+
+  animation:
+    slideInRight 0.3s ease,
+    fadeOut 0.3s ease 2.7s forwards;
+}
+
+.toast-success {
+  background: #16a34a;
+  color: white;
+}
+
+.toast-error {
+  background: #dc2626;
+  color: white;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+.deposits-title {
+  color: #4c5cd5;
+  font-size: 18px;
+      border-bottom: ridge;
+    border-width: medium;
+  font-weight: 300;
+  margin-bottom: 8px;
+}
+
+.deposits-subtitle {
+  color: #666;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+/* Filters */
+.filters-wrapper {
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 400;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+  background: white;
+  color: #666;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  background: #2e326a00;
+  color: #2e3595;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #171d79;
+}
+
+.filter-btn-active {
+    background: #381fc6e3;
+    color: #feffff;
+    border-color: #49576000;
+}
+.refresh-btn {
+  padding: 8px 20px;
+  font-size: 13px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+  background: white;
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.refresh-btn:hover {
+  background: #2e326a00;
+  color: #2e3595;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #171d79;
+}
+
+/* Cards Grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 20px;
+}
+
+/* Deposit Card */
+.deposit-card {
+  background: rgba(255, 255, 255, 0);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #f0f0f0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.2s;
+}
+
+.deposit-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Card Header */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.user-icon {
+  color: #999;
+}
+
+.username {
+  color: #1a1a1a;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Status Badge */
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.status-badge.approved {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.status-badge.rejected {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.status-badge.pending {
+  background: #fff3e0;
+  color: #ed6c02;
+}
+
+/* Card Details */
+.card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #666;
+}
+
+.detail-item svg {
+  color: #999;
+  flex-shrink: 0;
+}
+
+.detail-item span {
+  word-break: break-word;
+}
+
+/* Card Actions */
+.card-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.approve-btn {
+  flex: 1;
+  padding: 10px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: none;
+  background: #2e326a;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background 0.2s;
+}
+
+.approve-btn:hover {
+  background: #323782;
+}
+
+.reject-btn {
+  flex: 1;
+  padding: 10px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: 1px solid #e30000d4;
+  background: white;
+  color: #ff0000d7;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.reject-btn:hover {
+  background: #f5f5f5;
+  border-color: rgba(255, 0, 0, 0.7);
+  
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    color: #878787b5;
+    background: #efefef;
+    font-size: 13px;
+    padding: 40px 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .deposits-container {
+    padding: 20px 16px;
+  }
+
+  .deposits-title {
+    font-size: 24px;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .deposit-card {
+    padding: 16px;
+  }
+
+  .filter-btn,
+  .refresh-btn {
+    padding: 6px 16px;
+    font-size: 12px;
+  }
+}
+
+.deposits-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.deposits-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.deposits-table th {
+  background: #381fc6e3;
+  padding: 14px;
+  color: white;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 500;
+  border-bottom: 1px solid #e5e7eb;}
+
+
+.deposits-table td {
+  padding: 12px;
+  color: rgb(52, 52, 52);
+  border-bottom: 1px solid #00146412;
+  font-size: 14px;
+}
+
+.deposits-table tr:hover {
+  background: #f8fafc;
+}
+
+.table-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.approve-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-style: solid;
+    border-width: thin;
+    background: #ffffff;
+    color: #00ad2e;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.reject-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    border-style: solid;
+    border-width: thin;
+    background: #ffffff;
+    color: #ec0000;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.approve-btn:hover {
+  background: #f0f0f0;
+}
+
+.reject-btn:hover {
+  background: #f7f7f7;
+}

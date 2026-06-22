@@ -1,0 +1,568 @@
+
+/* ============================================
+   PAGE CONTAINER
+   ============================================ */
+
+.login-page-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f7f7f7 0%, #ffffff 100%);
+  padding: 20px;
+  position: relative;
+}
+
+.login-page-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
+/* ============================================
+   LOGIN CARD
+   ============================================ */
+
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 48px 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 1;
+  animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   LOGO / HEADER
+   ============================================ */
+
+.login-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.login-header .logo-icon {
+    width: 210px;
+    height: 64px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    color: #ffffff;
+}
+
+.login-header h1 {
+ font-size: 28px;
+    font-family: monospace;
+    font-weight: 500;
+    color: #406cee;
+    margin: 0 0 4px 0;
+}
+
+.login-header p {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+
+form {
+  width: 100%;
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #676767;
+  margin-bottom: 6px;
+}
+
+.form-group label .required-star {
+  color: #ef4444;
+  margin-left: 2px;
+}
+
+/* Input Box */
+.input-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #c4c4c4;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+}
+
+.input-box:hover {
+  border-color: #cbd5e1;
+}
+
+.input-box:focus-within {
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0);
+}
+
+.input-box svg {
+  flex-shrink: 0;
+  margin: 0 0 0 14px;
+  color: #94a3b8;
+  transition: color 0.2s ease;
+}
+
+.input-box:focus-within svg {
+  color: #667eea;
+}
+
+.input-box input {
+    flex: 1 1;
+    padding: 12px 14px 12px 12px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+    font-family: monospace;
+    color: #4c5e95;
+    font-family: monospace;
+    width: 100%;
+}
+.logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-icon img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.input-box input::placeholder {
+  color: #cbd5e1;
+}
+
+/* Input with Password Toggle */
+.input-box .toggle-password {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 14px 0 0;
+  color: #94a3b8;
+  transition: color 0.2s ease;
+  display: flex;
+  align-items: center;
+}
+
+.input-box .toggle-password:hover {
+  color: #475569;
+}
+
+.input-box:focus-within .toggle-password {
+  color: #667eea;
+}
+
+/* ============================================
+   ERROR MESSAGE
+   ============================================ */
+
+.error-message {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #dc2626;
+  font-size: 14px;
+  font-weight: 500;
+  animation: shake 0.4s ease;
+}
+
+.error-message svg {
+  flex-shrink: 0;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+/* ============================================
+   OPTIONS ROW
+   ============================================ */
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0 24px 0;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #1d77ff;
+  cursor: pointer;
+}
+
+.remember-me input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: #667eea;
+  cursor: pointer;
+}
+
+.forgot-link {
+  color: #1d77ff;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.forgot-link:hover {
+  color: #5a67d8;
+  text-decoration: underline;
+}
+
+/* ============================================
+   SUBMIT BUTTON
+   ============================================ */
+
+.login-submit-btn {
+      width: 100%;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border: none;
+    border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: inherit;
+}
+
+.login-submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.login-submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.login-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.login-submit-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.login-submit-btn:hover:not(:disabled) svg {
+  transform: translateX(4px);
+}
+
+/* ============================================
+   LOADING SPINNER
+   ============================================ */
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   DIVIDER
+   ============================================ */
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 24px 0;
+  gap: 16px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+.divider span {
+  font-size: 13px;
+  color: #94a3b8;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+/* ============================================
+   SIGN UP LINK
+   ============================================ */
+
+.signup-link {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.signup-link a {
+  color: #667eea;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.signup-link a:hover {
+  color: #5a67d8;
+  text-decoration: underline;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 480px) {
+  .login-card {
+    padding: 32px 24px;
+    border-radius: 20px;
+  }
+
+  .login-header h1 {
+    font-size: 24px;
+  }
+
+  .login-header .logo-icon {
+    height: 56px;
+  }
+
+  .login-header .logo-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .input-box input {
+    font-size: 13px;
+    padding: 10px 12px 10px 10px;
+  }
+
+  .input-box svg {
+    margin-left: 10px;
+    width: 16px;
+    height: 16px;
+  }
+
+  .login-submit-btn {
+    font-size: 15px;
+    padding: 10px 20px;
+  }
+
+  .login-options {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .error-message {
+    font-size: 13px;
+    padding: 10px 14px;
+  }
+}
+
+@media (max-width: 360px) {
+  .login-card {
+    padding: 24px 16px;
+    border-radius: 16px;
+  }
+
+  .login-header h1 {
+    font-size: 22px;
+  }
+
+  .login-header .logo-icon {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+/* ============================================
+   DARK MODE SUPPORT
+   ============================================ */
+
+body.dark-mode .login-card {
+  background: #1e293b;
+}
+
+body.dark-mode .login-header h1 {
+  color: #f1f5f9;
+}
+
+body.dark-mode .login-header p {
+  color: #94a3b8;
+}
+
+body.dark-mode .form-group label {
+  color: #e2e8f0;
+}
+
+body.dark-mode .input-box {
+  background: #0f172a;
+  border-color: #334155;
+}
+
+body.dark-mode .input-box:hover {
+  border-color: #475569;
+}
+
+body.dark-mode .input-box input {
+  color: #f1f5f9;
+}
+
+body.dark-mode .input-box input::placeholder {
+  color: #64748b;
+}
+
+body.dark-mode .input-box svg {
+  color: #64748b;
+}
+
+body.dark-mode .input-box:focus-within svg {
+  color: #818cf8;
+}
+
+body.dark-mode .input-box .toggle-password {
+  color: #64748b;
+}
+
+body.dark-mode .input-box .toggle-password:hover {
+  color: #94a3b8;
+}
+
+body.dark-mode .remember-me {
+  color: #cbd5e1;
+}
+
+body.dark-mode .divider::before,
+body.dark-mode .divider::after {
+  background: #334155;
+}
+
+body.dark-mode .divider span {
+  color: #64748b;
+}
+
+body.dark-mode .signup-link {
+  color: #94a3b8;
+}
+
+body.dark-mode .signup-link a {
+  color: #818cf8;
+}
+
+body.dark-mode .signup-link a:hover {
+  color: #a5b4fc;
+}
+
+body.dark-mode .error-message {
+  background: #7f1d1d;
+  border-color: #991b1b;
+  color: #fca5a5;
+}
+
+body.dark-mode .forgot-link {
+  color: #818cf8;
+}
+
+body.dark-mode .forgot-link:hover {
+  color: #a5b4fc;
+}
+
+/* ============================================
+   ACCESSIBILITY
+   ============================================ */
+
+
+
+.login-submit-btn:focus-visible {
+  outline: 3px solid #667eea;
+  outline-offset: 2px;
+}
+
+.remember-me input[type="checkbox"]:focus-visible {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* ============================================
+   REDUCED MOTION
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .login-card {
+    animation: none;
+  }
+  
+  .login-submit-btn:hover:not(:disabled) {
+    transform: none;
+  }
+  
+  .login-submit-btn:hover:not(:disabled) svg {
+    transform: none;
+  }
+}
