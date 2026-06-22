@@ -146,8 +146,7 @@ console.log(webApp.initDataUnsafe);
 
       webApp.MainButton.onClick(
         () => {
-          webApp.showAlert(
-            "🎮 Welcome to Arkey Games!"
+          webApp.showAlert( "🎮 Welcome to Arkey Games!"
           );
         }
       );
