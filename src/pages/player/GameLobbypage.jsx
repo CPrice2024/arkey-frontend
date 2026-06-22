@@ -136,10 +136,6 @@ console.log(webApp.initDataUnsafe);
         lobbyResponse.data.player
       );
 
-      setRecentBets(
-        lobbyResponse.data.recentBets || []
-      );
-
       setAllowed(true);
 
       webApp.MainButton.setText(
