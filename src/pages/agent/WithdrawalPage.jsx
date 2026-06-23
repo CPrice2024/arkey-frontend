@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { RefreshCw, Check, X, Clock, Phone, CreditCard, DollarSign, Hash, FileText, User } from "lucide-react";
+import { RefreshCw, Check, X, Clock } from "lucide-react";
 import "../styles/DepositsPage.css";
 
 const WithdrawalsPage = () => {

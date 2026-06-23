@@ -4,8 +4,7 @@ import {
   Users, DollarSign, Activity, BarChart3, TrendingUp, PieChart, 
   Target, Zap, RefreshCw, Download, ChevronUp, ChevronDown,
   Wallet, UserCheck, UserX, TrendingDown, Award, Clock,
-  Database, PieChart as PieChartIcon, LineChart, Settings,
-  Bell, Search, Filter, Grid3x3, List, Maximize2, Minimize2
+  Database, PieChart as LineChart
 } from "lucide-react";
 import "../../styles/DashboardStyles.css";
 

@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import api from "../../api";
 import {
-  Users, UserPlus, Edit2, Trash2, Search, Filter, X,
-  ChevronLeft, ChevronRight, Phone, Mail, Calendar,
-  Award, DollarSign, Shield, Clock, AlertCircle,
-  CheckCircle, Eye, Download, Upload, Settings, RefreshCw
+  Users, UserPlus, Edit2, Trash2, Search, X,
+  ChevronLeft, ChevronRight, Phone, Calendar,
+  Award, DollarSign, Shield,  AlertCircle, Eye, Upload, RefreshCw
 } from 'lucide-react';
 import '../../styles/UsersStyles.css';
 

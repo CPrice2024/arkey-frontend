@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import api from "../../api";
 import { 
-  Star, Send, X, Image, Video, Trash2, Clock, 
+  Star, Send, X, Image, Trash2, Clock, 
   AlertCircle, Upload, FileText, CheckCircle
 } from "lucide-react";
 import "../../styles/PromotionsStyles.css";

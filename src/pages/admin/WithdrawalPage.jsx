@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../../api";
-import { RefreshCw, Check, X, Clock, Phone, CreditCard, DollarSign, Hash, FileText, User } from "lucide-react";
+import { RefreshCw, Check, X, Clock} from "lucide-react";
 import "../../styles/DepositsPage.css";
 
 const WithdrawalsPage = () => {
@@ -293,12 +293,5 @@ const filteredWithdrawals = Array.isArray(Withdrawals)
   );
 };
 
-
-const DetailItem = ({ icon, label }) => (
-  <div className="detail-item">
-    {icon}
-    <span>{label}</span>
-  </div>
-);
 
 export default WithdrawalsPage;
