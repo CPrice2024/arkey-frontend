@@ -1,26 +1,26 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 const ProtectedRoute = ({ children, role }) => {
   const token = localStorage.getItem("token");
+  const user = JSON.parse(localStorage.getItem("user") || "null");
 
-  const user = JSON.parse(
-    localStorage.getItem("user") || "null"
-  );
+  const location = useLocation();
 
-  // Allow Telegram WebApp access
-  if (
+  const isTelegram =
     window.Telegram &&
-    window.Telegram.WebApp
-  ) {
+    window.Telegram.WebApp &&
+    window.Telegram.WebApp.initData &&
+    window.Telegram.WebApp.initData.length > 0;
+
+  // Only allow Telegram to bypass auth for the game
+  if (isTelegram && location.pathname === "/game") {
     return children;
   }
 
-  // Not logged in
   if (!token || !user) {
     return <Navigate to="/login" replace />;
   }
 
-  // Role check
   if (role) {
     if (Array.isArray(role)) {
       if (!role.includes(user.role)) {

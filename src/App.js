@@ -30,7 +30,7 @@ function App() {
           path="/login"
           element={
             token ? (
-              <Navigate to="/login" replace />
+              <Navigate to="/dashboard" replace />
             ) : (
               <LoginPage />
             )
@@ -94,12 +94,8 @@ function App() {
 
         {/* PLAYER */}
         <Route
-          path="/game"
-          element={
-            <ProtectedRoute role="player">
-              <Game />
-            </ProtectedRoute>
-          }
+        path="/game"
+        element={<Game />}
         />
 
         {/* UNKNOWN ROUTES */}
