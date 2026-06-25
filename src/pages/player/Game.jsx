@@ -1,95 +1,90 @@
 import React, { useEffect, useState } from "react";
 import api from "../../api";
 
-import {
-  Wallet,
-  Shield,
-} from "lucide-react";
+import Header from "../../pages/components/player/Header";
+import CouponBanner from "../../pages/components/player/CouponBanner";
+import FeaturedGames from "../../pages/components/player/FeaturedGames";
+import BottomNavigation from "../../pages/components/player/BottomNavigation";
+import LoadingScreen from "../../pages/components/player/LoadingScreen";
+import ErrorScreen from "../../pages/components/player/ErrorScreen";
 
 import "../../styles/gameLobby.css";
 
-const API_BASE_URL =
-  process.env.REACT_APP_API_URL;
+export default function Game() {
 
+  const [loading, setLoading] = useState(true);
 
-function Game() {
+  const [error, setError] = useState("");
 
-  const [allowed, setAllowed] =
-    useState(false);
+  const [player, setPlayer] = useState(null);
 
-  const [user, setUser] =
-    useState(null);
+  const [balance, setBalance] = useState(0);
 
-  const [balance, sBirralance] =
-    useState(0);
+  const [games, setGames] = useState([]);
 
+  useEffect(() => {
 
+    initialize();
 
-const [playerInfo, setPlayerInfo] =
-  useState(null);
+  }, []);
 
+  const loadBalance = async () => {
 
-  // =====================================
-  // INITIALIZE TELEGRAM + FETCH BALANCE
-  // =====================================
+    try {
 
-useEffect(() => {
+        const res =
+            await api.get("/game");
 
-  const initializeApp = async () => {
+        setBalance(
+            res.data.player.balance
+        );
+
+    }
+
+    catch(err){
+
+        console.log(err);
+
+    }
+
+};
+
+  async function initialize() {
 
     try {
 
       if (!window.Telegram?.WebApp) {
 
-  console.log("Telegram WebApp not detected.");
+        throw new Error(
+          "Telegram WebApp not detected."
+        );
 
-  if (process.env.NODE_ENV === "development") {
-    setAllowed(true);
-  }
+      }
+      
 
-  return;
-}
-
-      const webApp =
+      const tg =
         window.Telegram.WebApp;
 
-      webApp.ready();
-      webApp.expand();
-      console.log("INIT DATA:");
-console.log(webApp.initData);
+      tg.ready();
 
-console.log("INIT DATA UNSAFE:");
-console.log(webApp.initDataUnsafe);
+      tg.expand();
 
       const telegramUser =
-        webApp.initDataUnsafe?.user;
+        tg.initDataUnsafe.user;
 
       if (!telegramUser) {
 
-        console.log(
-          "NO TELEGRAM USER FOUND"
+        throw new Error(
+          "Telegram user not found."
         );
 
-        return;
       }
 
-      console.log(
-        "TELEGRAM USER:"
-      );
+      
 
-      console.log(
-        telegramUser
-      );
-
-      setUser(
-        telegramUser
-      );
-
-      // TELEGRAM LOGIN
-
-      const loginResponse =
+      const login =
         await api.post(
-          `${API_BASE_URL}/auth/telegram-login`,
+          "/auth/telegram-login",
           {
             telegramId:
               telegramUser.id
@@ -98,128 +93,152 @@ console.log(webApp.initDataUnsafe);
 
       localStorage.setItem(
         "token",
-        loginResponse.data.token
+        login.data.token
       );
 
       localStorage.setItem(
         "user",
         JSON.stringify(
-          loginResponse.data.user
+          login.data.user
         )
       );
 
-      sBirralance(
-        loginResponse.data.user.balance || 0
+      const lobby =
+        await api.get("/game");
+
+      setPlayer(
+        lobby.data.player
       );
 
-      // LOAD LOBBY
-
-      const lobbyResponse =
-        await api.get(
-          `${API_BASE_URL}/game`,
-          {
-            headers: {
-              Authorization:
-                `Bearer ${loginResponse.data.token}`
-            }
-          }
-        );
-
-      console.log(
-        "GAME DATA:"
+      setBalance(
+        lobby.data.player.balance
       );
 
-      console.log(
-        lobbyResponse.data
-      );
+      setGames(
 
-      setPlayerInfo(
-        lobbyResponse.data.player
-      );
+    lobby.data.games ||
 
-      setAllowed(true);
+    [
 
-      webApp.MainButton.setText(
-        "Start Playing"
-      );
+      {
+        _id:1,
+        name:"Bingo",
+        provider:"Arkey",
+        featured:true,
+        image:"https://picsum.photos/400/300?1"
+      },
 
-      webApp.MainButton.show();
+      {
+        _id:2,
+        name:"Aviator",
+        provider:"Spribe",
+        featured:true,
+        image:"https://picsum.photos/400/300?2"
+      },
 
-      webApp.MainButton.onClick(
-        () => {
-          webApp.showAlert( "🎮 Welcome to Arkey Games!"
-          );
-        }
-      );
+      {
+        _id:3,
+        name:"Fast Keno",
+        provider:"Arkey",
+        featured:false,
+        image:"https://picsum.photos/400/300?3"
+      },
 
-    } catch (error) {
+      {
+        _id:4,
+        name:"Fish Hunter",
+        provider:"JDB",
+        featured:false,
+        image:"https://picsum.photos/400/300?4"
+      },
 
-      console.log(
-        "INITIALIZE ERROR:"
-      );
+      {
+        _id:5,
+        name:"Chicken Road",
+        provider:"Turbo",
+        featured:true,
+        image:"https://picsum.photos/400/300?5"
+      },
 
-      console.error(error);
+      {
+        _id:6,
+        name:"Wheel",
+        provider:"Arkey",
+        featured:false,
+        image:"https://picsum.photos/400/300?6"
+      }
 
-alert(
-  error.response?.data?.message ||
-  "Unable to connect to the server."
+    ]
+
 );
+
+      setLoading(false);
 
     }
 
-  };
+    catch (err) {
 
-  initializeApp();
+      console.log(err);
 
-}, []);
+      setError(
+        err.response?.data?.message ||
+        err.message
+      );
 
+      setLoading(false);
 
+    }
 
-if (!allowed) {
+  }
+
+  if (loading) {
+
+    return <LoadingScreen />;
+
+  }
+
+  if (error) {
+
+    return (
+      <ErrorScreen
+        message={error}
+      />
+    );
+
+  }
 
   return (
-    <div className="blocked-page">
-      <div className="blocked-content">
 
-        <div className="blocked-icon">
-          <Shield size={48} />
-        </div>
+    <div className="game-page">
 
-        <h1>
-          Loading Arkey Games...
-        </h1>
+      <Header
 
-      </div>
+    player={player}
+
+    balance={balance}
+
+    onRefresh={loadBalance}
+
+    onDeposit={() => {
+
+        alert("Deposit page coming soon.");
+
+    }}
+
+/>
+
+      <CouponBanner />
+
+      <FeaturedGames
+
+        games={games}
+
+      />
+
+      <BottomNavigation />
+
     </div>
+
   );
+
 }
-return (
-
-  <div className="lobby-container">
-
-    <div className="lobby-header">
-
-      <h1>
-        Welcome {
-          playerInfo?.firstName ||
-          user?.first_name
-        }
-      </h1>
-
-      <div className="balance-card">
-
-        <Wallet size={18} />
-
-        <span>
-          {balance} Birr
-        </span>
-
-      </div>
-
-    </div>
-
-  </div>
-
-);}
-
-export default Game;
