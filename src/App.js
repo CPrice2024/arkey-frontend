@@ -30,7 +30,7 @@ function App() {
           path="/login"
           element={
             token ? (
-              <Navigate to="/" replace />
+              <Navigate to="/dashboard" replace />
             ) : (
               <LoginPage />
             )
@@ -39,7 +39,7 @@ function App() {
 
         {/* ADMIN / AGENT */}
         <Route
-          path="/"
+          path="/dashboard"
           element={
             <ProtectedRoute>
               <Layout />
@@ -107,7 +107,7 @@ function App() {
           path="*"
           element={
             <Navigate
-              to={token ? "/" : "/login"}
+              to={token ? "/dashboard" : "/login"}
               replace
             />
           }

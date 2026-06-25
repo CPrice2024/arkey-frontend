@@ -44,16 +44,18 @@ const LoginPage = () => {
 
       switch (res.data.user.role) {
   case "player":
-    navigate("/game");
+    navigate("/game", { replace: true });
     break;
 
   case "admin":
   case "agent":
-    navigate("/");
+    navigate("/dashboard", { replace: true });
     break;
 
   default:
-    navigate("/login");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    navigate("/login", { replace: true });
 }
     } catch (err) {
       setError(
