@@ -7,7 +7,6 @@ import {
 } from 'lucide-react';
 import '../../styles/UsersStyles.css';
 
-const API_BASE_URL = 'http://localhost:5000/api';
 
 const UserManagement = () => {
   const [users, setUsers] = useState([]);
@@ -237,7 +236,7 @@ name:
   { amount }
 );
       fetchUsers(); // Refresh the list
-      alert(`Successfully added ${amount} ETB to all users!`);
+      alert(`Successfully added ${amount} Birr to all users!`);
     } catch (error) {
       console.error('Error updating balances:', error);
       setError('Failed to update balances');
@@ -247,21 +246,30 @@ name:
   };
 
   // Update user status
-  const updateUserStatus = async (id, status) => {
+const updateUserStatus = async (id, status) => {
+
+  try {
+
     setLoading(true);
-    try {
-      await api.patch(
-  `/users/${id}/status`,
-  { status }
-);
-      fetchUsers(); // Refresh the list
-    } catch (error) {
-      console.error('Error updating status:', error);
-      setError('Failed to update user status');
-    } finally {
-      setLoading(false);
-    }
-  };
+
+    await api.patch(
+      `/users/${id}/status`,
+      {
+        status
+      }
+    );
+
+    fetchUsers();
+
+  } catch (error) {
+
+  } finally {
+
+    setLoading(false);
+
+  }
+
+};
 
 useEffect(() => {
   fetchUsers();
@@ -422,14 +430,20 @@ totalBalance: (users || []).reduce(
     <div className="um-container">
       <div className="um-wrapper">
         {/* Header */}
-        <div className="um-header">
-          <div>
+        <div >
+          <div className="top-header">
             <h1 className="um-title">User Management</h1>
-            <p className="um-subtitle">Manage, track, and organize all system users</p>
+            <p className="um-subtitle">Manage and organize all users</p>
           </div>
           <div className="um-header-actions">
             <button onClick={() => bulkUpdateBalance(100)} className="um-btn-secondary">
-              <DollarSign size={16} /> Add 100 ETB to All
+              <DollarSign size={16} /> Add 50 Birr to All
+            </button>
+            <button onClick={fetchUsers} className="um-btn-secondary">
+              <RefreshCw size={16} /> Refresh
+            </button>
+            <button onClick={() => openModal()} className="um-btn-primary">
+              <UserPlus size={18} /> 
             </button>
 <div className="um-upload-card">
 
@@ -529,22 +543,7 @@ totalBalance: (users || []).reduce(
   </div>
 
 </div>
-
-<button
-  onClick={handleBulkUpload}
-  className="um-btn-primary"
->
-
-  <Upload size={16} />
-
-  Import CSV
-</button>
-            <button onClick={fetchUsers} className="um-btn-secondary">
-              <RefreshCw size={16} /> Refresh
-            </button>
-            <button onClick={() => openModal()} className="um-btn-primary">
-              <UserPlus size={18} /> Add New User
-            </button>
+            
           </div>
         </div>
 
@@ -574,7 +573,7 @@ totalBalance: (users || []).reduce(
             </div>
             <div className="um-stat-info">
               <span className="um-stat-label">Total Balance</span>
-              <span className="um-stat-value">{stats.totalBalance.toLocaleString()} ETB</span>
+              <span className="um-stat-value">{stats.totalBalance.toLocaleString()} Birr</span>
             </div>
           </div>
           <div className="um-stat-card">
@@ -592,7 +591,7 @@ totalBalance: (users || []).reduce(
             </div>
             <div className="um-stat-info">
               <span className="um-stat-label">Average Balance</span>
-              <span className="um-stat-value">{Number(stats.averageBalance).toLocaleString()} ETB</span>
+              <span className="um-stat-value">{Number(stats.averageBalance).toLocaleString()} Birr</span>
             </div>
           </div>
         </div>
@@ -705,17 +704,41 @@ totalBalance: (users || []).reduce(
       <td>
         <div className="um-balance">
           <DollarSign size={14} />
-          {(user.balance || 0).toLocaleString()} ETB
+          {(user.balance || 0).toLocaleString()} Birr
         </div>
       </td>
 
       <td>
-        <span
-          className={`um-status ${getStatusBadgeClass(user.status)}`}
-        >
-          {user.status}
-        </span>
-      </td>
+
+  <span
+    className={
+      user.isActive
+        ? "status-active"
+        : "status-inactive"
+    }
+  >
+    {user.isActive
+      ? "Active"
+      : "Inactive"}
+  </span>
+
+  <button
+    className="status-toggle-btn"
+    onClick={() =>
+      updateUserStatus(
+        user._id,
+        user.isActive
+          ? "inactive"
+          : "active"
+      )
+    }
+  >
+    {user.isActive
+      ? "Deactivate"
+      : "Activate"}
+  </button>
+
+</td>
 
       <td>
         <div className="um-date">
@@ -995,7 +1018,7 @@ totalBalance: (users || []).reduce(
 
           <div className="um-form-group">
             <label>
-              Balance (ETB)
+              Balance (Birr)
             </label>
 
             <input
@@ -1076,7 +1099,7 @@ totalBalance: (users || []).reduce(
                   </div>
                   <div className="um-view-detail">
                     <DollarSign size={16} />
-                    <span className="um-balance">{(selectedUser.balance || 0).toLocaleString()} ETB</span>
+                    <span className="um-balance">{(selectedUser.balance || 0).toLocaleString()} Birr</span>
                   </div>
                   <div className="um-view-detail">
                     <Calendar size={16} />

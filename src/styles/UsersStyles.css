@@ -10,10 +10,10 @@
 }
 
 /* Header */
-.um-header {
-padding: 24px 32px;
-    margin-bottom: 24px;
-    display: flex;
+.top-header {
+padding: 8px 12px;
+    margin-bottom: 12px;
+        border-bottom: ridge;
     justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
@@ -36,6 +36,7 @@ letter-spacing: -0.02em;
 .um-header-actions {
   display: flex;
   gap: 12px;
+      padding-bottom: 25px;
   flex-wrap: wrap;
   align-items: center;
 }
@@ -210,6 +211,23 @@ padding: 10px 20px;
   border-color: #3b00dc;
   color: #3b00dc;
   transform: translateY(-1px);
+}
+
+.status-toggle-btn {
+  padding: 5px 7px;
+    background: #fffffff5;
+    color: #1500cf;
+    border: 1px solid #0012d8;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+
 }
 
 /* Error Message */
@@ -417,7 +435,7 @@ padding: 10px 20px;
 
 .um-table td {
   padding: 16px 20px;
-  border-bottom: 1px solid #f1f5f9;
+  border-bottom: 1px solid #0118afb1;
   font-size: 14px;
   color: #334155;
 }
