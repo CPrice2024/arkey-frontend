@@ -225,7 +225,7 @@ function PromotionsPage() {
               {loading ? (
                 <>
                   <div className="spinner-small"></div>
-                  Sending...
+                  One moment please...
                 </>
               ) : (
                 <>

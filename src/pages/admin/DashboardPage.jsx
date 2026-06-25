@@ -417,7 +417,7 @@ function DashboardPage() {
         {loading && (
           <div className="loading-overlay">
             <div className="loading-spinner"></div>
-            <p>Loading data...</p>
+            <p>One moment please...</p>
           </div>
         )}
 

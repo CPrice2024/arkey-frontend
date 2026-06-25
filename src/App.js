@@ -27,7 +27,7 @@ function App() {
 
         {/* LOGIN */}
         <Route
-          path="/login"
+          path="/*"
           element={<LoginPage />}
         />
 

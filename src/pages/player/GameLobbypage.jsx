@@ -9,7 +9,7 @@ import {
 import "../../styles/gameLobby.css";
 
 const API_BASE_URL =
-  "https://underfoot-cure-kissing.ngrok-free.dev/api";
+  process.env.REACT_APP_API_URL;
 
 
 function GameLobbyPage() {
@@ -39,15 +39,16 @@ useEffect(() => {
 
     try {
 
-      if (
-        !window.Telegram ||
-        !window.Telegram.WebApp
-      ) {
-        console.log(
-          "NO TELEGRAM WEBAPP"
-        );
-        return;
-      }
+      if (!window.Telegram?.WebApp) {
+
+  console.log("Telegram WebApp not detected.");
+
+  if (process.env.NODE_ENV === "development") {
+    setAllowed(true);
+  }
+
+  return;
+}
 
       const webApp =
         window.Telegram.WebApp;
@@ -157,10 +158,12 @@ console.log(webApp.initDataUnsafe);
         "INITIALIZE ERROR:"
       );
 
-      console.log(
-        error.response?.data ||
-        error.message
-      );
+      console.error(error);
+
+alert(
+  error.response?.data?.message ||
+  "Unable to connect to the server."
+);
 
     }
 
