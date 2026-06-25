@@ -30,7 +30,7 @@ function App() {
           path="/login"
           element={
             token ? (
-              <Navigate to="/dashboard" replace />
+              <Navigate to="/login" replace />
             ) : (
               <LoginPage />
             )
@@ -107,7 +107,7 @@ function App() {
           path="*"
           element={
             <Navigate
-              to={token ? "/dashboard" : "/login"}
+              to={token ? "/" : "/login"}
               replace
             />
           }
