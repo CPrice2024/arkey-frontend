@@ -1,14 +1,13 @@
 import React from "react";
-
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
+  Navigate,
 } from "react-router-dom";
 
 import Layout from "./components/Layout";
-
-import ProtectedRoute from "./routes/ProtectedRoute"
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 import LoginPage from "./pages/LoginPage";
 
@@ -20,18 +19,25 @@ import WithdrawalPage from "./pages/admin/WithdrawalPage";
 import GameLobbyPage from "./pages/player/GameLobbypage";
 
 function App() {
+  const token = localStorage.getItem("token");
+
   return (
     <BrowserRouter>
-
       <Routes>
 
         {/* LOGIN */}
         <Route
-          path="/*"
-          element={<LoginPage />}
+          path="/login"
+          element={
+            token ? (
+              <Navigate to="/" replace />
+            ) : (
+              <LoginPage />
+            )
+          }
         />
 
-        {/* MAIN LAYOUT */}
+        {/* ADMIN / AGENT */}
         <Route
           path="/"
           element={
@@ -40,84 +46,74 @@ function App() {
             </ProtectedRoute>
           }
         >
-
-          {/* DASHBOARD */}
           <Route
-  index
-  element={
-    <ProtectedRoute
-      role={["admin", "agent"]}
-    >
-      <DashboardPage />
-    </ProtectedRoute>
-  }
-/>
+            index
+            element={
+              <ProtectedRoute role={["admin", "agent"]}>
+                <DashboardPage />
+              </ProtectedRoute>
+            }
+          />
 
-          {/* USERS - ADMIN ONLY */}
           <Route
             path="users"
             element={
-              <ProtectedRoute
-                role="admin"
-              >
+              <ProtectedRoute role="admin">
                 <UsersPage />
               </ProtectedRoute>
             }
           />
 
-          {/* PROMOTIONS - ADMIN ONLY */}
           <Route
             path="promotions"
             element={
-              <ProtectedRoute
-                role="admin"
-              >
+              <ProtectedRoute role="admin">
                 <PromotionsPage />
               </ProtectedRoute>
             }
           />
 
-          {/* DEPOSITS - ADMIN + AGENT */}
           <Route
             path="deposits"
             element={
-              <ProtectedRoute
-                role={[
-                  "admin",
-                  "agent"
-                ]}
-              >
+              <ProtectedRoute role={["admin", "agent"]}>
                 <DepositsPage />
               </ProtectedRoute>
             }
           />
 
-          {/* WITHDRAWALS - ADMIN + AGENT */}
           <Route
             path="withdrawals"
             element={
-              <ProtectedRoute
-                role={[
-                  "admin",
-                  "agent"
-                ]}
-              >
+              <ProtectedRoute role={["admin", "agent"]}>
                 <WithdrawalPage />
               </ProtectedRoute>
             }
           />
-
-          {/* GAME LOBBY - PLAYER ONLY */}
-        
-
         </Route>
+
+        {/* PLAYER */}
         <Route
-  path="/game"
-  element={<GameLobbyPage />}
-/>
+          path="/game"
+          element={
+            <ProtectedRoute role="player">
+              <GameLobbyPage />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* UNKNOWN ROUTES */}
+        <Route
+          path="*"
+          element={
+            <Navigate
+              to={token ? "/" : "/login"}
+              replace
+            />
+          }
+        />
 
       </Routes>
-
     </BrowserRouter>
   );
 }

@@ -85,7 +85,7 @@ const role = user?.role;
             <nav className="sidebar-nav">
               {role !== "player" && (
   <NavLink
-    to="/"
+    to="/dashboard"
     end
     className={({ isActive }) =>
       `nav-link ${isActive ? "active" : ""}`
@@ -104,7 +104,7 @@ const role = user?.role;
 
               {role === "admin" && (
   <NavLink
-    to="/users"
+    to="/dashboard/users"
     className={({ isActive }) =>
       `nav-link ${isActive ? "active" : ""}`
     }
@@ -123,7 +123,7 @@ const role = user?.role;
 
               {role === "admin" && (
   <NavLink
-    to="/promotions"
+    to="/dashboard/promotions"
     className={({ isActive }) =>
       `nav-link ${isActive ? "active" : ""}`
     }
@@ -140,7 +140,7 @@ const role = user?.role;
 )}
 {["admin", "agent"].includes(role) && (
   <NavLink
-    to="/deposits"
+    to="/dashboard/deposits"
     className={({ isActive }) =>
       `nav-link ${isActive ? "active" : ""}`
     }
@@ -157,7 +157,7 @@ const role = user?.role;
 )}
 {["admin", "agent"].includes(role) && (
   <NavLink
-    to="/withdrawals"
+    to="/dashboard/withdrawals"
     className={({ isActive }) =>
       `nav-link ${isActive ? "active" : ""}`
     }

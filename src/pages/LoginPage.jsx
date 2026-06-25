@@ -42,10 +42,18 @@ const LoginPage = () => {
         localStorage.setItem("rememberMe", "true");
       }
 
-      if (res.data.user.role === "player") {
-  navigate("/game");
-} else {
-  navigate("/");
+      switch (res.data.user.role) {
+  case "player":
+    navigate("/game");
+    break;
+
+  case "admin":
+  case "agent":
+    navigate("/");
+    break;
+
+  default:
+    navigate("/login");
 }
     } catch (err) {
       setError(

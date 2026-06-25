@@ -19,7 +19,7 @@ function DashboardPage() {
   const fetchUsers = async () => {
     setLoading(true);
     try {
-      const res = await api.get("http://localhost:5000/api/users");
+      const res = await api.get("/api/users");
       const userData = Array.isArray(res.data) ? res.data : (res.data.users || []);
       const sanitizedUsers = userData.map(user => ({
         ...user,

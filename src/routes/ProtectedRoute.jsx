@@ -1,14 +1,13 @@
 import { Navigate } from "react-router-dom";
 
-const ProtectedRoute = ({
-  children,
-  role
-}) => {
+const ProtectedRoute = ({ children, role }) => {
+  const token = localStorage.getItem("token");
 
   const user = JSON.parse(
-    localStorage.getItem("user")
+    localStorage.getItem("user") || "null"
   );
 
+  // Allow Telegram WebApp access
   if (
     window.Telegram &&
     window.Telegram.WebApp
@@ -16,34 +15,21 @@ const ProtectedRoute = ({
     return children;
   }
 
-  if (!user) {
-    return (
-      <Navigate to="/login" />
-    );
+  // Not logged in
+  if (!token || !user) {
+    return <Navigate to="/login" replace />;
   }
 
+  // Role check
   if (role) {
-
     if (Array.isArray(role)) {
-
-      if (
-        !role.includes(user.role)
-      ) {
-        return (
-          <Navigate to="/" />
-        );
+      if (!role.includes(user.role)) {
+        return <Navigate to="/login" replace />;
       }
-
     } else {
-
-      if (
-        user.role !== role
-      ) {
-        return (
-          <Navigate to="/" />
-        );
+      if (user.role !== role) {
+        return <Navigate to="/login" replace />;
       }
-
     }
   }
 
