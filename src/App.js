@@ -16,7 +16,7 @@ import UsersPage from "./pages/admin/UsersPage";
 import PromotionsPage from "./pages/admin/PromotionsPage";
 import DepositsPage from "./pages/admin/DepositsPage";
 import WithdrawalPage from "./pages/admin/WithdrawalPage";
-import GameLobbyPage from "./pages/player/GameLobbypage";
+import Game from "./pages/player/Game";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -97,7 +97,7 @@ function App() {
           path="/game"
           element={
             <ProtectedRoute role="player">
-              <GameLobbyPage />
+              <Game />
             </ProtectedRoute>
           }
         />

@@ -186,7 +186,7 @@ const role = user?.role;
     />
 
     {!isSidebarCollapsed && (
-      <span>Game Lobby</span>
+      <span>Game</span>
     )}
   </NavLink>
 )}

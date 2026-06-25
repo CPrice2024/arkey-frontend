@@ -205,7 +205,7 @@ const filteredDeposits = Array.isArray(deposits)
 
           <td>{d.method}</td>
 
-          <td>{d.amount || 0} ETB
+          <td>{d.amount || 0} Birr
           </td>
 
           <td>{d.depositNumber}</td>

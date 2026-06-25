@@ -224,7 +224,7 @@ const filteredWithdrawals = Array.isArray(Withdrawals)
       <td>{w.method}</td>
 
       <td>
-          {w.amount} ETB
+          {w.amount} Birr
       </td>
 
       <td>

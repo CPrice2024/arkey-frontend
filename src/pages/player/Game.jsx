@@ -12,7 +12,7 @@ const API_BASE_URL =
   process.env.REACT_APP_API_URL;
 
 
-function GameLobbyPage() {
+function Game() {
 
   const [allowed, setAllowed] =
     useState(false);
@@ -20,7 +20,7 @@ function GameLobbyPage() {
   const [user, setUser] =
     useState(null);
 
-  const [balance, setBalance] =
+  const [balance, sBirralance] =
     useState(0);
 
 
@@ -108,7 +108,7 @@ console.log(webApp.initDataUnsafe);
         )
       );
 
-      setBalance(
+      sBirralance(
         loginResponse.data.user.balance || 0
       );
 
@@ -211,7 +211,7 @@ return (
         <Wallet size={18} />
 
         <span>
-          {balance} ETB
+          {balance} Birr
         </span>
 
       </div>
@@ -222,4 +222,4 @@ return (
 
 );}
 
-export default GameLobbyPage;
+export default Game;

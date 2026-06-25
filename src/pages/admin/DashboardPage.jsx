@@ -208,21 +208,21 @@ function DashboardPage() {
           <div className="metric-label">
             <Wallet size={12} /> Average Balance
           </div>
-          <div className="metric-value">{averageBalance.toFixed(0)} ETB</div>
-          <div className="metric-hint">Median: {medianBalance.toFixed(0)} ETB</div>
+          <div className="metric-value">{averageBalance.toFixed(0)} Birr</div>
+          <div className="metric-hint">Median: {medianBalance.toFixed(0)} Birr</div>
         </div>
         <div className="metric">
           <div className="metric-label">
             <TrendingUp size={12} /> Balance Range
           </div>
           <div className="metric-value">{minBalance.toFixed(0)} - {maxBalance.toFixed(0)}</div>
-          <div className="metric-hint">Spread: {(maxBalance - minBalance).toFixed(0)} ETB</div>
+          <div className="metric-hint">Spread: {(maxBalance - minBalance).toFixed(0)} Birr</div>
         </div>
         <div className="metric">
           <div className="metric-label">
             <DollarSign size={12} /> Total Value
           </div>
-          <div className="metric-value">{totalBalance.toLocaleString()} ETB</div>
+          <div className="metric-value">{totalBalance.toLocaleString()} Birr</div>
           <div className="metric-hint">Across {users.length} users</div>
         </div>
         <div className="metric">
@@ -323,7 +323,7 @@ function DashboardPage() {
             <div className="insight-content">
               <div className="insight-title">Typical Balance</div>
               <div className="insight-description">
-                Average user holds {averageBalance.toFixed(0)} ETB
+                Average user holds {averageBalance.toFixed(0)} Birr
               </div>
             </div>
           </div>
@@ -334,7 +334,7 @@ function DashboardPage() {
             <div className="insight-content">
               <div className="insight-title">Opportunity</div>
               <div className="insight-description">
-                {inactiveUsers} users below 1000 ETB threshold
+                {inactiveUsers} users below 1000 Birr threshold
               </div>
             </div>
           </div>
@@ -380,7 +380,7 @@ function DashboardPage() {
           />
           <StatsCard 
             label="Total Balance"
-            value={`${totalBalance.toLocaleString()} ETB`}
+            value={`${totalBalance.toLocaleString()} Birr`}
             icon={<DollarSign size={20} />}
             change="+8%"
             changeType="up"
@@ -396,7 +396,7 @@ function DashboardPage() {
           />
           <StatsCard 
             label="Avg Balance"
-            value={`${averageBalance.toFixed(0)} ETB`}
+            value={`${averageBalance.toFixed(0)} Birr`}
             icon={<Wallet size={20} />}
             change="+5%"
             changeType="up"
