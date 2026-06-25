@@ -711,12 +711,10 @@ totalBalance: (users || []).reduce(
       <td>
 
   <span
-    className={
-      user.isActive
-        ? "status-active"
-        : "status-inactive"
-    }
-  >
+  className={getStatusBadgeClass(
+    user.isActive ? "active" : "inactive"
+  )}
+>
     {user.isActive
       ? "Active"
       : "Inactive"}
