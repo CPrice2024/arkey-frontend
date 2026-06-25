@@ -32,12 +32,11 @@ export default function Game() {
 
     try {
 
-        const res =
-            await api.get("/game");
+       const res = await api.get("/game");
 
-        setBalance(
-            res.data.player.balance
-        );
+setBalance(
+  res.data.player?.balance || 0
+);
 
     }
 
@@ -53,32 +52,20 @@ export default function Game() {
 
     try {
 
-      if (!window.Telegram?.WebApp) {
+      const tg = window.Telegram?.WebApp;
 
-        throw new Error(
-          "Telegram WebApp not detected."
-        );
+if (!tg) {
+  throw new Error("Please open this game from Telegram.");
+}
 
-      }
-      
+tg.ready();
+tg.expand();
 
-      const tg =
-        window.Telegram.WebApp;
+const telegramUser = tg.initDataUnsafe?.user;
 
-      tg.ready();
-
-      tg.expand();
-
-      const telegramUser =
-        tg.initDataUnsafe.user;
-
-      if (!telegramUser) {
-
-        throw new Error(
-          "Telegram user not found."
-        );
-
-      }
+if (!telegramUser) {
+  throw new Error("Telegram authentication failed.");
+}
 
       
 
@@ -91,28 +78,28 @@ export default function Game() {
           }
         );
 
-      localStorage.setItem(
-        "token",
-        login.data.token
-      );
+      const token = login.data.token;
 
-      localStorage.setItem(
-        "user",
-        JSON.stringify(
-          login.data.user
-        )
-      );
+localStorage.setItem("token", token);
 
-      const lobby =
-        await api.get("/game");
+localStorage.setItem(
+  "user",
+  JSON.stringify(login.data.user)
+);
 
-      setPlayer(
-        lobby.data.player
-      );
+const lobby = await api.get("/game", {
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+});
 
-      setBalance(
-        lobby.data.player.balance
-      );
+      const player = lobby.data.player;
+
+setPlayer(player);
+
+setBalance(
+  player?.balance || 0
+);
 
       setGames(
 
