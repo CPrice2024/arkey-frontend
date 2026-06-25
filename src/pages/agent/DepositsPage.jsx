@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { RefreshCw, Check, X, Clock} from "lucide-react";
 import "../styles/DepositsPage.css";
 
@@ -14,8 +14,8 @@ const fetchDeposits = async () => {
 
     setLoading(true);
 
-    const res = await axios.get(
-      "http://localhost:5000/api/deposits"
+    const res = await api.get(
+      "/api/deposits"
     );
 
     console.log(res.data);
@@ -75,7 +75,7 @@ useEffect(() => {
 
   const approveDeposit = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/api/deposits/${id}/approve`);
+      await api.put(`/api/deposits/${id}/approve`);
       fetchDeposits();
       showNotification(
   "success",
@@ -92,7 +92,7 @@ useEffect(() => {
 
   const rejectDeposit = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/api/deposits/${id}/reject`);
+      await api.put(`/api/deposits/${id}/reject`);
       fetchDeposits();
       showNotification(
   "error",

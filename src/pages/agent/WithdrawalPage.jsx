@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { RefreshCw, Check, X, Clock } from "lucide-react";
 import "../styles/DepositsPage.css";
 
@@ -13,8 +13,8 @@ const fetchWithdrawals = async () => {
 
     setLoading(true);
 
-    const res = await axios.get(
-      "http://localhost:5000/api/withdrawals"
+    const res = await api.get(
+      "/api/withdrawals"
     );
 
     const data = Array.isArray(res.data)
@@ -74,8 +74,8 @@ const approveWithdrawal = async (id) => {
 
   try {
 
-    await axios.put(
-      `http://localhost:5000/api/withdrawals/${id}/approve`
+    await api.put(
+      `/api/withdrawals/${id}/approve`
     );
 
     fetchWithdrawals();
@@ -102,8 +102,8 @@ const approveWithdrawal = async (id) => {
 
   try {
 
-    await axios.put(
-      `http://localhost:5000/api/withdrawals/${id}/reject`
+    await api.put(
+      `/api/withdrawals/${id}/reject`
     );
 
     fetchWithdrawals();

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 import { 
   Users, DollarSign, Activity, BarChart3, TrendingUp, PieChart, 
   Target, Zap, RefreshCw, Download, ChevronUp, ChevronDown,
@@ -19,7 +19,7 @@ function DashboardPage() {
   const fetchUsers = async () => {
     setLoading(true);
     try {
-      const res = await axios.get("http://localhost:5000/api/users");
+      const res = await api.get("http://localhost:5000/api/users");
       const userData = Array.isArray(res.data) ? res.data : (res.data.users || []);
       const sanitizedUsers = userData.map(user => ({
         ...user,

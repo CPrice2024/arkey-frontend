@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../api";
 
 import {
   Wallet,
@@ -88,7 +88,7 @@ console.log(webApp.initDataUnsafe);
       // TELEGRAM LOGIN
 
       const loginResponse =
-        await axios.post(
+        await api.post(
           `${API_BASE_URL}/auth/telegram-login`,
           {
             telegramId:
@@ -115,7 +115,7 @@ console.log(webApp.initDataUnsafe);
       // LOAD LOBBY
 
       const lobbyResponse =
-        await axios.get(
+        await api.get(
           `${API_BASE_URL}/game`,
           {
             headers: {
