@@ -1,195 +1,527 @@
-/* ==========================
-   Bottom Navigation
-========================== */
+/* =========================================================
+   ARKEY GAMES
+   Telegram Mini App UI
+========================================================= */
 
-.bottom-navigation {
-  position: fixed;
-  left: 50%;
-  bottom: 12px;
-  transform: translateX(-50%);
-
-  width: calc(100% - 20px);
-  max-width: 420px;
-  height: 68px;
-
-  background: #18162d;
-  border: 1px solid rgba(255,255,255,.05);
-  border-radius: 24px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-
-  padding: 0 16px;
-
-  box-shadow:
-      0 10px 30px rgba(0,0,0,.45);
-
-  z-index: 999;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.bottom-nav-item {
-  border: none;
-  background: transparent;
-
-  color: #bfc6d4;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  gap: 4px;
-
-  cursor: pointer;
-
-  transition: .25s;
-
-  font-size: 11px;
-
-  min-width: 58px;
+html{
+    scroll-behavior:smooth;
 }
 
-.bottom-nav-item svg{
-    width:20px;
-    height:20px;
-}
+body{
 
-.bottom-nav-item:hover,
-.bottom-nav-item.active{
-    color:#27d3b4;
-}
-
-.bottom-nav-item span{
-    font-size:11px;
-    font-weight:600;
-}
-
-/* ==========================
-   Floating Deposit Button
-========================== */
-
-.deposit-floating-btn{
-
-    position:absolute;
-
-    top:-18px;
-    right:18px;
-
-    width:64px;
-    height:64px;
-
-    border:none;
-    border-radius:50%;
-
-    background:linear-gradient(
-        135deg,
-        #00d48a,
-        #0ea5e9
-    );
+    background:#0c1020;
 
     color:#fff;
 
+    font-family:
+        Inter,
+        "Segoe UI",
+        sans-serif;
+
+    overflow-x:hidden;
+}
+
+::-webkit-scrollbar{
+    display:none;
+}
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.game-page{
+
+    width:100%;
+
+    min-height:100vh;
+
+    background:
+        linear-gradient(
+            180deg,
+            #14172c 0%,
+            #0b1020 100%
+        );
+
+    padding:
+
+        18px
+        16px
+        110px;
+
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.game-header{
+
     display:flex;
-    flex-direction:column;
-    justify-content:center;
+
+    justify-content:space-between;
+
     align-items:center;
+
+    gap:12px;
+
+    margin-bottom:18px;
+
+}
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.header-left{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.header-logo{
+
+    width:58px;
+
+    height:58px;
+
+    object-fit:contain;
+
+    border-radius:50%;
+
+    border:2px solid
+        rgba(255,255,255,.08);
+
+    background:#111827;
+
+}
+
+/* =========================================================
+   BALANCE CARD
+========================================================= */
+
+.balance-box{
+
+    flex:1;
+
+    height:46px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    padding:0 12px;
+
+    border-radius:14px;
+
+    background:
+
+        rgba(255,255,255,.06);
+
+    backdrop-filter:blur(10px);
+
+    border:
+
+        1px solid
+        rgba(255,255,255,.06);
+
+    box-shadow:
+
+        0 6px 18px
+        rgba(0,0,0,.25);
+
+}
+
+.balance-box span{
+
+    font-size:14px;
+
+    font-weight:700;
+
+    letter-spacing:.3px;
+
+    white-space:nowrap;
+
+}
+
+/* =========================================================
+   ICON BUTTONS
+========================================================= */
+
+.refresh-btn,
+.eye-btn{
+
+    width:30px;
+
+    height:30px;
+
+    border:none;
+
+    border-radius:10px;
 
     cursor:pointer;
 
-    font-weight:700;
+    display:flex;
 
-    box-shadow:
-        0 8px 24px rgba(0,0,0,.35);
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+
+        rgba(255,255,255,.08);
+
+    color:#fff;
 
     transition:.25s;
-}
-
-.deposit-floating-btn:hover{
-
-    transform:translateY(-3px) scale(1.05);
 
 }
 
-.deposit-floating-btn svg{
+.refresh-btn:hover,
+.eye-btn:hover{
 
-    width:24px;
-    height:24px;
+    background:#1cc9a6;
+
+    transform:rotate(180deg);
 
 }
 
-.deposit-floating-btn span{
+/* =========================================================
+   DEPOSIT
+========================================================= */
 
-    margin-top:3px;
+.deposit-btn{
 
-    font-size:10px;
+    height:46px;
+
+    padding:
+
+        0
+        16px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    color:#fff;
 
     font-weight:700;
 
-}
+    font-size:14px;
 
-/* ==========================
-   Telegram Mobile
-========================== */
+    display:flex;
 
-@media (max-width:480px){
+    align-items:center;
 
-.bottom-navigation{
+    gap:8px;
 
-    height:64px;
+    background:
 
-    border-radius:22px;
+        linear-gradient(
+            135deg,
+            #0fc68a,
+            #09b4d7
+        );
 
-    padding:0 10px;
+    box-shadow:
 
-}
+        0 10px 20px
+        rgba(14,165,233,.28);
 
-.bottom-nav-item{
-
-    min-width:50px;
-
-    font-size:10px;
-
-}
-
-.bottom-nav-item svg{
-
-    width:18px;
-    height:18px;
+    transition:.25s;
 
 }
 
-.deposit-floating-btn{
+.deposit-btn:hover{
 
-    width:58px;
-    height:58px;
+    transform:
+        translateY(-2px);
 
-    top:-16px;
-    right:12px;
+    box-shadow:
 
-}
-
-.deposit-floating-btn svg{
-
-    width:22px;
-    height:22px;
+        0 14px 30px
+        rgba(14,165,233,.4);
 
 }
 
-.deposit-floating-btn span{
+/* =========================================================
+   HEADER MOBILE
+========================================================= */
 
-    font-size:9px;
-
-}
-
-}
-
-.game-header h1{
-    font-size:26px;
-    line-height:1.1;
-    font-weight:700;
-}
+@media(max-width:480px){
 
 .game-header{
-    padding:16px;
+
+    gap:8px;
+
+}
+
+.header-logo{
+
+    width:52px;
+
+    height:52px;
+
+}
+
+.balance-box{
+
+    height:42px;
+
+    gap:6px;
+
+}
+
+.balance-box span{
+
+    font-size:13px;
+
+}
+
+.deposit-btn{
+
+    height:42px;
+
+    padding:0 12px;
+
+    font-size:13px;
+
+}
+
+}
+/* =========================================================
+   COUPON BANNER
+========================================================= */
+
+.coupon-banner{
+
+    margin-bottom:22px;
+
+    padding:18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    cursor:pointer;
+
+    border-radius:18px;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #1d2341,
+            #11182d
+        );
+
+    border:1px solid
+        rgba(255,255,255,.05);
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,.30);
+
+    transition:.28s;
+
+}
+
+.coupon-banner:hover{
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 18px 35px rgba(0,0,0,.45);
+
+}
+
+.coupon-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.coupon-icon{
+
+    width:56px;
+
+    height:56px;
+
+    border-radius:16px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #0ec7a2,
+            #12b8ff
+        );
+
+    color:#fff;
+
+    box-shadow:
+
+        0 8px 20px
+        rgba(14,199,162,.35);
+
+}
+
+.coupon-left h3{
+
+    font-size:17px;
+
+    font-weight:700;
+
+    margin-bottom:3px;
+
+}
+
+.coupon-left p{
+
+    color:#97a6c2;
+
+    font-size:13px;
+
+}
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.featured-section{
+
+    margin-top:8px;
+
+}
+
+.section-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:18px;
+
+}
+
+.section-header h2{
+
+    font-size:22px;
+
+    font-weight:800;
+
+    letter-spacing:.2px;
+
+}
+
+.section-header p{
+
+    color:#7e8da9;
+
+    font-size:13px;
+
+}
+
+.section-header button{
+
+    border:none;
+
+    cursor:pointer;
+
+    background:transparent;
+
+    color:#14d2ae;
+
+    font-weight:700;
+
+    font-size:14px;
+
+}
+
+/* =========================================================
+   GAMES GRID
+========================================================= */
+
+.games-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:14px;
+
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:480px){
+
+.games-grid{
+
+    gap:10px;
+
+}
+
+.coupon-banner{
+
+    padding:15px;
+
+}
+
+.coupon-icon{
+
+    width:48px;
+
+    height:48px;
+
+}
+
+.coupon-left h3{
+
+    font-size:15px;
+
+}
+
+.coupon-left p{
+
+    font-size:12px;
+
+}
+
+.section-header h2{
+
+    font-size:19px;
+
+}
+
 }

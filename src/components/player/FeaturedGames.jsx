@@ -11,13 +11,19 @@ export default function FeaturedGames({
 
       <div className="section-header">
 
-        <h2>
+  <div>
 
-          🎮 Featured Games
+    <h2>Featured Games</h2>
 
-        </h2>
+    <p>Play and win big today</p>
 
-      </div>
+  </div>
+
+  <button>
+    See All
+  </button>
+
+</div>
 
       <div className="games-grid">
 

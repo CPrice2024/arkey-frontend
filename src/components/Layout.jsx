@@ -120,6 +120,23 @@ const role = user?.role;
   </NavLink>
 )}
 
+{role === "admin" && (
+  <NavLink
+    to="/game"
+    className={({ isActive }) =>
+      `nav-link ${isActive ? "active" : ""}`
+    }
+  >
+    <Users
+      size={20}
+      className="nav-icon"
+    />
+
+    {!isSidebarCollapsed && (
+      <span>Users</span>
+    )}
+  </NavLink>
+)}
 
               {role === "admin" && (
   <NavLink
