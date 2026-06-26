@@ -34,7 +34,7 @@ export default function LoadingScreen() {
         </div>
 
         <p className="loading-text">
-          Connecting to secure gaming servers...
+          one moment ...
         </p>
 
         <div className="loading-progress">
@@ -51,7 +51,7 @@ export default function LoadingScreen() {
           />
 
           <span>
-            Authenticating your account...
+            Checking your account...
           </span>
 
         </div>
@@ -61,7 +61,7 @@ export default function LoadingScreen() {
           <ShieldCheck size={18} />
 
           <span>
-            Protected by Arkey Secure Platform
+            Protected by Arkey pay Secure Platform
           </span>
 
         </div>

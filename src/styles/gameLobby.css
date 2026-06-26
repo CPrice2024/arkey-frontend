@@ -1073,20 +1073,20 @@ LOGO
 
 .loading-logo{
 
-    width:90px;
+    width:auto;
 
-    height:90px;
+    height:150px;
 
     margin-bottom:18px;
 
-    border-radius:50%;
+    border-radius:0px;
 
     background:
 
         linear-gradient(
             135deg,
-            #0dc88f,
-            #0ea5e9
+            #0060748d,
+            #0ea4e900
         );
 
     display:flex;

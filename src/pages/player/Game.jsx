@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../../api";
 
 
@@ -9,6 +10,7 @@ import BottomNavigation from "../../components/player/BottomNavigation";
 import LoadingScreen from "../../components/player/LoadingScreen";
 import ErrorScreen from "../../components/player/ErrorScreen";
 import ProfileDrawer from "../../components/player/ProfileDrawer";
+
 
 import "../../styles/gameLobby.css";
 
@@ -25,6 +27,8 @@ export default function Game() {
   const [games, setGames] = useState([]);
 
   const [showProfile, setShowProfile] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
 
@@ -220,7 +224,9 @@ console.log("Player:", player);
 
 />
 
-      <CouponBanner />
+      <CouponBanner
+    onClick={() => navigate("/promotions")}
+/>
 
       <FeaturedGames
 
@@ -246,7 +252,7 @@ console.log("Player:", player);
             behavior: "smooth"
         })
     }
-    onPromo={() => alert("Promo")}
+    onPromo={() => navigate("/promotions")}
     onSupport={() => alert("Support")}
     onProfile={() => setShowProfile(true)}
     onDeposit={() => alert("Deposit")}
