@@ -567,7 +567,7 @@ body{
 
     overflow:hidden;
 
-    border-radius:18px 18px 0 0;
+    border-radius:6px 6px 0 0;
 
 }
 
@@ -1073,9 +1073,9 @@ LOGO
 
 .loading-logo{
 
-    width:auto;
+    width:150px;
 
-    height:150px;
+    height:50px;
 
     margin-bottom:18px;
 

@@ -17,6 +17,7 @@ import PromotionsPage from "./pages/admin/PromotionsPage";
 import DepositsPage from "./pages/admin/DepositsPage";
 import WithdrawalPage from "./pages/admin/WithdrawalPage";
 import Game from "./pages/player/Game";
+import PromoPage from "./pages/player/PromoPage";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -97,6 +98,10 @@ function App() {
         path="/game"
         element={<Game />}
         />
+        <Route
+    path="/promotions"
+    element={<PromoPage />}
+/>
 
         {/* UNKNOWN ROUTES */}
         <Route
