@@ -7,7 +7,7 @@ import {
   Plus
 } from "lucide-react";
 
-import logo from "../../../assets/logo6.png";
+import logo from "../../assets/logo6.png";
 
 export default function Header({
   player,

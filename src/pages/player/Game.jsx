@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import api from "../../api";
 
-import Header from "../../pages/components/player/Header";
-import CouponBanner from "../../pages/components/player/CouponBanner";
-import FeaturedGames from "../../pages/components/player/FeaturedGames";
-import BottomNavigation from "../../pages/components/player/BottomNavigation";
-import LoadingScreen from "../../pages/components/player/LoadingScreen";
-import ErrorScreen from "../../pages/components/player/ErrorScreen";
+import Header from "../../components/player/Header";
+import CouponBanner from "../../components/player/CouponBanner";
+import FeaturedGames from "../../components/player/FeaturedGames";
+import BottomNavigation from "../../components/player/BottomNavigation";
+import LoadingScreen from "../../components/player/LoadingScreen";
+import ErrorScreen from "../../components/player/ErrorScreen";
 
 import "../../styles/gameLobby.css";
 
@@ -193,6 +193,8 @@ setBalance(
     );
 
   }
+  console.log("Games:", games);
+console.log("Player:", player);
 
   return (
 
