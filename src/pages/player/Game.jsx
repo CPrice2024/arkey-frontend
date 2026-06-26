@@ -118,7 +118,7 @@ setBalance(
       {
         _id:2,
         name:"Aviator",
-        provider:"Spribe",
+        provider:"Spribe test",
         featured:true,
         image:"https://picsum.photos/400/300?2"
       },
