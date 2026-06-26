@@ -1,57 +1,94 @@
+/* ==========================
+   Bottom Navigation
+========================== */
 
 .bottom-navigation {
-    position: fixed;
-    bottom: 15px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 24px);
-    max-width: 520px;
-    background: #17152a;
-    border-radius: 30px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 12px 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.35);
-    z-index: 999;
+  position: fixed;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+
+  width: calc(100% - 20px);
+  max-width: 420px;
+  height: 68px;
+
+  background: #18162d;
+  border: 1px solid rgba(255,255,255,.05);
+  border-radius: 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  padding: 0 16px;
+
+  box-shadow:
+      0 10px 30px rgba(0,0,0,.45);
+
+  z-index: 999;
 }
 
-.bottom-nav-item{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:5px;
-    border:none;
-    background:transparent;
-    color:#fff;
-    cursor:pointer;
-    font-size:12px;
-    transition:.25s;
+.bottom-nav-item {
+  border: none;
+  background: transparent;
+
+  color: #bfc6d4;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 4px;
+
+  cursor: pointer;
+
+  transition: .25s;
+
+  font-size: 11px;
+
+  min-width: 58px;
 }
 
-.bottom-nav-item:hover{
-    color:#3fd0c9;
+.bottom-nav-item svg{
+    width:20px;
+    height:20px;
 }
+
+.bottom-nav-item:hover,
+.bottom-nav-item.active{
+    color:#27d3b4;
+}
+
+.bottom-nav-item span{
+    font-size:11px;
+    font-weight:600;
+}
+
+/* ==========================
+   Floating Deposit Button
+========================== */
 
 .deposit-floating-btn{
-    position:absolute;
-    right:-5px;
-    top:-22px;
 
-    width:74px;
-    height:74px;
+    position:absolute;
+
+    top:-18px;
+    right:18px;
+
+    width:64px;
+    height:64px;
 
     border:none;
     border-radius:50%;
 
     background:linear-gradient(
         135deg,
-        #00c897,
+        #00d48a,
         #0ea5e9
     );
 
-    color:white;
+    color:#fff;
 
     display:flex;
     flex-direction:column;
@@ -62,10 +99,97 @@
 
     font-weight:700;
 
-    box-shadow:0 10px 25px rgba(0,0,0,.45);
+    box-shadow:
+        0 8px 24px rgba(0,0,0,.35);
+
+    transition:.25s;
+}
+
+.deposit-floating-btn:hover{
+
+    transform:translateY(-3px) scale(1.05);
+
+}
+
+.deposit-floating-btn svg{
+
+    width:24px;
+    height:24px;
+
 }
 
 .deposit-floating-btn span{
-    font-size:11px;
-    margin-top:2px;
+
+    margin-top:3px;
+
+    font-size:10px;
+
+    font-weight:700;
+
+}
+
+/* ==========================
+   Telegram Mobile
+========================== */
+
+@media (max-width:480px){
+
+.bottom-navigation{
+
+    height:64px;
+
+    border-radius:22px;
+
+    padding:0 10px;
+
+}
+
+.bottom-nav-item{
+
+    min-width:50px;
+
+    font-size:10px;
+
+}
+
+.bottom-nav-item svg{
+
+    width:18px;
+    height:18px;
+
+}
+
+.deposit-floating-btn{
+
+    width:58px;
+    height:58px;
+
+    top:-16px;
+    right:12px;
+
+}
+
+.deposit-floating-btn svg{
+
+    width:22px;
+    height:22px;
+
+}
+
+.deposit-floating-btn span{
+
+    font-size:9px;
+
+}
+
+}
+
+.game-header h1{
+    font-size:26px;
+    line-height:1.1;
+    font-weight:700;
+}
+
+.game-header{
+    padding:16px;
 }
