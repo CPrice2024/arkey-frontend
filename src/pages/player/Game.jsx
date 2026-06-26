@@ -224,7 +224,12 @@ console.log("Player:", player);
 
       />
 
-      <BottomNavigation />
+      <BottomNavigation
+    onPromo={() => alert("Promo")}
+    onSupport={() => alert("Support")}
+    onProfile={() => alert("Profile")}
+    onDeposit={() => alert("Deposit")}
+/>
 
     </div>
 
