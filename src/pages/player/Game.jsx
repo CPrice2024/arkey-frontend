@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import api from "../../api";
 
+
 import Header from "../../components/player/Header";
 import CouponBanner from "../../components/player/CouponBanner";
 import FeaturedGames from "../../components/player/FeaturedGames";
 import BottomNavigation from "../../components/player/BottomNavigation";
 import LoadingScreen from "../../components/player/LoadingScreen";
 import ErrorScreen from "../../components/player/ErrorScreen";
+import ProfileDrawer from "../../components/player/ProfileDrawer";
 
 import "../../styles/gameLobby.css";
 
@@ -21,6 +23,8 @@ export default function Game() {
   const [balance, setBalance] = useState(0);
 
   const [games, setGames] = useState([]);
+
+  const [showProfile, setShowProfile] = useState(false);
 
   useEffect(() => {
 
@@ -223,11 +227,28 @@ console.log("Player:", player);
         games={games}
 
       />
+      <ProfileDrawer
+
+    player={player}
+
+    balance={balance}
+
+    open={showProfile}
+
+    onClose={() => setShowProfile(false)}
+
+/>
 
       <BottomNavigation
+    onHome={() =>
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    }
     onPromo={() => alert("Promo")}
     onSupport={() => alert("Support")}
-    onProfile={() => alert("Profile")}
+    onProfile={() => setShowProfile(true)}
     onDeposit={() => alert("Deposit")}
 />
 

@@ -88,13 +88,13 @@ body{
 
 .header-logo{
 
-    width:58px;
+    width:auto;
 
-    height:58px;
+    height:100px;
 
     object-fit:contain;
 
-    border-radius:50%;
+    border-radius:5px;
 
     border:2px solid
         rgba(255,255,255,.08);
@@ -536,7 +536,7 @@ body{
 
     overflow:hidden;
 
-    border-radius:18px;
+    border-radius:6px;
 
     background:#171d33;
 
@@ -950,5 +950,526 @@ env(safe-area-inset-bottom)
 );
 
 }
+
+}
+
+/*=========================================================
+LOADING PAGE
+=========================================================*/
+
+.loading-page{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #1d2850,
+            #090d1d
+        );
+
+}
+
+/* Animated Background */
+
+.loading-bg{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            rgba(0,255,200,.08),
+            rgba(14,165,233,.06),
+            rgba(255,255,255,.02)
+        );
+
+    background-size:400% 400%;
+
+    animation:
+        gradientMove
+        8s linear infinite;
+
+}
+
+@keyframes gradientMove{
+
+0%{
+
+background-position:0% 50%;
+
+}
+
+50%{
+
+background-position:100% 50%;
+
+}
+
+100%{
+
+background-position:0% 50%;
+
+}
+
+}
+
+/*=========================================================
+CARD
+=========================================================*/
+
+.loading-card{
+
+    position:relative;
+
+    width:340px;
+
+    max-width:92%;
+
+    padding:36px 28px;
+
+    border-radius:28px;
+
+    background:
+
+        rgba(18,24,45,.90);
+
+    backdrop-filter:blur(18px);
+
+    border:
+
+        1px solid rgba(255,255,255,.06);
+
+    box-shadow:
+
+        0 25px 60px rgba(0,0,0,.45);
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    z-index:2;
+
+}
+
+/*=========================================================
+LOGO
+=========================================================*/
+
+.loading-logo{
+
+    width:90px;
+
+    height:90px;
+
+    margin-bottom:18px;
+
+    border-radius:50%;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #0dc88f,
+            #0ea5e9
+        );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    animation:
+
+        pulse 2s infinite;
+
+}
+
+.loading-logo img{
+
+    width:64px;
+
+}
+
+@keyframes pulse{
+
+0%{
+
+transform:scale(1);
+
+box-shadow:0 0 0 rgba(14,165,233,.5);
+
+}
+
+50%{
+
+transform:scale(1.06);
+
+box-shadow:0 0 35px rgba(14,165,233,.5);
+
+}
+
+100%{
+
+transform:scale(1);
+
+box-shadow:0 0 0 rgba(14,165,233,.5);
+
+}
+
+}
+
+/*=========================================================
+TITLE
+=========================================================*/
+
+.loading-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:8px;
+
+}
+
+.loading-title h1{
+
+    font-size:28px;
+
+    font-weight:800;
+
+}
+
+.loading-text{
+
+    color:#9ba8c5;
+
+    margin-bottom:24px;
+
+    text-align:center;
+
+}
+
+/*=========================================================
+PROGRESS BAR
+=========================================================*/
+
+.loading-progress{
+
+    width:100%;
+
+    height:8px;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    background:
+
+        rgba(255,255,255,.08);
+
+    margin-bottom:22px;
+
+}
+
+.loading-bar{
+
+    width:45%;
+
+    height:100%;
+
+    border-radius:10px;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            #00d48a,
+            #0ea5e9
+        );
+
+    animation:
+
+        loadingBar
+        1.8s ease infinite;
+
+}
+
+@keyframes loadingBar{
+
+0%{
+
+transform:translateX(-100%);
+
+}
+
+100%{
+
+transform:translateX(260%);
+
+}
+
+}
+
+/*=========================================================
+STATUS
+=========================================================*/
+
+.loading-status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:white;
+
+    margin-bottom:18px;
+
+}
+
+.loading-spinner{
+
+    animation:
+
+        spin
+        1s linear infinite;
+
+}
+
+@keyframes spin{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+/*=========================================================
+SECURITY
+=========================================================*/
+
+.loading-security{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    font-size:13px;
+
+    color:#00d48a;
+
+}
+
+.drawer-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    backdrop-filter:blur(5px);
+
+    z-index:999;
+}
+
+.profile-drawer{
+
+    position:fixed;
+
+    left:0;
+
+    right:0;
+
+    bottom:0;
+
+    background:#12192c;
+
+    border-radius:28px 28px 0 0;
+
+    padding:24px;
+
+    animation:drawerUp .35s;
+
+    z-index:1000;
+
+}
+
+@keyframes drawerUp{
+
+from{
+
+transform:translateY(100%);
+
+}
+
+to{
+
+transform:translateY(0);
+
+}
+
+}
+
+.drawer-header{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:20px;
+
+}
+
+.drawer-header h2{
+
+font-size:24px;
+
+}
+
+.drawer-header p{
+
+color:#8f9ab8;
+
+font-size:13px;
+
+}
+
+.drawer-close{
+
+background:none;
+
+border:none;
+
+color:white;
+
+cursor:pointer;
+
+}
+
+.profile-avatar{
+
+width:90px;
+
+height:90px;
+
+margin:auto;
+
+border-radius:50%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:34px;
+
+font-weight:bold;
+
+background:linear-gradient(135deg,#00d48a,#0ea5e9);
+
+margin-bottom:18px;
+
+}
+
+.profile-drawer h3{
+
+text-align:center;
+
+}
+
+.profile-username{
+
+display:block;
+
+text-align:center;
+
+margin-bottom:20px;
+
+color:#94a3b8;
+
+}
+
+.profile-info{
+
+display:flex;
+
+flex-direction:column;
+
+gap:12px;
+
+}
+
+.profile-item{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+padding:14px;
+
+border-radius:14px;
+
+background:#1a233b;
+
+}
+
+.logout-player-btn{
+
+margin-top:24px;
+
+width:100%;
+
+height:48px;
+
+border:none;
+
+border-radius:14px;
+
+background:linear-gradient(135deg,#00d48a,#0ea5e9);
+
+color:white;
+
+font-weight:bold;
+
+cursor:pointer;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:8px;
 
 }
