@@ -118,7 +118,7 @@ setBalance(
       {
         _id:2,
         name:"Aviator",
-        provider:"Spribe test",
+        provider:"Spribe",
         featured:true,
         image:"https://picsum.photos/400/300?2"
       },
@@ -197,15 +197,37 @@ setBalance(
 console.log("Player:", player);
 
   return (
-  <div style={{ padding: 20, color: "#fff" }}>
-    <h1>Hello</h1>
 
-    <p>Player: {player?.firstName}</p>
+    <div className="game-page">
 
-    <p>Balance: {balance}</p>
+      <Header
 
-    <p>Games: {games.length}</p>
-  </div>
-);
+    player={player}
+
+    balance={balance}
+
+    onRefresh={loadBalance}
+
+    onDeposit={() => {
+
+        alert("Deposit page coming soon.");
+
+    }}
+
+/>
+
+      <CouponBanner />
+
+      <FeaturedGames
+
+        games={games}
+
+      />
+
+      <BottomNavigation />
+
+    </div>
+
+  );
 
 }
