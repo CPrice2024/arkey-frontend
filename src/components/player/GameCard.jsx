@@ -1,17 +1,11 @@
 import React from "react";
-import {
-  Play,
-  Star
-} from "lucide-react";
+import { Play, Star } from "lucide-react";
 
 export default function GameCard({ game }) {
 
   const openGame = () => {
 
     alert(`${game.name} Coming Soon`);
-
-    // Later:
-    // window.location.href = game.url;
 
   };
 
@@ -31,9 +25,9 @@ export default function GameCard({ game }) {
 
           <div className="featured-badge">
 
-            <Star size={12}/>
+            <Star size={11} />
 
-            Featured
+            HOT
 
           </div>
 
@@ -45,14 +39,14 @@ export default function GameCard({ game }) {
 
         <h3>{game.name}</h3>
 
-        <p>{game.provider}</p>
+        <span>{game.provider}</span>
 
         <button
-          onClick={openGame}
           className="play-btn"
+          onClick={openGame}
         >
 
-          <Play size={16}/>
+          <Play size={14} />
 
           Play
 
