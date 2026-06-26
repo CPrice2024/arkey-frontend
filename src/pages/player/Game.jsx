@@ -197,37 +197,15 @@ setBalance(
 console.log("Player:", player);
 
   return (
+  <div style={{ padding: 20, color: "#fff" }}>
+    <h1>Hello</h1>
 
-    <div className="game-page">
+    <p>Player: {player?.firstName}</p>
 
-      <Header
+    <p>Balance: {balance}</p>
 
-    player={player}
-
-    balance={balance}
-
-    onRefresh={loadBalance}
-
-    onDeposit={() => {
-
-        alert("Deposit page coming soon.");
-
-    }}
-
-/>
-
-      <CouponBanner />
-
-      <FeaturedGames
-
-        games={games}
-
-      />
-
-      <BottomNavigation />
-
-    </div>
-
-  );
+    <p>Games: {games.length}</p>
+  </div>
+);
 
 }
