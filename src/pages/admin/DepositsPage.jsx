@@ -174,7 +174,8 @@ const filteredDeposits = Array.isArray(deposits)
               {f}
             </button>
           ))}
-          <button onClick={fetchDeposits} className="refresh-btn">
+          <button onClick={fetchDeposits} className="filter-btn
+">
             <RefreshCw size={14} /> Refresh
           </button>
         </div>

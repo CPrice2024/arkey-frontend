@@ -1908,3 +1908,64 @@ gap:8px;
 }
 
 }
+
+/* ==========================
+   PROMO HEADER
+========================== */
+
+.promo-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    margin-bottom:30px;
+
+}
+
+.promo-back-btn{
+
+    width:46px;
+    height:46px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    flex-shrink:0;
+
+}
+
+.promo-back-btn:hover{
+
+    background:#00d48a;
+
+    transform:translateX(-3px);
+
+}
+
+.promo-header h1{
+
+    margin:0;
+
+}
+
+.promo-header p{
+
+    margin-top:4px;
+
+}

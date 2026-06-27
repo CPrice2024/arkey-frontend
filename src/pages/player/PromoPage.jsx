@@ -1,10 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+
 import PromoCard from "../../components/player/PromoCard";
 import CouponModal from "../../components/player/CouponModal";
+import "../../styles/gameLobby.css";
 
 export default function PromoPage() {
 
     const [showCoupon, setShowCoupon] = useState(false);
+    const navigate = useNavigate();
 
     const promos = [
 
@@ -40,13 +45,24 @@ export default function PromoPage() {
 
             <div className="promo-header">
 
-                <h1>Promotions</h1>
+    <button
+        className="promo-back-btn"
+        onClick={() => navigate("/game")}
+    >
+        <ArrowLeft size={22} />
+    </button>
 
-                <p>
-                    Exclusive offers for Arkey players
-                </p>
+    <div>
 
-            </div>
+        <h1>Promotions</h1>
+
+        <p>
+            Exclusive offers for Arkey players
+        </p>
+
+    </div>
+
+</div>
 
             <button
                 className="coupon-button"
