@@ -707,17 +707,12 @@ totalBalance: (users || []).reduce(
           {(user.balance || 0).toLocaleString()} Birr
         </div>
       </td>
-
       <td>
 
   <span
-  className={getStatusBadgeClass(
-    user.isActive ? "active" : "inactive"
-  )}
->
-    {user.isActive
-      ? "Active"
-      : "Inactive"}
+    className={getStatusBadgeClass(user.status)}
+  >
+    {user.status}
   </span>
 
   <button
@@ -725,13 +720,13 @@ totalBalance: (users || []).reduce(
     onClick={() =>
       updateUserStatus(
         user._id,
-        user.isActive
+        user.status === "active"
           ? "inactive"
           : "active"
       )
     }
   >
-    {user.isActive
+    {user.status === "active"
       ? "Deactivate"
       : "Activate"}
   </button>
