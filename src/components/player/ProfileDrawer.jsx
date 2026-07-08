@@ -5,9 +5,11 @@ import {
   Shield,
   ArrowDownToLine,
   ArrowUpFromLine,
-  History,
   Clock,
 } from "lucide-react";
+
+
+import "../../styles/profile.css";
 
 export default function ProfileDrawer({
 
@@ -58,29 +60,25 @@ export default function ProfileDrawer({
 
         </div>
 
-        <div className="profile-user">
+        <div className="player-card">
 
-<div className="profile-avatar">
+  <div className="profile-user">
 
-{player?.firstName?.charAt(0)?.toUpperCase() || "P"}
+    <div className="profile-avatar">
+      {player?.firstName?.charAt(0)?.toUpperCase() || "P"}
+    </div>
 
-</div>
+    <div className="player-details">
 
-<div>
+      <h2>{player?.firstName}</h2>
 
-<h2>
+      <p>{player?.phone}</p>
 
-{player?.firstName}
+      <small>@{player?.username}</small>
 
-</h2>
+    </div>
 
-<p>
-
-{player?.phone}
-
-</p>
-
-</div>
+  </div>
 
 </div>
 
@@ -94,25 +92,37 @@ export default function ProfileDrawer({
 
 <div className="balance-box">
 
+<div className="balance-icon">
+💰
+</div>
+
+<div>
+
 <p>Balance</p>
 
 <h2>
 
-{Number(balance || 0).toFixed(2)} ETB
+{Number(balance).toFixed(2)} ETB
 
 </h2>
 
 </div>
 
+</div>
+
 <div className="credit-box">
+
+<div className="balance-icon">
+🎁
+</div>
+
+<div>
 
 <p>Credit</p>
 
-<h2>
+<h2>0.00 ETB</h2>
 
-0.00 ETB
-
-</h2>
+</div>
 
 </div>
 
@@ -146,11 +156,23 @@ Deposit
 
   <div className="section-header">
 
-    <History size={18} />
+<div>
 
-    <h3>Recent Transactions</h3>
+<h3>
 
-  </div>
+Recent Transactions
+
+</h3>
+
+<small>
+
+Latest deposits & withdrawals
+
+</small>
+
+</div>
+
+</div>
 
   {transactions.length > 0 ? (
 
@@ -195,16 +217,33 @@ Deposit
 
     <div className="empty-transactions">
 
-      <Clock size={50} />
+<Clock size={60}/>
 
-      <p>Your recent deposits and withdrawals
-        will appear here.</p>
+<h4>
 
-    </div>
+No Transactions Yet
+
+</h4>
+
+<p>
+
+Your deposits and withdrawals
+will appear here.
+
+</p>
+
+</div>
 
   )}
 
 </div>
+<button
+className="view-all-btn"
+>
+
+View All Transactions
+
+</button>
 <button className="logout-player-btn">
 
   <Shield size={18} />

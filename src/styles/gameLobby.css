@@ -162,13 +162,13 @@ body{
 .refresh-btn,
 .eye-btn{
 
-    width:30px;
+    width:35px;
 
-    height:30px;
+    height:35px;
 
     border:none;
 
-    border-radius:10px;
+    border-radius:50%;
 
     cursor:pointer;
 
@@ -182,7 +182,7 @@ body{
 
         rgba(255,255,255,.08);
 
-    color:#fff;
+    color:#ffffff;
 
     transition:.25s;
 
@@ -191,7 +191,7 @@ body{
 .refresh-btn:hover,
 .eye-btn:hover{
 
-    background:#1cc9a6;
+    background:#2ea38c;
 
     transform:rotate(180deg);
 

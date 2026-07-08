@@ -179,18 +179,18 @@ form {
 
 
 .error-message {
-  background: #fef2f2;
-  border: 1px solid #fecaca;
-  border-radius: 12px;
-  padding: 12px 16px;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #dc2626;
-  font-size: 14px;
-  font-weight: 500;
-  animation: shake 0.4s ease;
+    align-items: center;
+    animation: shake .4s ease;
+    background: #fef2f2;
+    border: 1px solid #ffffff;
+    border-radius: 28px;
+    color: #f70c0c;
+    display: flex;
+    font-size: 12px;
+    font-weight: 400;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding: 12px 16px;
 }
 
 .error-message svg {

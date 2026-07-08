@@ -77,10 +77,10 @@
 }
 
 .refresh-btn {
-  width: 42px;
-  height: 42px;
+  width: 35px;
+  height: 35px;
   border: none;
-  border-radius: 10px;
+  border-radius: 50%;
   background: #4b5563;
   color: white;
   cursor: pointer;
