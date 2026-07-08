@@ -1,12 +1,12 @@
 import React from "react";
+
 import {
   X,
-  Wallet,
-  Phone,
-  User,
-  BadgeCheck,
-  Calendar,
-  Shield
+  Shield,
+  ArrowDownToLine,
+  ArrowUpFromLine,
+  History,
+  Clock,
 } from "lucide-react";
 
 export default function ProfileDrawer({
@@ -15,11 +15,18 @@ export default function ProfileDrawer({
 
   balance,
 
+  transactions = [],
+
   open,
 
-  onClose
+  onClose,
 
-}) {
+  onDeposit,
+
+  onWithdraw
+
+})
+{
 
   if (!open) return null;
 
@@ -37,10 +44,8 @@ export default function ProfileDrawer({
         <div className="drawer-header">
 
           <div>
-
-            <h2>My Profile</h2>
-
-            <p>Player Information</p>
+            <h2>Player Center</h2>
+            <p>Manage your account</p>
 
           </div>
 
@@ -53,17 +58,31 @@ export default function ProfileDrawer({
 
         </div>
 
-        <div className="profile-avatar">
+        <div className="profile-user">
 
-          {player?.firstName?.charAt(0) || "A"}
+<div className="profile-avatar">
 
-        </div>
+{player?.firstName?.charAt(0)?.toUpperCase() || "P"}
 
-        <h3>
+</div>
 
-          {player?.firstName} {player?.lastName}
+<div>
 
-        </h3>
+<h2>
+
+{player?.firstName}
+
+</h2>
+
+<p>
+
+{player?.phone}
+
+</p>
+
+</div>
+
+</div>
 
         <span className="profile-username">
 
@@ -71,80 +90,130 @@ export default function ProfileDrawer({
 
         </span>
 
-        <div className="profile-info">
+<div className="balance-summary">
 
-          <div className="profile-item">
+<div className="balance-box">
 
-            <Wallet size={18}/>
+<p>Balance</p>
 
-            <span>
+<h2>
 
-              {balance.toLocaleString()} Birr
+{Number(balance || 0).toFixed(2)} ETB
 
-            </span>
+</h2>
 
-          </div>
+</div>
 
-          <div className="profile-item">
+<div className="credit-box">
 
-            <Phone size={18}/>
+<p>Credit</p>
 
-            <span>
+<h2>
 
-              {player?.phone || "Not Added"}
+0.00 ETB
 
-            </span>
+</h2>
 
-          </div>
+</div>
 
-          <div className="profile-item">
+</div>
+<div className="quick-actions">
 
-            <User size={18}/>
+<button
+onClick={onWithdraw}
+className="withdraw-btn"
+>
 
-            <span>
+<ArrowUpFromLine size={18}/>
 
-              {player?.telegramId}
+Withdraw
 
-            </span>
+</button>
 
-          </div>
+<button
+onClick={onDeposit}
+className="deposit-btn"
+>
 
-          <div className="profile-item">
+<ArrowDownToLine size={18}/>
 
-            <BadgeCheck size={18}/>
+Deposit
 
-            <span>
+</button>
 
-              {player?.role}
+</div>
+<div className="transactions">
 
-            </span>
+  <div className="section-header">
 
-          </div>
+    <History size={18} />
 
-          <div className="profile-item">
+    <h3>Recent Transactions</h3>
 
-            <Calendar size={18}/>
+  </div>
 
-            <span>
+  {transactions.length > 0 ? (
 
-              Joined Player
+    transactions.slice(0, 5).map((item) => (
 
-            </span>
+      <div
+        key={item._id}
+        className="transaction-item"
+      >
 
-          </div>
+        <div>
+
+          <div className="transaction-info">
+
+<strong>
+
+{item.type}
+
+</strong>
+
+<small>
+
+{item.status}
+
+</small>
+
+</div>
 
         </div>
 
-        <button className="logout-player-btn">
+        <span>
 
-          <Shield size={18}/>
+          {Number(item.amount).toLocaleString()} ETB
 
-          Secure Account
-
-        </button>
+        </span>
 
       </div>
 
+    ))
+
+  ) : (
+
+    <div className="empty-transactions">
+
+      <Clock size={50} />
+
+      <p>Your recent deposits and withdrawals
+        will appear here.</p>
+
+    </div>
+
+  )}
+
+</div>
+<button className="logout-player-btn">
+
+  <Shield size={18} />
+
+  Security Settings
+
+</button>
+
+</div>
     </>
 
   );

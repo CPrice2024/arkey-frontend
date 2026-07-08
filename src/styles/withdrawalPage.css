@@ -1,0 +1,334 @@
+/* ===========================
+   Withdrawal Page
+=========================== */
+
+.withdrawal-page {
+  min-height: 100vh;
+  background: #171d27;
+  color: #fff;
+  padding: 18px;
+  padding-bottom: 90px;
+}
+
+/* ===========================
+   Header
+=========================== */
+
+.withdrawal-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.back-btn {
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 10px;
+  background: #2f3b4f;
+  color: white;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.back-btn:hover {
+  background: #138c81;
+}
+
+.withdrawal-header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.withdrawal-subtitle {
+  margin-top: 4px;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+/* ===========================
+   Balance
+=========================== */
+
+.balance-card {
+  background: #303847;
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 18px;
+}
+
+.balance-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.balance-top p {
+  margin: 0;
+  color: #d1d5db;
+}
+
+.balance-card h1 {
+  margin-top: 12px;
+  font-size: 32px;
+  color: white;
+}
+
+.refresh-btn {
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 10px;
+  background: #4b5563;
+  color: white;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.refresh-btn:hover {
+  background: #0f9d91;
+}
+
+/* ===========================
+   Cards
+=========================== */
+
+.withdrawal-card {
+  background: #232b38;
+  border-radius: 14px;
+  padding: 18px;
+  margin-bottom: 18px;
+}
+
+.withdrawal-card h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.info-row span {
+  color: #b8bec8;
+}
+
+.info-row strong {
+  color: white;
+}
+
+/* ===========================
+   Inputs
+=========================== */
+
+.withdrawal-card input,
+.withdrawal-card select {
+  width: 100%;
+  background: #1c2330;
+  border: 1px solid #394250;
+  color: white;
+  border-radius: 10px;
+  padding: 14px;
+  font-size: 15px;
+  outline: none;
+  transition: .25s;
+  box-sizing: border-box;
+}
+
+.withdrawal-card input:focus,
+.withdrawal-card select:focus {
+  border-color: #138c81;
+}
+
+.withdrawal-card input::placeholder {
+  color: #7d8794;
+}
+
+/* ===========================
+   Payment Methods
+=========================== */
+
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 12px;
+}
+
+.method {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px;
+  background: #2c3443;
+  color: white;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.method:hover {
+  border-color: #138c81;
+}
+
+.method.active {
+  background: #138c81;
+}
+
+/* ===========================
+   Remaining Balance
+=========================== */
+
+.remaining-balance {
+  margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  color: #cfd4db;
+  font-size: 14px;
+}
+
+.remaining-balance strong {
+  color: #2dd4bf;
+}
+
+/* ===========================
+   Guide
+=========================== */
+
+.withdrawal-card ol {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.withdrawal-card li {
+  margin-bottom: 10px;
+  color: #d1d5db;
+}
+
+/* ===========================
+   Buttons
+=========================== */
+
+.withdrawal-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.cancel-btn {
+  flex: 1;
+  height: 52px;
+  border-radius: 12px;
+  background: transparent;
+  border: 1px solid #138c81;
+  color: #2dd4bf;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submit-btn {
+  flex: 2;
+  height: 52px;
+  border: none;
+  border-radius: 12px;
+  background: #138c81;
+  color: white;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #16a394;
+}
+
+.submit-btn:disabled {
+  opacity: .7;
+  cursor: not-allowed;
+}
+
+/* ===========================
+   Notification
+=========================== */
+
+.overlay-notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 14px 28px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  z-index: 9999;
+  animation: slideDown .35s ease;
+}
+
+.overlay-notification.success {
+  background: #16a34a;
+}
+
+.overlay-notification.error {
+  background: #dc2626;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -30px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* ===========================
+   Spinner
+=========================== */
+
+.spin {
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===========================
+   Responsive
+=========================== */
+
+@media (max-width: 600px) {
+
+  .method-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .withdrawal-buttons {
+    flex-direction: column;
+  }
+
+  .submit-btn,
+  .cancel-btn {
+    width: 100%;
+  }
+
+  .balance-card h1 {
+    font-size: 28px;
+  }
+
+  .withdrawal-header h2 {
+    font-size: 22px;
+  }
+}

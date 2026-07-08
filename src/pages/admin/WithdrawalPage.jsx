@@ -189,7 +189,7 @@ const filteredWithdrawals = Array.isArray(Withdrawals)
               {f}
             </button>
           ))}
-          <button onClick={fetchWithdrawals} className="refresh-btn">
+          <button onClick={fetchWithdrawals} className="filter-btn">
             <RefreshCw size={14} /> Refresh
           </button>
         </div>

@@ -351,8 +351,9 @@
 
 .deposits-table td {
   padding: 12px;
-  color: rgb(52, 52, 52);
-  border-bottom: 1px solid #00146412;
+  color: rgb(70, 71, 102);
+  font-family: monospace;
+  border-bottom: 1px solid #3f4b7b4f;
   font-size: 14px;
 }
 
@@ -456,5 +457,5 @@
 }
 
 .deposits-table tbody tr {
-  height: 62px;
+  height: 45px;
 }
