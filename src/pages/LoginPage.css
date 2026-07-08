@@ -1,8 +1,4 @@
 
-/* ============================================
-   PAGE CONTAINER
-   ============================================ */
-
 .login-page-container {
   min-height: 100vh;
   display: flex;
@@ -24,9 +20,6 @@
   opacity: 0.5;
 }
 
-/* ============================================
-   LOGIN CARD
-   ============================================ */
 
 .login-card {
   width: 100%;
@@ -51,9 +44,6 @@
   }
 }
 
-/* ============================================
-   LOGO / HEADER
-   ============================================ */
 
 .login-header {
   text-align: center;
@@ -85,10 +75,6 @@
   color: #6b7280;
   margin: 0;
 }
-
-/* ============================================
-   FORM ELEMENTS
-   ============================================ */
 
 form {
   width: 100%;
@@ -191,9 +177,6 @@ form {
   color: #667eea;
 }
 
-/* ============================================
-   ERROR MESSAGE
-   ============================================ */
 
 .error-message {
   background: #fef2f2;
@@ -220,9 +203,6 @@ form {
   75% { transform: translateX(6px); }
 }
 
-/* ============================================
-   OPTIONS ROW
-   ============================================ */
 
 .login-options {
   display: flex;
@@ -261,10 +241,6 @@ form {
   color: #5a67d8;
   text-decoration: underline;
 }
-
-/* ============================================
-   SUBMIT BUTTON
-   ============================================ */
 
 .login-submit-btn {
       width: 100%;
@@ -305,11 +281,6 @@ form {
 .login-submit-btn:hover:not(:disabled) svg {
   transform: translateX(4px);
 }
-
-/* ============================================
-   LOADING SPINNER
-   ============================================ */
-
 .spinner {
   width: 20px;
   height: 20px;
@@ -324,9 +295,6 @@ form {
   to { transform: rotate(360deg); }
 }
 
-/* ============================================
-   DIVIDER
-   ============================================ */
 
 .divider {
   display: flex;
@@ -352,10 +320,6 @@ form {
   white-space: nowrap;
 }
 
-/* ============================================
-   SIGN UP LINK
-   ============================================ */
-
 .signup-link {
   text-align: center;
   margin-top: 24px;
@@ -375,9 +339,6 @@ form {
   text-decoration: underline;
 }
 
-/* ============================================
-   RESPONSIVE DESIGN
-   ============================================ */
 
 @media (max-width: 480px) {
   .login-card {
@@ -441,9 +402,6 @@ form {
   }
 }
 
-/* ============================================
-   DARK MODE SUPPORT
-   ============================================ */
 
 body.dark-mode .login-card {
   background: #1e293b;
@@ -533,10 +491,6 @@ body.dark-mode .forgot-link:hover {
   color: #a5b4fc;
 }
 
-/* ============================================
-   ACCESSIBILITY
-   ============================================ */
-
 
 
 .login-submit-btn:focus-visible {
@@ -548,10 +502,6 @@ body.dark-mode .forgot-link:hover {
   outline: 2px solid #667eea;
   outline-offset: 2px;
 }
-
-/* ============================================
-   REDUCED MOTION
-   ============================================ */
 
 @media (prefers-reduced-motion: reduce) {
   .login-card {

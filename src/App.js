@@ -18,6 +18,9 @@ import DepositsPage from "./pages/admin/DepositsPage";
 import WithdrawalPage from "./pages/admin/WithdrawalPage";
 import Game from "./pages/player/Game";
 import PromoPage from "./pages/player/PromoPage";
+import DepositPage from "./pages/player/PlayerDeposit";
+
+import PlayerDeposit from "./pages/player/PlayerDeposit";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -28,7 +31,7 @@ function App() {
 
         {/* LOGIN */}
         <Route
-          path="/login"
+          path="/"
           element={
             token ? (
               <Navigate to="/dashboard" replace />
@@ -99,20 +102,25 @@ function App() {
         element={<Game />}
         />
         <Route
-    path="/promotions"
-    element={<PromoPage />}
-/>
+        path="/promotions"
+        element={<PromoPage />}/>
 
-        {/* UNKNOWN ROUTES */}
+        <Route
+        path="/deposit"
+        element={<DepositPage />}/>
+
         <Route
           path="*"
           element={
             <Navigate
-              to={token ? "/" : "/login"}
+              to={token ? "/" : "/"}
               replace
             />
           }
         />
+        <Route
+        path="/deposit"
+        element={<PlayerDeposit />}/>
 
       </Routes>
     </BrowserRouter>

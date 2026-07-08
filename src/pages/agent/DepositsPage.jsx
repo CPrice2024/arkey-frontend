@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import api from "../api";
+import api from "../../api";
 import { RefreshCw, Check, X, Clock} from "lucide-react";
-import "../styles/DepositsPage.css";
+import "../../styles/DepositsPage.css";
 
 const DepositsPage = () => {
   const [deposits, setDeposits] = useState([]);
@@ -15,8 +15,8 @@ const fetchDeposits = async () => {
     setLoading(true);
 
     const res = await api.get(
-      "/api/deposits"
-    );
+  "/deposits"
+);
 
     console.log(res.data);
 
@@ -75,7 +75,9 @@ useEffect(() => {
 
   const approveDeposit = async (id) => {
     try {
-      await api.put(`/api/deposits/${id}/approve`);
+      await api.put(
+  `/deposits/${id}/approve`
+);
       fetchDeposits();
       showNotification(
   "success",
@@ -92,7 +94,9 @@ useEffect(() => {
 
   const rejectDeposit = async (id) => {
     try {
-      await api.put(`/api/deposits/${id}/reject`);
+      await api.put(
+  `/deposits/${id}/reject`
+);
       fetchDeposits();
       showNotification(
   "error",
@@ -253,13 +257,5 @@ const filteredDeposits = Array.isArray(deposits)
     </div>
   );
 };
-
-// Helper component for detail items
-const DetailItem = ({ icon, label }) => (
-  <div className="detail-item">
-    {icon}
-    <span>{label}</span>
-  </div>
-);
 
 export default DepositsPage;

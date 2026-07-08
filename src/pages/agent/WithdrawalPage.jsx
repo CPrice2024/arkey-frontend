@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import api from "../api";
-import { RefreshCw, Check, X, Clock } from "lucide-react";
-import "../styles/DepositsPage.css";
+import api from "../../api";
+import { RefreshCw, Check, X, Clock} from "lucide-react";
+import "../../styles/DepositsPage.css";
 
 const WithdrawalsPage = () => {
   const [Withdrawals, setWithdrawals] = useState([]);
@@ -14,8 +14,10 @@ const fetchWithdrawals = async () => {
     setLoading(true);
 
     const res = await api.get(
-      "/api/withdrawals"
-    );
+  "/withdrawals"
+);
+
+console.log("WITHDRAWALS:", res.data);
 
     const data = Array.isArray(res.data)
       ? res.data
@@ -75,9 +77,8 @@ const approveWithdrawal = async (id) => {
   try {
 
     await api.put(
-      `/api/withdrawals/${id}/approve`
-    );
-
+  `/withdrawals/${id}/approve`
+);
     fetchWithdrawals();
 
     showNotification(
@@ -103,8 +104,8 @@ const approveWithdrawal = async (id) => {
   try {
 
     await api.put(
-      `/api/withdrawals/${id}/reject`
-    );
+  `/withdrawals/${id}/reject`
+);
 
     fetchWithdrawals();
 
@@ -292,12 +293,5 @@ const filteredWithdrawals = Array.isArray(Withdrawals)
   );
 };
 
-
-const DetailItem = ({ icon, label }) => (
-  <div className="detail-item">
-    {icon}
-    <span>{label}</span>
-  </div>
-);
 
 export default WithdrawalsPage;

@@ -754,12 +754,14 @@ padding: 10px 20px;
 
 .um-form-group input,
 .um-form-group select {
-  padding: 10px 14px;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  font-size: 14px;
-  transition: all 0.3s ease;
-  outline: none;
+    padding: 10px 14px;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    color: #525b7d;
+    font-size: 14px;
+    background: #f9f9f9;
+    transition: all 0.3s ease;
+    outline: none;
 }
 
 .um-form-group input:focus,

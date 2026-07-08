@@ -38,7 +38,7 @@ const role = user?.role;
 
     sessionStorage.clear();
 
-    navigate("/login");
+    navigate("/");
 
     setShowLogoutConfirm(false);
   };

@@ -215,12 +215,7 @@ console.log("Player:", player);
     balance={balance}
 
     onRefresh={loadBalance}
-
-    onDeposit={() => {
-
-        alert("Deposit page coming soon.");
-
-    }}
+  onDeposit={() => navigate("/deposit")}
 
 />
 
@@ -255,7 +250,7 @@ console.log("Player:", player);
     onPromo={() => navigate("/promotions")}
     onSupport={() => alert("Support")}
     onProfile={() => setShowProfile(true)}
-    onDeposit={() => alert("Deposit")}
+    onDeposit={() => navigate("/PlayerDeposit")}
 />
 
     </div>
