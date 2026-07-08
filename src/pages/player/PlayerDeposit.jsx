@@ -4,11 +4,11 @@ import api from "../../api";
 
 import {
   ArrowLeft,
-  Wallet,
   Copy,
-  CheckCircle,
   Smartphone,
   Landmark,
+  CheckCircle,
+  Loader2,
 } from "lucide-react";
 
 import "../../styles/depositPage.css";
@@ -19,23 +19,65 @@ export default function PlayerDeposit() {
 
   const [player, setPlayer] = useState(null);
 
-  const [balance, setBalance] = useState(0);
+const [balance, setBalance] = useState(0);
 
-  const [amount, setAmount] = useState("");
+const [amount, setAmount] = useState("");
 
-  const [method, setMethod] = useState("telebirr");
+const [method, setMethod] = useState("telebirr");
 
-  const [depositNumber, setDepositNumber] = useState("");
+const [depositNumber, setDepositNumber] = useState("");
 
-  const [transactionId, setTransactionId] = useState("");
+const [transactionId, setTransactionId] = useState("");
 
-  const [loading, setLoading] = useState(false);
+const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
+const [copied, setCopied] = useState(false);
+
+const [notification, setNotification] = useState({
+  show: false,
+  type: "",
+  message: "",
+});
+
+ useEffect(() => {
 
     loadPlayer();
 
-  }, []);
+}, []);
+
+useEffect(() => {
+
+    const telebirrNumbers = [
+        "0911223344",
+        "0922334455",
+        "0933445566",
+        "0944556677",
+        "0955667788",
+    ];
+
+    const cbeNumbers = [
+        "0966778899",
+        "0977889900",
+        "0988990011",
+        "0999001122",
+        "0910112233",
+    ];
+
+    const numbers =
+        method === "telebirr"
+            ? telebirrNumbers
+            : cbeNumbers;
+
+    const randomNumber =
+        numbers[
+            Math.floor(Math.random() * numbers.length)
+        ];
+
+    setDepositNumber(randomNumber);
+
+}, [method]);
+
+
 
   async function loadPlayer() {
 
@@ -55,7 +97,153 @@ export default function PlayerDeposit() {
 
   }
 
+const copyDepositNumber = async () => {
+
+  if (!depositNumber) return;
+
+  try {
+
+    await navigator.clipboard.writeText(depositNumber);
+
+    setCopied(true);
+
+    setNotification({
+      show: true,
+      type: "success",
+      message: "Deposit number copied successfully."
+    });
+
+    setTimeout(() => {
+
+      setCopied(false);
+
+      setNotification({
+        show: false,
+        type: "",
+        message: ""
+      });
+
+    }, 2000);
+
+  } catch {
+
+    setNotification({
+      show: true,
+      type: "error",
+      message: "Failed to copy deposit number."
+    });
+
+    setTimeout(() => {
+
+      setNotification({
+        show: false,
+        type: "",
+        message: ""
+      });
+
+    }, 2500);
+
+  }
+
+};
+
+const submitDeposit = async () => {
+
+  if (!amount) {
+
+    setNotification({
+      show: true,
+      type: "error",
+      message: "Please enter deposit amount."
+    });
+
+    setTimeout(() => {
+      setNotification({
+        show: false,
+        type: "",
+        message: ""
+      });
+    }, 2500);
+
+    return;
+  }
+
+  if (!transactionId) {
+
+    setNotification({
+      show: true,
+      type: "error",
+      message: "Please enter transaction ID."
+    });
+
+    setTimeout(() => {
+      setNotification({
+        show: false,
+        type: "",
+        message: ""
+      });
+    }, 2500);
+
+    return;
+  }
+
+  try {
+
+    setLoading(true);
+
+    // Backend API will be connected here
+    // await api.post("/deposits", {...});
+
+    await new Promise(resolve =>
+      setTimeout(resolve, 1500)
+    );
+
+    setNotification({
+      show: true,
+      type: "success",
+      message: "Deposit request submitted successfully."
+    });
+
+  } catch (err) {
+
+    console.log(err);
+
+    setNotification({
+      show: true,
+      type: "error",
+      message: "Failed to submit deposit."
+    });
+
+  } finally {
+
+    setLoading(false);
+
+    setTimeout(() => {
+
+      setNotification({
+        show: false,
+        type: "",
+        message: ""
+      });
+
+    }, 2500);
+
+  }
+
+};
+
+
+
   return (
+    <>
+    {notification.show && (
+      <div
+        className={`overlay-notification ${notification.type}`}
+      >
+        {notification.message}
+      </div>
+    )}
+   
   <div className="deposit-page">
 
     {/* Header */}
@@ -166,10 +354,12 @@ export default function PlayerDeposit() {
 
         <span>{depositNumber || "Loading..."}</span>
 
-        <button>
-
-          <Copy size={18}/>
-
+        <button onClick={copyDepositNumber}>
+          {copied ? (
+    <CheckCircle size={18}/>
+) : (
+    <Copy size={18}/>
+)}
         </button>
 
       </div>
@@ -227,15 +417,37 @@ export default function PlayerDeposit() {
         Cancel
       </button>
 
-      <button
-        className="submit-btn"
-      >
-        Confirm Deposit
-      </button>
+     <button
+  className="submit-btn"
+  disabled={loading}
+  onClick={submitDeposit}
+>
+
+{loading ? (
+
+<>
+<Loader2
+size={18}
+className="spin"
+/>
+
+Submitting...
+
+</>
+
+) : (
+
+"Confirm Deposit"
+
+)}
+
+</button>
 
     </div>
 
   </div>
-);
 
+</>
+
+);
 }
