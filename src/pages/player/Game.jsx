@@ -228,16 +228,24 @@ console.log("Player:", player);
         games={games}
 
       />
-      <ProfileDrawer
+     <ProfileDrawer
+  player={player}
+  balance={balance}
+  transactions={[]} // temporary until transaction API is ready
 
-    player={player}
+  open={showProfile}
 
-    balance={balance}
+  onClose={() => setShowProfile(false)}
 
-    open={showProfile}
+  onDeposit={() => {
+    setShowProfile(false);
+    navigate("/PlayerDeposit");
+  }}
 
-    onClose={() => setShowProfile(false)}
-
+  onWithdraw={() => {
+    setShowProfile(false);
+    navigate("/PlayerWithdrawal");
+  }}
 />
 
       <BottomNavigation
