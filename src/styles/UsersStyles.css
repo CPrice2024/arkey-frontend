@@ -21,11 +21,13 @@ padding: 8px 12px;
 }
 
 .um-title {
-letter-spacing: -0.02em;
-    color: #293e9b;
+    letter-spacing: -0.02em;
+    color: #2c2c9d;
     font-size: 22px;
-    font-weight: 300;
+    font-weight: 500;
+    font-family: serif;
     margin-bottom: 8px;
+
 }
 
 .um-subtitle {

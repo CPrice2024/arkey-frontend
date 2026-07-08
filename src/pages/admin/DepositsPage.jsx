@@ -181,78 +181,107 @@ const filteredDeposits = Array.isArray(deposits)
         </div>
 
         {/* Content */}
-        {loading ? (
-          <p className="empty-state">Auto Refresh...</p>
-        ) : filteredDeposits.length === 0 ? (
-          <p className="empty-state">No deposits found</p>
-        ) : (
-<div className="deposits-table-wrapper">
-  <table className="deposits-table">
-    <thead>
-      <tr>
-        <th>User</th>
-        <th>Phone</th>
-        <th>Method</th>
-        <th>Amount</th>
-        <th>Deposit No</th>
-        <th>Transaction ID</th>
-        <th>Status</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      {filteredDeposits.map((d) => (
-        <tr key={d._id}>
-          <td>{d.username}</td>
-
-          <td>{d.phone || "-"}</td>
-
-          <td>{d.method}</td>
-
-          <td>{d.amount || 0} Birr
-          </td>
-
-          <td>{d.depositNumber}</td>
-
-          <td>{d.transactionId || "-"}</td>
-
-          <td>
-            <span className={getStatusClass(d.status)}>
-              {getStatusIcon(d.status)}
-              {d.status}
-            </span>
-          </td>
-
-          <td>
-            {d.status === "pending" ? (
-              <div className="table-actions">
-                <button
-                  onClick={() => approveDeposit(d._id)}
-                  className="approve-btn"
-                >
-                  <Check size={14} />
-                  Approve
-                </button>
-
-                <button
-                  onClick={() => rejectDeposit(d._id)}
-                  className="reject-btn"
-                >
-                  <X size={14} />
-                  Reject
-                </button>
-              </div>
-            ) : (
-              "-"
-            )}
-          </td>
+        {/* Content */}
+{loading ? (
+  <div className="deposits-table-wrapper">
+    <table className="deposits-table">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Phone</th>
+          <th>Method</th>
+          <th>Amount</th>
+          <th>Deposit No</th>
+          <th>Transaction ID</th>
+          <th>Status</th>
+          <th>Action</th>
         </tr>
-      ))}
-    </tbody>
-  </table>
-</div>
-        )}
+      </thead>
+
+      <tbody>
+        {[...Array(8)].map((_, index) => (
+          <tr key={index}>
+            <td><div className="skeleton skeleton-text"></div></td>
+            <td><div className="skeleton skeleton-text"></div></td>
+            <td><div className="skeleton skeleton-text"></div></td>
+            <td><div className="skeleton skeleton-text"></div></td>
+            <td><div className="skeleton skeleton-text"></div></td>
+            <td><div className="skeleton skeleton-text"></div></td>
+            <td>
+              <div className="skeleton skeleton-status"></div>
+            </td>
+            <td>
+              <div className="skeleton skeleton-btn"></div>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+) : filteredDeposits.length === 0 ? (
+  <p className="empty-state">No deposits found</p>
+) : (
+  <div className="deposits-table-wrapper">
+    <table className="deposits-table">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Phone</th>
+          <th>Method</th>
+          <th>Amount</th>
+          <th>Deposit No</th>
+          <th>Transaction ID</th>
+          <th>Status</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {filteredDeposits.map((d) => (
+          <tr key={d._id}>
+            <td>{d.username}</td>
+            <td>{d.phone || "-"}</td>
+            <td>{d.method}</td>
+            <td>{d.amount || 0} Birr</td>
+            <td>{d.depositNumber}</td>
+            <td>{d.transactionId || "-"}</td>
+
+            <td>
+              <span className={getStatusClass(d.status)}>
+                {getStatusIcon(d.status)}
+                {d.status}
+              </span>
+            </td>
+
+            <td>
+              {d.status === "pending" ? (
+                <div className="table-actions">
+                  <button
+                    onClick={() => approveDeposit(d._id)}
+                    className="approve-btn"
+                  >
+                    <Check size={14} />
+                    Approve
+                  </button>
+
+                  <button
+                    onClick={() => rejectDeposit(d._id)}
+                    className="reject-btn"
+                  >
+                    <X size={14} />
+                    Reject
+                  </button>
+                </div>
+              ) : (
+                "-"
+              )}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+)}
       </div>
     </div>
   );

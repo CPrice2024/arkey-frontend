@@ -32,9 +32,10 @@ max-width: 1200px;
 }
 
 .promotions-title {
-color: #3e3eabf5;
-    font-size: 18px;
-    font-weight: 300;
+color: #43439df5;
+    font-size: 22px;
+    font-weight: 500;
+    font-family: serif;
     margin-bottom: 8px;
 }
 

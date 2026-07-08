@@ -97,6 +97,8 @@ useEffect(() => {
 
   }
 
+  
+
 const copyDepositNumber = async () => {
 
   if (!depositNumber) return;
@@ -189,30 +191,66 @@ const submitDeposit = async () => {
 
   try {
 
-    setLoading(true);
+   setLoading(true);
 
-    // Backend API will be connected here
-    // await api.post("/deposits", {...});
+const res = await api.post("/deposits", {
+  method,
+  amount: Number(amount),
+  depositNumber,
+  transactionId,
+  note: "Deposit from React Player"
+});
 
-    await new Promise(resolve =>
-      setTimeout(resolve, 1500)
-    );
+setNotification({
+  show: true,
+  type: "success",
+  message: res.data.message || "Deposit submitted successfully."
+});
 
-    setNotification({
-      show: true,
-      type: "success",
-      message: "Deposit request submitted successfully."
-    });
+// Clear form
+setAmount("");
+setTransactionId("");
+
+// Generate another random deposit number
+const telebirrNumbers = [
+  "0911223344",
+  "0922334455",
+  "0933445566",
+  "0944556677",
+  "0955667788",
+];
+
+const cbeNumbers = [
+  "0966778899",
+  "0977889900",
+  "0988990011",
+  "0999001122",
+  "0910112233",
+];
+
+const numbers =
+  method === "telebirr"
+    ? telebirrNumbers
+    : cbeNumbers;
+
+setDepositNumber(
+  numbers[Math.floor(Math.random() * numbers.length)]
+);
+
+// Refresh balance/player information
+await loadPlayer();
 
   } catch (err) {
 
     console.log(err);
 
     setNotification({
-      show: true,
-      type: "error",
-      message: "Failed to submit deposit."
-    });
+  show: true,
+  type: "error",
+  message:
+    err.response?.data?.message ||
+    "Failed to submit deposit."
+});
 
   } finally {
 
