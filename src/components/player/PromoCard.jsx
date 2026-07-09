@@ -2,8 +2,6 @@ import React from "react";
 import {
   ChevronRight,
   Gift,
-  Percent,
-  Crown,
   Users,
 } from "lucide-react";
 

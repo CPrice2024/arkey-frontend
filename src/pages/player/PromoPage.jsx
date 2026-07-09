@@ -4,14 +4,12 @@ import {
   ArrowLeft,
   Gift,
   Sparkles,
-  Trophy,
   Zap,
   Percent,
   Crown,
   Clock,
   ChevronRight,
   Users,
-  Bot,
 } from "lucide-react";
 
 import PromoCard from "../../components/player/PromoCard";
