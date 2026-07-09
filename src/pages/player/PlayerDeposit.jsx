@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../api";
-import { ReactComponent as TelebirrIcon } from "../../assets/icons/telebirr.png";
-import { ReactComponent as CbeIcon } from "../../assets/icons/cbe.svg";
+import TelebirrIcon from "../../assets/icons/telebirr.png";
+import CbeIcon from "../../assets/icons/cbe.svg";
 
 import {
   ArrowLeft,
@@ -256,11 +256,16 @@ export default function PlayerDeposit() {
         <div className="deposit-card">
           <h3>Payment Method</h3>
           <div className="method-grid">
-           <button
+            <button
   className={method === "telebirr" ? "method active" : "method"}
   onClick={() => setMethod("telebirr")}
 >
-  <TelebirrIcon width={20} height={20} />
+  <img
+    src={TelebirrIcon}
+    alt="Telebirr"
+    width={20}
+    height={20}
+  />
   Telebirr
 </button>
 
@@ -268,7 +273,12 @@ export default function PlayerDeposit() {
   className={method === "cbe" ? "method active" : "method"}
   onClick={() => setMethod("cbe")}
 >
-  <CbeIcon width={20} height={20} />
+  <img
+    src={CbeIcon}
+    alt="CBE"
+    width={20}
+    height={20}
+  />
   CBE Birr
 </button>
           </div>
