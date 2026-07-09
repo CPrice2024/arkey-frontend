@@ -9,7 +9,6 @@ import {
   Zap,
   Coins,
   Gift,
-  User,
   Phone,
   AtSign,
   ChevronRight,
