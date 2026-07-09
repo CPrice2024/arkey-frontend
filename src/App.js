@@ -18,7 +18,6 @@ import DepositsPage from "./pages/admin/DepositsPage";
 import WithdrawalPage from "./pages/admin/WithdrawalPage";
 import Game from "./pages/player/Game";
 import PromoPage from "./pages/player/PromoPage";
-import DepositPage from "./pages/player/PlayerDeposit";
 
 import PlayerDeposit from "./pages/player/PlayerDeposit";
 import PlayerWithdrawal from "./pages/player/PlayerWithdrawal";
@@ -35,7 +34,7 @@ function App() {
           path="/"
           element={
             token ? (
-              <Navigate to="/dashboard" replace />
+              <Navigate to="/game" replace />
             ) : (
               <LoginPage />
             )
@@ -107,10 +106,6 @@ function App() {
         element={<PromoPage />}/>
 
         <Route
-        path="/deposit"
-        element={<DepositPage />}/>
-
-        <Route
           path="*"
           element={
             <Navigate
@@ -120,11 +115,11 @@ function App() {
           }
         />
         <Route
-        path="/deposit"
+        path="/PlayerDeposit"
         element={<PlayerDeposit />}/>
 
         <Route
-        path="/withdrawal"
+        path="/PlayerWithdrawal"
         element={<PlayerWithdrawal />}/>
 
       </Routes>

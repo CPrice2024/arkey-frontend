@@ -30,6 +30,16 @@ export default function Game() {
 
   const navigate = useNavigate();
 
+  const openDeposit = () => {
+  setShowProfile(false);
+  navigate("/PlayerDeposit");
+};
+
+const openWithdrawal = () => {
+  setShowProfile(false);
+  navigate("/PlayerWithdrawal");
+};
+
   useEffect(() => {
 
     initialize();
@@ -209,13 +219,10 @@ console.log("Player:", player);
     <div className="game-page">
 
       <Header
-
     player={player}
-
     balance={balance}
-
     onRefresh={loadBalance}
-  onDeposit={() => navigate("/deposit")}
+    onDeposit={openDeposit}
 
 />
 
@@ -231,34 +238,27 @@ console.log("Player:", player);
      <ProfileDrawer
   player={player}
   balance={balance}
-  transactions={[]} // temporary until transaction API is ready
+  transactions={[]}
 
   open={showProfile}
 
   onClose={() => setShowProfile(false)}
 
-  onDeposit={() => {
-    setShowProfile(false);
-    navigate("/PlayerDeposit");
-  }}
-
-  onWithdraw={() => {
-    setShowProfile(false);
-    navigate("/PlayerWithdrawal");
-  }}
+  onDeposit={openDeposit}
+  onWithdraw={openWithdrawal}
 />
 
-      <BottomNavigation
-    onHome={() =>
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        })
-    }
-    onPromo={() => navigate("/promotions")}
-    onSupport={() => alert("Support")}
-    onProfile={() => setShowProfile(true)}
-    onDeposit={() => navigate("/PlayerDeposit")}
+     <BottomNavigation
+  onHome={() =>
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
+  }
+  onPromo={() => navigate("/promotions")}
+  onSupport={() => alert("Support")}
+  onProfile={() => setShowProfile(true)}
+  onDeposit={openDeposit}
 />
 
     </div>
