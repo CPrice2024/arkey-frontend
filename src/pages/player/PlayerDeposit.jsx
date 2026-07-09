@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../api";
-import { ReactComponent as TelebirrIcon } from "../../assets/icons/telebirr.svg";
+import { ReactComponent as TelebirrIcon } from "../../assets/icons/telebirr.png";
 import { ReactComponent as CbeIcon } from "../../assets/icons/cbe.svg";
 
 import {
