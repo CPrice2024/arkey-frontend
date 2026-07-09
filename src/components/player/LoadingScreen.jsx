@@ -12,18 +12,18 @@ import {
 import logo from "../../assets/logo6.png";
 import "../../styles/loading.css";
 
+const messages = [
+  { progress: 10, text: "initializing game engine..." },
+  { progress: 25, text: "loading assets..." },
+  { progress: 45, text: "connecting to servers..." },
+  { progress: 65, text: "syncing player data..." },
+  { progress: 85, text: "preparing game world..." },
+  { progress: 95, text: "almost ready..." },
+];
+
 export default function LoadingScreen() {
   const [progress, setProgress] = useState(0);
   const [statusMessage, setStatusMessage] = useState("initializing");
-
-  const messages = [
-    { progress: 10, text: "initializing game engine..." },
-    { progress: 25, text: "loading assets..." },
-    { progress: 45, text: "connecting to servers..." },
-    { progress: 65, text: "syncing player data..." },
-    { progress: 85, text: "preparing game world..." },
-    { progress: 95, text: "almost ready..." },
-  ];
 
   useEffect(() => {
     let currentProgress = 0;
