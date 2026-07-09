@@ -164,11 +164,11 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 14px;
+  padding: 7px;
   background: #2c3443;
   color: white;
   border: 1px solid transparent;
-  border-radius: 12px;
+  border-radius: 8px;
   cursor: pointer;
   transition: .25s;
 }
@@ -223,6 +223,12 @@
 }
 
 .cancel-btn {
+    border-radius: 6px;
+    color: #fff;
+    flex: 2 1;
+    font-size: 15px;
+    font-weight: 500;
+    transition: .3s;
   
 }
 
@@ -325,8 +331,8 @@
   }
 }
 .payment-icon{
-  width:24px;
-  height:24px;
+  width:65px;
+  height:40px;
   object-fit:contain;
   margin-right:8px;
   flex-shrink:0;

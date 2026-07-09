@@ -26,8 +26,8 @@
   --white: #ffffff;
   --text-primary: rgba(255, 255, 255, 0.9);
   --text-secondary: rgba(255, 255, 255, 0.4);
-  --text-muted: rgba(255, 255, 255, 0.15);
-  --border-light: rgba(255, 255, 255, 0.04);
+  --text-muted: rgba(255, 255, 255, 0.471);
+  --border-light: rgba(255, 255, 255, 0);
   --border-hover: rgba(255, 255, 255, 0.08);
   
   /* Spacing */
@@ -611,6 +611,7 @@
 
   .promo-card-content p {
     font-size: 11px;
+    color: #858585;
   }
 
   .coupon-button {
@@ -833,7 +834,7 @@
   align-items: center;
   gap: var(--spacing-md);
   padding: var(--spacing-md);
-  background: rgba(255, 255, 255, 0.01);
+  background: rgba(255, 255, 255, 0);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
   margin-top: var(--spacing-lg);
