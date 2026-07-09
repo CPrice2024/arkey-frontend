@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../api";
 import TelebirrIcon from "../../assets/icons/telebirr.png";
-import CbeIcon from "../../assets/icons/cbe.svg";
+import CbeIcon from "../../assets/icons/cbe.png";
 
 import {
   ArrowLeft,
