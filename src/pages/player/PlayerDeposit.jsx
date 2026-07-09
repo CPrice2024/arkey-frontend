@@ -263,8 +263,8 @@ export default function PlayerDeposit() {
   <img
     src={TelebirrIcon}
     alt="Telebirr"
-    width={20}
-    height={20}
+    width={70}
+    height={50}
   />
   Telebirr
 </button>
@@ -276,8 +276,8 @@ export default function PlayerDeposit() {
   <img
     src={CbeIcon}
     alt="CBE"
-    width={20}
-    height={20}
+    width={70}
+    height={50}
   />
   CBE Birr
 </button>

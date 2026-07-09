@@ -331,11 +331,11 @@
 
 .section-header small {
   font-size: 10px;
-  color: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.556);
 }
 
 .section-header svg {
-  color: rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.601);
 }
 
 .transaction-item {
@@ -395,20 +395,20 @@
 }
 
 .empty-transactions svg {
-  color: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.366);
   margin-bottom: 8px;
 }
 
 .empty-transactions h4 {
   font-size: 13px;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.61);
   margin: 0 0 4px 0;
 }
 
 .empty-transactions p {
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.364);
   margin: 0;
 }
 
@@ -423,7 +423,7 @@
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 12px;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.584);
   font-size: 12px;
   font-weight: 300;
   cursor: pointer;

@@ -117,6 +117,8 @@
 
     margin:10px 0;
 
+    font-size: 12px;
+
 }
 
 .info-row span{
@@ -188,7 +190,7 @@
 
     border-radius:12px;
 
-    padding:16px;
+    padding:10px;
 
     display:flex;
 
@@ -206,7 +208,7 @@
 
 .method.active{
 
-    background:#007856;
+    background:#003727;
 
 }
 
