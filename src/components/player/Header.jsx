@@ -5,7 +5,6 @@ import {
   EyeOff,
   RotateCw,
   Plus,
-  Gamepad2,
   User,
 } from "lucide-react";
 import "../../styles/header.css";
