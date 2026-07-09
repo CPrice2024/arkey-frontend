@@ -233,16 +233,14 @@
 }
 
 .submit-btn {
-  flex: 2;
-  height: 52px;
-  border: none;
-  border-radius: 12px;
-  background: #138c81;
-  color: white;
-  font-size: 17px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: .3s;
+     background: #138c81;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    flex: 2 1;
+    font-size: 15px;
+    font-weight: 500;
+    transition: .3s;
 }
 
 .submit-btn:hover:not(:disabled) {

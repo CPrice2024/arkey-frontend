@@ -266,14 +266,12 @@ body{
 .game-header{
 
     gap:0px;
-
 }
 
 .header-logo{
 
     height: 52px;
-    width: auto;
-    max-width: 80px;
+    width: 52px;
 
 }
 
@@ -292,13 +290,10 @@ body{
 }
 
 .deposit-btn{
-
-    height:40px;
-
-    padding:0 12px;
-
-    font-size:1px;
-
+        font-size: 11px;
+        height: 40px;
+        width: 80px;
+        padding: 0 9px;
 }
 
 }
@@ -575,7 +570,7 @@ body{
 
     width:100%;
 
-    aspect-ratio:.72;
+    aspect-ratio:.82;
 
     object-fit:cover;
 
@@ -783,36 +778,20 @@ BOTTOM NAVIGATION
 
 .bottom-navigation{
 
-    position:fixed;
-
-    left:50%;
-
-    bottom:0;
-
-    transform:translateX(-50%);
-
-    width:100%;
-
-    max-width:430px;
-
-    height:72px;
-
-    padding:0 22px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    background:#14192b;
-
-    border-top:
-
-        1px solid
-        rgba(255,255,255,.05);
-
-    z-index:1000;
+     align-items: center;
+    background: #0c1533bf;
+    border-top: 1px solid #ffffff0d;
+    bottom: 0;
+    display: flex;
+    height: 65px;
+    justify-content: space-between;
+    left: 50%;
+    max-width: 430px;
+    padding: 0 22px;
+    position: fixed;
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: 1000;
 
 }
 
@@ -822,7 +801,7 @@ BOTTOM NAVIGATION
 
     background:none;
 
-    color:#9097b5;
+    color: #ececec;
 
     display:flex;
 
@@ -1351,27 +1330,16 @@ cursor:pointer;
 
 .profile-avatar{
 
-width:90px;
-
-height:90px;
-
-margin:auto;
-
-border-radius:50%;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-font-size:34px;
-
-font-weight:bold;
-
-background:linear-gradient(135deg,#00d48a,#0ea5e9);
-
-margin-bottom:18px;
+    align-items: center;
+    background: linear-gradient(135deg, #00d48a, #0ea5e9);
+    border-radius: 50%;
+    display: flex;
+    font-size: 25px;
+    font-weight: 700;
+    height: 75px;
+    justify-content: center;
+    margin: auto auto 18px;
+    width: 75px;
 
 }
 

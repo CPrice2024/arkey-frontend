@@ -79,7 +79,7 @@ export default function Header({
           className="deposit-btn"
           onClick={onDeposit}
         >
-          <Plus size={16} strokeWidth={1.5} />
+          <Plus size={18} strokeWidth={1.6} />
           Deposit
         </button>
       </div>

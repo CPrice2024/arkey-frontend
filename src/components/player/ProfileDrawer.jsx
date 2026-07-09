@@ -75,7 +75,7 @@ export default function ProfileDrawer({
 
         {/* Balance & Credit - Minimal */}
         <div className="balance-summary">
-          <div className="balance-box">
+          <div className="credit-box">
             <div className="balance-icon">
               <Coins size={18} strokeWidth={1.5} />
             </div>
@@ -101,7 +101,7 @@ export default function ProfileDrawer({
             <ArrowUpFromLine size={16} strokeWidth={1.5} />
             Withdraw
           </button>
-          <button onClick={onDeposit} className="deposit-btn">
+          <button onClick={onDeposit} className="withdraw-btn">
             <ArrowDownToLine size={16} strokeWidth={1.5} />
             Deposit
           </button>

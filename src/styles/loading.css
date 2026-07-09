@@ -96,12 +96,12 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
   transform: translate(-50%, -50%);
   background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
   border-radius: 50%;
-  animation: glowPulse 2s ease-in-out infinite;
+  animation: glowPulse 1s ease-in-out infinite;
 }
 
 @keyframes glowPulse {
@@ -119,10 +119,10 @@
 }
 
 .loading-title h1 {
-  font-size: 20px;
+  font-size: 70px;
   font-weight: 500;
   margin: 0;
-  background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #c1cbff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
