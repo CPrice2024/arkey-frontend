@@ -1,4 +1,58 @@
-/* Loading Page - Minimalist Game Concept */
+/* ========================================
+   LOADING SCREEN - TELEGRAM VIRTUAL GAMES
+   Minimalist Game Concept
+   ======================================== */
+
+/* ---------- ROOT VARIABLES ---------- */
+:root {
+  /* Primary Colors */
+  --primary: #818cf8;
+  --primary-dark: #6366f1;
+  --primary-glow: rgba(99, 102, 241, 0.15);
+  --primary-glow-strong: rgba(99, 102, 241, 0.25);
+  
+  /* Telegram Gaming Colors */
+  --telegram-blue: #0088cc;
+  --telegram-bg: #0a0a0f;
+  --telegram-card: rgba(20, 20, 32, 0.7);
+  
+  /* Status Colors */
+  --success: #00d48a;
+  --warning: #ffb000;
+  --info: #0ea5e9;
+  --error: #ef4444;
+  
+  /* Neutrals */
+  --white: #ffffff;
+  --text-primary: rgba(255, 255, 255, 0.9);
+  --text-secondary: rgba(255, 255, 255, 0.4);
+  --text-muted: rgba(255, 255, 255, 0.15);
+  --text-dim: rgba(255, 255, 255, 0.05);
+  --border-light: rgba(255, 255, 255, 0.04);
+  --border-hover: rgba(255, 255, 255, 0.08);
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-xxl: 48px;
+  
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+  
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* ---------- LOADING PAGE CONTAINER ---------- */
 .loading-page {
   position: fixed;
   top: 0;
@@ -8,23 +62,27 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #0a0a0f;
+  background: var(--telegram-bg);
   overflow: hidden;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  z-index: 9999;
 }
 
-/* Background - Minimalist */
+/* ---------- ANIMATED BACKGROUND ---------- */
 .loading-bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(ellipse at 50% 50%, #141420 0%, #0a0a0f 100%);
+  background: 
+    radial-gradient(ellipse at 30% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 50%, #0a0a0f 0%, #060608 100%);
   z-index: 0;
 }
 
-/* Grid Overlay - Subtle */
+/* Grid Overlay - Telegram Gaming Style */
 .grid-overlay {
   position: absolute;
   top: 0;
@@ -34,34 +92,67 @@
   background-image: 
     linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 40px 40px;
-  animation: gridMove 20s linear infinite;
+  background-size: 50px 50px;
+  animation: gridDrift 30s linear infinite;
+  opacity: 0.5;
 }
 
-@keyframes gridMove {
+@keyframes gridDrift {
   0% { transform: translate(0, 0); }
-  100% { transform: translate(40px, 40px); }
+  100% { transform: translate(50px, 50px); }
 }
 
-/* Pulse Ring - Subtle */
+/* Pulse Ring - Gaming Style */
 .pulse-ring {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   transform: translate(-50%, -50%);
-  border: 1px solid rgba(99, 102, 241, 0.05);
+  border: 1px solid rgba(99, 102, 241, 0.03);
   border-radius: 50%;
-  animation: pulseRing 3s ease-in-out infinite;
+  animation: pulseRing 4s ease-in-out infinite;
+}
+
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(99, 102, 241, 0.02);
+  border-radius: 50%;
+  animation: pulseRing 4s ease-in-out infinite 0.5s;
+}
+
+.pulse-ring::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150px;
+  height: 150px;
+  transform: translate(-50%, -50%);
+  border: 1px solid rgba(99, 102, 241, 0.01);
+  border-radius: 50%;
+  animation: pulseRing 4s ease-in-out infinite 1s;
 }
 
 @keyframes pulseRing {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
-  50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.6; }
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1); 
+    opacity: 0.5;
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.2); 
+    opacity: 1;
+  }
 }
 
-/* Card - Clean */
+/* ---------- LOADING CARD ---------- */
 .loading-card {
   position: relative;
   z-index: 1;
@@ -69,101 +160,167 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  padding: 48px 56px;
-  background: rgba(20, 20, 32, 0.7);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  border-radius: 24px;
-  min-width: 340px;
-  transition: all 0.3s ease;
+  gap: var(--spacing-md);
+  padding: var(--spacing-xxl) var(--spacing-xl);
+  background: var(--telegram-card);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  min-width: 360px;
+  max-width: 440px;
+  transition: all var(--transition-normal);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
 }
 
-/* Logo - Clean */
+/* Card Glow Effect */
+.loading-card::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: var(--radius-xl);
+  padding: 1px;
+  background: linear-gradient(135deg, var(--primary-glow), transparent, var(--primary-glow));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* ---------- LOGO SECTION ---------- */
 .loading-logo {
   position: relative;
-  margin-bottom: 4px;
+  margin-bottom: var(--spacing-sm);
 }
 
 .loading-logo img {
-  width: 264px;
-  height: 164px;
+  width: 72px;
+  height: 72px;
   object-fit: contain;
-  filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.15));
+  filter: drop-shadow(0 0 30px var(--primary-glow));
+  animation: logoFloat 3s ease-in-out infinite;
+  transition: filter var(--transition-normal);
 }
 
+.loading-logo:hover img {
+  filter: drop-shadow(0 0 50px var(--primary-glow-strong));
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Logo Glow */
 .logo-glow {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 120px;
-  height: 120px;
+  width: 100px;
+  height: 100px;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+  background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%);
   border-radius: 50%;
-  animation: glowPulse 1s ease-in-out infinite;
+  animation: glowPulse 2.5s ease-in-out infinite;
+  pointer-events: none;
 }
 
 @keyframes glowPulse {
-  0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+  0%, 100% { 
+    opacity: 0.3;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1.3);
+  }
 }
 
-/* Title - Minimal */
+/* ---------- TITLE SECTION ---------- */
 .loading-title {
   display: flex;
   align-items: center;
-  gap: 10px;
-  color: rgba(255, 255, 255, 0.9);
+  gap: var(--spacing-sm);
+  color: var(--text-primary);
   letter-spacing: -0.5px;
 }
 
 .loading-title h1 {
-  font-size: 70px;
-  font-weight: 500;
+  font-size: 22px;
+  font-weight: 600;
   margin: 0;
-  background: linear-gradient(135deg, #ffffff 0%, #c1cbff 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  letter-spacing: -0.3px;
 }
 
 .loading-title svg {
-  color: #818cf8;
+  color: var(--primary);
   opacity: 0.8;
+  animation: iconPulse 2s ease-in-out infinite;
 }
 
-/* Text - Clean */
+@keyframes iconPulse {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* ---------- LOADING TEXT ---------- */
 .loading-text {
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--text-muted);
   font-size: 12px;
-  font-weight: 400;
-  letter-spacing: 2px;
+  font-weight: 300;
+  letter-spacing: 3px;
   text-transform: uppercase;
   margin: 0;
-  animation: textPulse 2s ease-in-out infinite;
+  animation: textPulse 2.5s ease-in-out infinite;
 }
 
 @keyframes textPulse {
   0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.6; }
+  50% { opacity: 0.7; }
 }
 
-/* Progress Bar - Minimal */
+/* ---------- PROGRESS BAR ---------- */
 .loading-progress {
   width: 100%;
-  max-width: 260px;
+  max-width: 280px;
   position: relative;
-  margin: 4px 0;
+  margin: var(--spacing-sm) 0;
 }
 
 .loading-bar {
   width: 100%;
   height: 2px;
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-full);
   overflow: hidden;
   position: relative;
+}
+
+.loading-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  width: 200%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(99, 102, 241, 0.1), 
+    var(--primary), 
+    rgba(99, 102, 241, 0.1), 
+    transparent
+  );
+  animation: progressShimmer 2.5s ease-in-out infinite;
+}
+
+@keyframes progressShimmer {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(50%); }
 }
 
 .loading-bar::after {
@@ -173,42 +330,44 @@
   left: 0;
   height: 100%;
   width: 78%;
-  background: linear-gradient(90deg, #818cf8, #6366f1);
-  border-radius: 4px;
-  animation: progressMove 2s ease-in-out infinite;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  border-radius: var(--radius-full);
+  animation: progressMove 2.5s ease-in-out infinite;
 }
 
 @keyframes progressMove {
-  0% { width: 60%; opacity: 0.7; }
+  0% { width: 45%; opacity: 0.7; }
   50% { width: 85%; opacity: 1; }
-  100% { width: 60%; opacity: 0.7; }
+  100% { width: 45%; opacity: 0.7; }
 }
 
 .progress-percent {
   position: absolute;
-  right: -30px;
+  right: -40px;
   top: 50%;
   transform: translateY(-50%);
-  color: rgba(255, 255, 255, 0.15);
-  font-size: 10px;
-  font-weight: 300;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 400;
   letter-spacing: 0.5px;
+  font-variant-numeric: tabular-nums;
 }
 
-/* Status - Minimal */
+/* ---------- LOADING STATUS ---------- */
 .loading-status {
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: rgba(255, 255, 255, 0.2);
-  font-size: 11px;
+  gap: var(--spacing-sm);
+  color: var(--text-muted);
+  font-size: 12px;
   font-weight: 300;
   letter-spacing: 0.3px;
+  margin-top: var(--spacing-xs);
 }
 
 .loading-spinner {
   animation: spin 1.5s linear infinite;
-  color: #818cf8;
+  color: var(--primary);
   opacity: 0.6;
 }
 
@@ -217,75 +376,458 @@
   100% { transform: rotate(360deg); }
 }
 
+/* Status Dots Animation */
 .status-dots {
   display: inline-flex;
   gap: 2px;
+  margin-left: 2px;
 }
 
 .status-dots span {
   animation: dotFade 1.4s ease-in-out infinite;
+  font-weight: 700;
 }
 
 .status-dots span:nth-child(2) { animation-delay: 0.2s; }
 .status-dots span:nth-child(3) { animation-delay: 0.4s; }
 
 @keyframes dotFade {
-  0%, 80%, 100% { opacity: 0; }
-  40% { opacity: 1; }
+  0%, 80%, 100% { opacity: 0; transform: scale(0.8); }
+  40% { opacity: 1; transform: scale(1.2); }
 }
 
-/* Security - Minimal */
+/* ---------- SECURITY BADGE ---------- */
 .loading-security {
   display: flex;
   align-items: center;
-  gap: 6px;
-  color: rgba(255, 255, 255, 0.08);
+  gap: var(--spacing-xs);
+  color: var(--text-dim);
   font-size: 10px;
   font-weight: 300;
   letter-spacing: 0.5px;
-  margin-top: 4px;
   text-transform: uppercase;
+  margin-top: var(--spacing-xs);
+  padding: 4px 12px;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-normal);
+}
+
+.loading-security:hover {
+  background: rgba(255, 255, 255, 0.02);
+  border-color: var(--border-hover);
 }
 
 .loading-security svg {
-  color: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 255, 255, 0.04);
 }
 
-/* Game Hint - New Minimal Element */
+/* ---------- GAME HINT ---------- */
 .loading-hint {
   display: flex;
   align-items: center;
-  gap: 6px;
-  color: rgba(255, 255, 255, 0.05);
+  gap: var(--spacing-xs);
+  color: var(--text-dim);
   font-size: 9px;
   font-weight: 300;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  margin-top: 4px;
+  margin-top: var(--spacing-xs);
+  opacity: 0.5;
 }
 
 .loading-hint svg {
-  color: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.03);
+  animation: zapPulse 2s ease-in-out infinite;
 }
 
-/* Responsive */
-@media (max-width: 480px) {
+@keyframes zapPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* ---------- TELEGRAM GAMING FEATURES ---------- */
+
+/* Telegram Bot Status Indicator */
+.telegram-bot-status {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: 2px 10px 2px 6px;
+  background: rgba(0, 136, 204, 0.03);
+  border: 1px solid rgba(0, 136, 204, 0.05);
+  border-radius: var(--radius-full);
+  font-size: 8px;
+  color: rgba(0, 136, 204, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: var(--spacing-xs);
+}
+
+.telegram-bot-status .bot-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--success);
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.6); }
+}
+
+/* ---------- LOADING ANIMATIONS VARIATIONS ---------- */
+
+/* Loading State 1 - Preloading */
+.loading-state-preload .loading-text {
+  content: 'preloading assets...';
+}
+
+/* Loading State 2 - Connecting */
+.loading-state-connect .loading-text {
+  content: 'connecting to server...';
+}
+
+/* Loading State 3 - Syncing */
+.loading-state-sync .loading-text {
+  content: 'syncing game data...';
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 640px) {
   .loading-card {
-    padding: 32px 28px;
+    padding: var(--spacing-xl) var(--spacing-lg);
     min-width: auto;
     width: 90%;
+    max-width: 380px;
+    border-radius: var(--radius-lg);
   }
-  
+
   .loading-logo img {
-    width: 48px;
-    height: 48px;
+    width: 60px;
+    height: 60px;
   }
-  
+
+  .logo-glow {
+    width: 80px;
+    height: 80px;
+  }
+
   .loading-title h1 {
-    font-size: 17px;
+    font-size: 18px;
   }
-  
+
+  .loading-title svg {
+    width: 20px;
+    height: 20px;
+  }
+
   .loading-progress {
-    max-width: 200px;
+    max-width: 220px;
   }
+
+  .progress-percent {
+    right: -35px;
+    font-size: 10px;
+  }
+
+  .pulse-ring {
+    width: 300px;
+    height: 300px;
+  }
+
+  .pulse-ring::before {
+    width: 200px;
+    height: 200px;
+  }
+
+  .pulse-ring::after {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 400px) {
+  .loading-card {
+    padding: var(--spacing-lg);
+    width: 92%;
+  }
+
+  .loading-logo img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .logo-glow {
+    width: 60px;
+    height: 60px;
+  }
+
+  .loading-title h1 {
+    font-size: 16px;
+  }
+
+  .loading-text {
+    font-size: 10px;
+    letter-spacing: 2px;
+  }
+
+  .loading-status {
+    font-size: 10px;
+  }
+
+  .loading-progress {
+    max-width: 180px;
+  }
+
+  .progress-percent {
+    right: -30px;
+    font-size: 9px;
+  }
+
+  .loading-security {
+    font-size: 8px;
+    padding: 3px 10px;
+  }
+
+  .loading-hint {
+    font-size: 8px;
+  }
+}
+
+/* ---------- DARK MODE OPTIMIZATION ---------- */
+@media (prefers-color-scheme: light) {
+  .loading-page {
+    background: #f0f2f5;
+  }
+
+  .loading-bg {
+    background: 
+      radial-gradient(ellipse at 30% 20%, rgba(99, 102, 241, 0.05) 0%, transparent 60%),
+      radial-gradient(ellipse at 70% 80%, rgba(139, 92, 246, 0.03) 0%, transparent 60%),
+      linear-gradient(135deg, #f0f2f5 0%, #e8eaed 100%);
+  }
+
+  .loading-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(30px);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .loading-title h1 {
+    background: linear-gradient(135deg, #1a1a2e 0%, #4f46e5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .grid-overlay {
+    background-image: 
+      linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  }
+
+  .loading-bar {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  .loading-security {
+    background: rgba(0, 0, 0, 0.01);
+    border-color: rgba(0, 0, 0, 0.03);
+  }
+}
+
+/* ---------- SCREEN READER ---------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/* ---------- REDUCED MOTION ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ---------- PRINT STYLES ---------- */
+@media print {
+  .loading-page {
+    position: relative;
+    height: auto;
+    min-height: 100vh;
+    background: white;
+  }
+
+  .loading-bg {
+    display: none;
+  }
+
+  .loading-card {
+    background: white;
+    border: 1px solid #ddd;
+    box-shadow: none;
+  }
+}
+
+/* ---------- CUSTOM LOADING MESSAGES ---------- */
+
+/* Loading Message Variants */
+.loading-message-initializing .loading-text::after {
+  content: 'initializing game engine...';
+}
+
+.loading-message-assets .loading-text::after {
+  content: 'loading game assets...';
+}
+
+.loading-message-connecting .loading-text::after {
+  content: 'connecting to servers...';
+}
+
+.loading-message-syncing .loading-text::after {
+  content: 'syncing player data...';
+}
+
+.loading-message-ready .loading-text::after {
+  content: 'almost ready...';
+}
+
+/* ---------- GAMING ELEMENTS ---------- */
+
+/* Level Progress Indicator */
+.level-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+  padding: 4px 12px;
+  background: rgba(255, 176, 0, 0.02);
+  border: 1px solid rgba(255, 176, 0, 0.03);
+  border-radius: var(--radius-full);
+}
+
+.level-progress .level-icon {
+  font-size: 10px;
+  color: #ffb000;
+}
+
+.level-progress .level-text {
+  font-size: 9px;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+}
+
+.level-progress .level-bar {
+  width: 60px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.level-progress .level-bar .level-fill {
+  height: 100%;
+  width: 65%;
+  background: linear-gradient(90deg, #ffb000, #ff9500);
+  border-radius: var(--radius-full);
+  animation: levelProgress 3s ease-in-out infinite;
+}
+
+@keyframes levelProgress {
+  0% { width: 45%; }
+  50% { width: 85%; }
+  100% { width: 45%; }
+}
+
+/* ---------- CONNECTION STATUS ---------- */
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: 9px;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+  margin-top: var(--spacing-xs);
+}
+
+.connection-status .status-icon {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+.connection-status .status-icon.warning {
+  background: var(--warning);
+}
+
+.connection-status .status-icon.error {
+  background: var(--error);
+}
+
+/* ---------- PLAYER COUNT ---------- */
+.player-count {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  font-size: 9px;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+}
+
+.player-count .count-number {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* ---------- TELEGRAM GAMING BADGE ---------- */
+.telegram-gaming-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px 2px 6px;
+  background: linear-gradient(135deg, rgba(0, 136, 204, 0.05), rgba(0, 136, 204, 0.01));
+  border: 1px solid rgba(0, 136, 204, 0.05);
+  border-radius: var(--radius-full);
+  font-size: 7px;
+  font-weight: 400;
+  color: rgba(0, 136, 204, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.telegram-gaming-badge svg {
+  color: rgba(0, 136, 204, 0.15);
+}
+
+/* ---------- LOADING TIPS ---------- */
+.loading-tip {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 8px;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  animation: tipFade 4s ease-in-out infinite;
+}
+
+@keyframes tipFade {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
 }
