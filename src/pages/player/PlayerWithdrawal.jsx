@@ -4,11 +4,14 @@ import api from "../../api";
 
 import {
   ArrowLeft,
-  Smartphone,
-  Landmark,
   Loader2,
   RefreshCw
 } from "lucide-react";
+
+import TelebirrIcon from "../../assets/icons/telebirr.png";
+import CbeIcon from "../../assets/icons/cbe.png";
+import MpesaIcon from "../../assets/icons/mpesa.png";
+import BankIcon from "../../assets/icons/bank.png";
 
 import "../../styles/withdrawalPage.css";
 
@@ -300,39 +303,50 @@ balance - Number(amount || 0)
       <div className="method-grid">
 
         <button
-          className={
-            method==="telebirr"
-            ? "method active"
-            : "method"
-          }
-          onClick={()=>setMethod("telebirr")}
-        >
-          <Smartphone size={20}/>
-          Telebirr
-        </button>
-
-        <button
-          className={
-            method==="cbe"
-            ? "method active"
-            : "method"
-          }
-          onClick={()=>setMethod("cbe")}
-        >
-          <Landmark size={20}/>
-          CBE Birr
-        </button>
-        <button
-  className={method === "helloCash" ? "method active" : "method"}
-  onClick={() => setMethod("helloCash")}
+  className={method === "telebirr" ? "method active" : "method"}
+  onClick={() => setMethod("telebirr")}
 >
-  HelloCash
+  <img
+    src={TelebirrIcon}
+    alt="Telebirr"
+    className="payment-icon"
+  />
+  Telebirr
+</button>
+
+<button
+  className={method === "cbe" ? "method active" : "method"}
+  onClick={() => setMethod("cbe")}
+>
+  <img
+    src={CbeIcon}
+    alt="CBE"
+    className="payment-icon"
+  />
+  CBE Birr
+</button>
+
+<button
+  className={method === "Mpesa" ? "method active" : "method"}
+  onClick={() => setMethod("Mpesa")}
+>
+  <img
+    src={MpesaIcon}
+    alt="Mpesa"
+    className="payment-icon"
+  />
+  Mpesa
 </button>
 
 <button
   className={method === "bank" ? "method active" : "method"}
   onClick={() => setMethod("bank")}
 >
+  <img
+    src={BankIcon}
+    alt="Bank"
+    className="payment-icon"
+  />
   Bank
 </button>
 

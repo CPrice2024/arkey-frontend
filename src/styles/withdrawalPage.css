@@ -324,3 +324,17 @@
     font-size: 22px;
   }
 }
+.payment-icon{
+  width:24px;
+  height:24px;
+  object-fit:contain;
+  margin-right:8px;
+  flex-shrink:0;
+}
+
+.method{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
