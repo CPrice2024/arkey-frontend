@@ -494,7 +494,7 @@ body{
 
 .coupon-banner{
 
-    padding:15px;
+    padding:6px;
 
 }
 
@@ -870,47 +870,22 @@ CENTER BUTTON
 
 .deposit-floating-btn{
 
-    position:absolute;
-
-    left:50%;
-
-    top:-28px;
-
-    transform:translateX(-50%);
-
-    width:66px;
-
-    height:66px;
-
-    border:none;
-
-    border-radius:50%;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    cursor:pointer;
-
-    color:white;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #00d47c,
-            #08b4ff
-        );
-
-    box-shadow:
-
-        0 12px 35px
-        rgba(0,0,0,.45);
-
-    transition:.25s;
-
+    align-items: center;
+    background: linear-gradient(135deg, #006759, #08b4ff);
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 12px 35px #00000073;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    height: 60px;
+    justify-content: center;
+    left: 50%;
+    position: absolute;
+    top: -28px;
+    transform: translateX(-50%);
+    transition: .25s;
+    width: 60px;
 }
 
 .deposit-floating-btn:hover{
