@@ -43,7 +43,7 @@ export default function Header({
           className="refresh-btn"
           onClick={onRefresh}
         >
-          <RotateCw size={16} />
+          <RotateCw size={26} />
         </button>
 
         <Wallet size={16} />
