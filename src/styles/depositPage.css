@@ -85,7 +85,7 @@
 
 .deposit-card{
 
-    background:#1e293b;
+    background:#1e293b00;
 
     border-radius:16px;
 
@@ -208,7 +208,7 @@
 
 .method.active{
 
-    background:#001e2b;
+    background:#001a2f;
 
 }
 
