@@ -11,7 +11,7 @@
   --card: rgba(20, 20, 32, 0.6);
   --text: rgba(255, 255, 255, 0.9);
   --text-dim: rgba(255, 255, 255, 0.15);
-  --text-muted: rgba(255, 255, 255, 0.08);
+  --text-muted: rgba(255, 255, 255, 0.421);
   --border: rgba(255, 255, 255, 0.04);
   --radius: 16px;
 }
@@ -293,7 +293,7 @@
 
 /* Tip - Minimal */
 .loading-tip {
-  font-size: 8px;
+  font-size: 10px;
   color: var(--text-muted);
   letter-spacing: 0.3px;
   animation: tip 4s ease-in-out infinite;

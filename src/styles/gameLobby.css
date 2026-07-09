@@ -1331,7 +1331,7 @@ cursor:pointer;
 .profile-avatar{
 
     align-items: center;
-    background: linear-gradient(135deg, #00d48a, #0ea5e9);
+    background: linear-gradient(135deg, #00925f, #006897ba);
     border-radius: 50%;
     display: flex;
     font-size: 25px;

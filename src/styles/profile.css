@@ -283,8 +283,8 @@
 }
 
 .withdraw-btn {
-  background: rgba(239, 68, 68, 0.04);
-  color: rgba(255, 255, 255, 0.5);
+  background: #126f818a;
+  color: #fffffff1;
 }
 
 .withdraw-btn:hover {
