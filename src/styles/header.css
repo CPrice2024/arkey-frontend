@@ -4,7 +4,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 12px 24px;
-  background: rgba(10, 10, 15, 0.8);
+  background: rgba(10, 10, 15, 0);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.03);
   position: sticky;
@@ -48,7 +48,7 @@
   flex: 1;
   display: flex;
   justify-content: center;
-  padding: 0 16px;
+  padding: 0 6px;
 }
 
 .balance-box {
@@ -188,7 +188,7 @@
 }
 
 .deposit-btn svg {
-  color: rgba(99, 102, 241, 0.4);
+  color: rgb(252, 252, 252);
 }
 
 /* Responsive */
@@ -233,6 +233,7 @@
   .deposit-btn svg {
     width: 14px;
     height: 14px;
+    color: aliceblue;
   }
 }
 

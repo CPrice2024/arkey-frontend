@@ -68,7 +68,7 @@ body{
 
     align-items:center;
 
-    gap:12px;
+    gap: 0px;
 
     margin-bottom:18px;
 
@@ -97,9 +97,9 @@ body{
     border-radius:5px;
 
     border:2px solid
-        rgba(255,255,255,.08);
+        rgba(255, 255, 255, 0);
 
-    background:#111827;
+    background:#11182700;
 
 }
 
@@ -203,7 +203,7 @@ body{
 
 .deposit-btn{
 
-    height:46px;
+    height:36px;
 
     padding:
 
@@ -218,15 +218,15 @@ body{
 
     color:#fff;
 
-    font-weight:700;
+    font-weight:600;
 
-    font-size:14px;
+    font-size:12px;
 
     display:flex;
 
     align-items:center;
 
-    gap:8px;
+    gap:6px;
 
     background:
 
@@ -248,7 +248,7 @@ body{
 .deposit-btn:hover{
 
     transform:
-        translateY(-2px);
+        translateY(-1px);
 
     box-shadow:
 
@@ -265,15 +265,15 @@ body{
 
 .game-header{
 
-    gap:8px;
+    gap:0px;
 
 }
 
 .header-logo{
 
-    width:52px;
-
-    height:52px;
+    height: 52px;
+    width: auto;
+    max-width: 80px;
 
 }
 
@@ -293,11 +293,11 @@ body{
 
 .deposit-btn{
 
-    height:42px;
+    height:40px;
 
     padding:0 12px;
 
-    font-size:13px;
+    font-size:1px;
 
 }
 
