@@ -202,7 +202,7 @@
 
 .method.active{
 
-    background:#16a34a;
+    background:#007856;
 
 }
 
@@ -288,11 +288,11 @@
 
     background:#334155;
 
-    color:white;
+    color:rgb(255, 30, 30);
 
     cursor:pointer;
 
-    font-size:15px;
+    font-size:14px;
 
 }
 
@@ -300,17 +300,17 @@
 
     flex:2;
 
-    padding:16px;
+    padding:15px;
 
     border:none;
 
-    border-radius:14px;
+    border-radius:6px;
 
     background:#16a34a;
 
     color:white;
 
-    font-weight:700;
+    font-weight:600;
 
     cursor:pointer;
 
