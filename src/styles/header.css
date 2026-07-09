@@ -1,0 +1,248 @@
+/* Game Header - Minimalist Concept */
+.game-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: rgba(10, 10, 15, 0.8);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 68px;
+}
+
+/* LEFT Section */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+}
+
+.header-logo {
+  height: 36px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.08));
+}
+
+.header-brand {
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: -0.3px;
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .header-brand {
+    display: inline;
+  }
+}
+
+/* CENTER Section */
+.header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 0 16px;
+}
+
+.balance-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 14px;
+  padding: 6px 14px 6px 10px;
+  transition: all 0.3s ease;
+  min-height: 40px;
+}
+
+.balance-box:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.wallet-icon {
+  color: rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.balance-amount {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.2px;
+  min-width: 80px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Refresh Button */
+.refresh-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.refresh-btn:hover {
+  color: rgba(255, 255, 255, 0.4);
+  transform: rotate(45deg);
+}
+
+.refresh-btn:active {
+  transform: rotate(90deg) scale(0.9);
+}
+
+/* Eye Button */
+.eye-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.eye-btn:hover {
+  color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+/* RIGHT Section */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+}
+
+/* Player Indicator */
+.player-indicator {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 12px;
+  font-weight: 300;
+}
+
+@media (min-width: 768px) {
+  .player-indicator {
+    display: flex;
+  }
+}
+
+.player-indicator svg {
+  color: rgba(255, 255, 255, 0.1);
+}
+
+/* Deposit Button */
+.deposit-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.05));
+  border: 1px solid rgba(99, 102, 241, 0.08);
+  border-radius: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 13px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+.deposit-btn:hover {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.08));
+  border-color: rgba(99, 102, 241, 0.15);
+  color: rgba(255, 255, 255, 0.7);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.05);
+}
+
+.deposit-btn:active {
+  transform: translateY(0px);
+}
+
+.deposit-btn svg {
+  color: rgba(99, 102, 241, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .game-header {
+    padding: 10px 16px;
+    min-height: 60px;
+  }
+  
+  .header-logo {
+    height: 30px;
+  }
+  
+  .balance-box {
+    padding: 4px 10px 4px 8px;
+    gap: 6px;
+    min-height: 34px;
+  }
+  
+  .balance-amount {
+    font-size: 12px;
+    min-width: 60px;
+  }
+  
+  .refresh-btn,
+  .eye-btn {
+    padding: 2px;
+  }
+  
+  .refresh-btn svg,
+  .eye-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+  
+  .deposit-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+    gap: 4px;
+  }
+  
+  .deposit-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .balance-amount {
+    min-width: 40px;
+    font-size: 11px;
+  }
+  
+  .deposit-btn span {
+    display: none;
+  }
+}

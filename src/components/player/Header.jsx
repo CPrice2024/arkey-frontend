@@ -4,8 +4,11 @@ import {
   Eye,
   EyeOff,
   RotateCw,
-  Plus
+  Plus,
+  Gamepad2,
+  User,
 } from "lucide-react";
+import "../../styles/header.css";
 
 import logo from "../../assets/logo6.png";
 
@@ -13,79 +16,75 @@ export default function Header({
   player,
   balance,
   onRefresh,
-  onDeposit
+  onDeposit,
 }) {
-
-  const [showBalance, setShowBalance] =
-    useState(false);
+  const [showBalance, setShowBalance] = useState(false);
 
   return (
-
     <header className="game-header">
 
-      {/* LEFT */}
-
+      {/* LEFT - Logo */}
       <div className="header-left">
-
         <img
           src={logo}
           alt="Arkey Bet"
           className="header-logo"
         />
-
+        <span className="header-brand">Arkey Games</span>
       </div>
 
-      {/* CENTER */}
+      {/* CENTER - Balance */}
+      <div className="header-center">
+        <div className="balance-box">
+          <button
+            className="refresh-btn"
+            onClick={onRefresh}
+            title="Refresh balance"
+          >
+            <RotateCw size={18} strokeWidth={1.5} />
+          </button>
 
-      <div className="balance-box">
+          <Wallet size={16} strokeWidth={1.5} className="wallet-icon" />
 
-        <button
-          className="refresh-btn"
-          onClick={onRefresh}
-        >
-          <RotateCw size={26} />
-        </button>
+          <span className="balance-amount">
+            {showBalance
+              ? `${Number(balance).toLocaleString()} ETB`
+              : "••••••••"}
+          </span>
 
-        <Wallet size={16} />
-
-        <span>
-
-          {showBalance
-            ? `${balance.toLocaleString()} Birr`
-            : "••••••••"}
-
-        </span>
-
-        <button
-          className="eye-btn"
-          onClick={() =>
-            setShowBalance(!showBalance)
-          }
-        >
-          {showBalance
-            ? <EyeOff size={16}/>
-            : <Eye size={16}/>
-          }
-
-        </button>
-
+          <button
+            className="eye-btn"
+            onClick={() => setShowBalance(!showBalance)}
+            title={showBalance ? "Hide balance" : "Show balance"}
+          >
+            {showBalance ? (
+              <EyeOff size={16} strokeWidth={1.5} />
+            ) : (
+              <Eye size={16} strokeWidth={1.5} />
+            )}
+          </button>
+        </div>
       </div>
 
-      {/* RIGHT */}
+      {/* RIGHT - Actions */}
+      <div className="header-right">
+        {/* Player Indicator */}
+        {player && (
+          <div className="player-indicator">
+            <User size={14} strokeWidth={1.5} />
+            <span>{player?.firstName || "Player"}</span>
+          </div>
+        )}
 
-      <button
-        className="deposit-btn"
-        onClick={onDeposit}
-      >
-
-        <Plus size={18} />
-
-        Deposit
-
-      </button>
+        <button
+          className="deposit-btn"
+          onClick={onDeposit}
+        >
+          <Plus size={16} strokeWidth={1.5} />
+          Deposit
+        </button>
+      </div>
 
     </header>
-
   );
-
 }
