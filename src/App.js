@@ -34,7 +34,7 @@ function App() {
           path="/"
           element={
             token ? (
-              <Navigate to="/game" replace />
+              <Navigate to="/dashboard" replace />
             ) : (
               <LoginPage />
             )
