@@ -428,9 +428,9 @@ body{
 
 .section-header h2{
 
-    font-size:22px;
+    font-size:17px;
 
-    font-weight:800;
+    font-weight:600;
 
     letter-spacing:.2px;
 
@@ -515,7 +515,7 @@ body{
 
 .section-header h2{
 
-    font-size:19px;
+    font-size:15px;
 
 }
 
@@ -987,37 +987,21 @@ CARD
 
 .loading-card{
 
-    position:relative;
-
-    width:340px;
-
-    max-width:92%;
-
-    padding:36px 28px;
-
-    border-radius:28px;
-
-    background:
-
-        rgba(18, 24, 45, 0);
-
-    backdrop-filter:blur(18px);
-
-    border:none;
-
-    box-shadow:
-
-        0 25px 60px rgba(0,0,0,.45);
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    z-index:2;
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+    background: #12182d00;
+    border: none;
+    border-radius: 2px;
+    box-shadow: 0 25px 60px #00000000;
+    flex-direction: column;
+    max-width: 92%;
+    padding: 36px 28px;
+    position: relative;
+    width: 340px;
+    z-index: 2;
 
 }
+
 
 /*=========================================================
 LOGO
@@ -1905,4 +1889,7 @@ gap:8px;
 
     margin-top:4px;
 
+}
+p {
+    font-size: 14px;
 }
