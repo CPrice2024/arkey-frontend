@@ -4,26 +4,52 @@ import { RefreshCw, Check, X, Clock} from "lucide-react";
 import "../../styles/DepositsPage.css";
 
 const WithdrawalsPage = () => {
-  const [Withdrawals, setWithdrawals] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [filter, setFilter] = useState("all");
+
+const [withdrawals, setWithdrawals] = useState([]);
+
+const [loading, setLoading] = useState(false);
+
+const [filter, setFilter] = useState("all");
+
+const [search, setSearch] = useState("");
+
+const [searchText, setSearchText] = useState("");
+
+const [processor, setProcessor] = useState("all");
+
+const [processors, setProcessors] = useState({
+  admins: [],
+  agents: [],
+});
+
+const [summary, setSummary] = useState(null);
+
+const [startDate, setStartDate] = useState("");
+
+const [endDate, setEndDate] = useState("");
+
+const [page, setPage] = useState(1);
+
+const [pagination, setPagination] = useState({});
 
 const fetchWithdrawals = async () => {
   try {
 
     setLoading(true);
 
-    const res = await api.get(
-  "/withdrawals"
-);
+    const res = await api.get("/withdrawals", {
+  params: {
+    page,
+    status: filter,
+    search,
+    processedBy: processor,
+    startDate,
+    endDate,
+  },
+});
+setWithdrawals(res.data.withdrawals || []);
 
-console.log("WITHDRAWALS:", res.data);
-
-    const data = Array.isArray(res.data)
-      ? res.data
-      : res.data.withdrawals || [];
-
-    setWithdrawals(data);
+setPagination(res.data.pagination || {});
 
   } catch (error) {
 
@@ -36,6 +62,52 @@ console.log("WITHDRAWALS:", res.data);
     setLoading(false);
   }
 };
+
+const fetchSummary = async () => {
+
+  try {
+
+    const res = await api.get(
+      "/withdrawals/stats/summary",
+      {
+        params: {
+          status: filter,
+          search,
+          processedBy: processor,
+          startDate,
+          endDate,
+        },
+      }
+    );
+
+    setSummary(res.data);
+
+  } catch (error) {
+
+    console.log(error);
+
+  }
+
+};
+
+const fetchProcessors = async () => {
+
+  try {
+
+    const res = await api.get(
+      "/withdrawals/processors"
+    );
+
+    setProcessors(res.data);
+
+  } catch (error) {
+
+    console.log(error);
+
+  }
+
+};
+
 const [notification, setNotification] = useState({
   show: false,
   type: "",
@@ -62,24 +134,33 @@ useEffect(() => {
 
   fetchWithdrawals();
 
-  if (filter !== "pending") return;
+  fetchSummary();
 
-  const interval = setInterval(() => {
-    fetchWithdrawals();
-  }, 20000);
+}, [
+  page,
+  filter,
+  search,
+  processor,
+  startDate,
+  endDate,
+]);
 
-  return () => clearInterval(interval);
+useEffect(() => {
 
-}, [filter]);
+  fetchProcessors();
+
+}, []);
 
 const approveWithdrawal = async (id) => {
 
   try {
 
-    await api.put(
-  `/withdrawals/${id}/approve`
-);
-    fetchWithdrawals();
+    await api.put(`/withdrawals/${id}/approve`);
+
+await Promise.all([
+  fetchWithdrawals(),
+  fetchSummary(),
+]);
 
     showNotification(
   "success",
@@ -103,11 +184,12 @@ const approveWithdrawal = async (id) => {
 
   try {
 
-    await api.put(
-  `/withdrawals/${id}/reject`
-);
+    await api.put(`/withdrawals/${id}/reject`);
 
-    fetchWithdrawals();
+await Promise.all([
+  fetchWithdrawals(),
+  fetchSummary(),
+]);
 
     showNotification(
   "error",
@@ -126,16 +208,21 @@ const approveWithdrawal = async (id) => {
 
   }
 };
+useEffect(() => {
 
-const filteredWithdrawals = Array.isArray(Withdrawals)
-  ? (
-      filter === "all"
-        ? Withdrawals
-        : Withdrawals.filter(
-            (d) => d.status === filter
-          )
-    )
-  : [];
+    const timer = setTimeout(() => {
+
+        setSearch(searchText);
+
+        setPage(1);
+
+    }, 500);
+
+    return () => clearTimeout(timer);
+
+}, [searchText]);
+
+
   const getStatusIcon = (status) => {
     switch (status) {
       case "approved": return <Check size={14} />;
@@ -174,48 +261,197 @@ const filteredWithdrawals = Array.isArray(Withdrawals)
 )}
         {/* Header */}
         <div className="deposits-header">
-          <h1 className="deposits-title">withdrawals</h1>
+          <h1 className="deposits-title">Withdrawals</h1>
           <p className="deposits-subtitle">Manage user withdrawals</p>
         </div>
 
+        {/* Report Cards */}
+
+<div className="report-grid">
+
+  <div className="report-card">
+    <h4>Today</h4>
+    <h2>{summary?.today?.amount || 0} ETB</h2>
+    <p>{summary?.today?.count || 0} Withdrawals</p>
+  </div>
+
+  <div className="report-card">
+    <h4>This Week</h4>
+    <h2>{summary?.week?.amount || 0} ETB</h2>
+    <p>{summary?.week?.count || 0} Withdrawals</p>
+  </div>
+
+  <div className="report-card">
+    <h4>This Month</h4>
+    <h2>{summary?.month?.amount || 0} ETB</h2>
+    <p>{summary?.month?.count || 0} Withdrawals</p>
+  </div>
+
+  <div className="report-card">
+    <h4>Total</h4>
+    <h2>{summary?.all?.amount || 0} ETB</h2>
+    <p>{summary?.all?.count || 0} Withdrawals</p>
+  </div>
+
+</div>
+
         {/* Filters */}
-        <div className="filters-wrapper">
-          {["all", "pending", "approved", "rejected"].map((f) => (
-            <button
-              key={f}
-              onClick={() => setFilter(f)}
-              className={`filter-btn ${filter === f ? "filter-btn-active" : ""}`}
-            >
-              {f}
-            </button>
-          ))}
-          <button onClick={fetchWithdrawals} className="filter-btn">
-            <RefreshCw size={14} /> Refresh
-          </button>
-        </div>
+        <div className="search-filter-row">
+
+  <input
+    type="text"
+    placeholder="Search username, account..."
+    value={searchText}
+    onChange={(e)=>{
+    setSearchText(e.target.value);
+}}
+    className="search-input"
+  />
+
+  <select
+    value={processor}
+    onChange={(e) => {
+      setProcessor(e.target.value);
+      setPage(1);
+    }}
+    className="filter-select"
+  >
+
+    <option value="all">
+      All Processors
+    </option>
+
+    <optgroup label="Admins">
+
+      {processors.admins.map(admin => (
+
+        <option
+          key={admin._id}
+          value={admin.username}
+        >
+          {admin.username}
+        </option>
+
+      ))}
+
+    </optgroup>
+
+    <optgroup label="Agents">
+
+      {processors.agents.map(agent => (
+
+        <option
+          key={agent._id}
+          value={agent.username}
+        >
+          {agent.username}
+        </option>
+
+      ))}
+
+    </optgroup>
+
+  </select>
+  <div className="report-filter">
+<div className="date-input">
+
+    <label>Start Date</label>
+  <input
+    type="date"
+    value={startDate}
+    onChange={(e) => {
+      setStartDate(e.target.value);
+      setPage(1);
+    }}
+   
+  />
+   </div>
+<div className="date-input">
+
+    <label>End Date</label>
+  <input
+    type="date"
+    value={endDate}
+    onChange={(e) => {
+      setEndDate(e.target.value);
+      setPage(1);
+    }}
+  />
+   </div>
+
+</div>
+</div>
+
+<div className="filters-wrapper">
+
+  {["all", "pending", "approved", "rejected"].map((f) => (
+
+    <button
+      key={f}
+      onClick={() => {
+        setFilter(f);
+        setPage(1);
+      }}
+      className={`filter-btn ${
+        filter === f ? "filter-btn-active" : ""
+      }`}
+    >
+      {f}
+    </button>
+
+  ))}
+
+  <button
+    onClick={() => {
+      setPage(1);
+      fetchWithdrawals();
+      fetchSummary();
+    }}
+    className="filter-btn"
+  >
+    <RefreshCw size={14} />
+    Refresh
+  </button>
+
+</div>
 
         {/* Content */}
         {loading ? (
           <p className="empty-state">Auto Refresh...</p>
-        ) : filteredWithdrawals.length === 0 ? (
+        ) : withdrawals.length === 0 ? (
           <p className="empty-state">No Withdrawals found</p>
         ) : (
-<div className="deposits-table-wrapper">
+<>
+  <div className="deposits-table-wrapper">
   <table className="deposits-table">
 <thead>
   <tr>
-    <th>User</th>
-    <th>Phone</th>
-    <th>Method</th>
-    <th>Amount</th>
-    <th>Account Number</th>
-    <th>Status</th>
-    <th>Action</th>
-  </tr>
+
+  <th>User</th>
+
+  <th>Phone</th>
+
+  <th>Method</th>
+
+  <th>Amount</th>
+
+  <th>Account</th>
+
+  <th>Withdrawal No.</th>
+
+  <th>Processed By</th>
+
+  <th>Date & Time</th>
+
+  <th>Status</th>
+
+  <th>Action</th>
+
+</tr>
 </thead>
 
   <tbody>
-  {filteredWithdrawals.map((w) => (
+  {withdrawals.map((w) => (
     <tr key={w._id}>
 
       <td>{w.username}</td>
@@ -231,22 +467,26 @@ const filteredWithdrawals = Array.isArray(Withdrawals)
       <td>
         {w.accountNumber}
       </td>
+      <td>{w.withdrawalNumber || "-"}</td>
 
       <td>
-        <span
-          className={
-            getStatusClass(
-              w.status
-            )
-          }
-        >
-          {getStatusIcon(
-            w.status
-          )}
+  {w.approvedByName || w.rejectedByName || "-"}
+  <br />
+  <small>{w.processedByRole || ""}</small>
+</td>
 
-          {w.status}
-        </span>
-      </td>
+<td>
+  {w.processedAt
+    ? new Date(w.processedAt).toLocaleString()
+    : "-"}
+</td>
+
+<td>
+  <span className={getStatusClass(w.status)}>
+    {getStatusIcon(w.status)}
+    {w.status}
+  </span>
+</td>
 
       <td>
         {w.status ===
@@ -287,9 +527,49 @@ const filteredWithdrawals = Array.isArray(Withdrawals)
 
   </table>
 </div>
+
+<div className="um-pagination">
+
+<button
+disabled={page===1}
+className="um-page-btn"
+onClick={() => {
+    if (page > 1) {
+        setPage(page - 1);
+    }
+}}
+>
+Previous
+</button>
+
+<h3 >
+
+Page {pagination?.currentPage || 1}
+
+of
+
+{pagination?.totalPages || 1}
+
+</h3>
+
+<button
+disabled={page >= (pagination?.totalPages || 1)}
+className="um-page-btn"
+onClick={() => {
+    if (page < (pagination?.totalPages || 1)) {
+        setPage(page + 1);
+    }
+}}
+>
+Next
+</button>
+
+</div>
+</>
         )}
       </div>
     </div>
+    
   );
 };
 

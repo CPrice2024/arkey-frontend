@@ -31,7 +31,7 @@ function App() {
 
         {/* LOGIN */}
         <Route
-          path="/"
+          path="/*"
           element={
             token ? (
               <Navigate to="/dashboard" replace />

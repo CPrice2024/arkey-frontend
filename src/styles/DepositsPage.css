@@ -9,6 +9,12 @@
   max-width: 1200px;
   margin: 0 auto;
 }
+h3 {
+     padding: 12px;
+    color: rgb(70, 71, 102);
+    font-family: monospace;
+    font-size: 13px;
+}
 
 /* Header */
 .deposits-header {
@@ -458,4 +464,259 @@
 
 .deposits-table tbody tr {
   height: 45px;
+}
+
+.date-time {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.date-time strong {
+  font-size: 13px;
+    color: #363e52;
+    font-weight: 600;
+}
+
+.date-time small {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.report-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin:25px 0;
+}
+
+.report-card{
+    background: #fff;
+    border-radius: 6px;
+    padding: 14px;
+    box-shadow: 0 8px 25px rgb(2 4 30 / 8%);
+    transition: .25s;
+}
+
+.report-card:hover{
+transform:translateY(-3px);
+}
+
+.report-card h4{
+    font-size: 14px;
+    color: #6b7280;
+    font-family: emoji;
+    margin-bottom: 10px;
+}
+
+.report-card h2{
+    font-size: 18px;
+    font-family: math;
+    font-weight: 600;
+    color: #434e66;
+    margin-bottom: 6px;
+}
+
+.report-card p{
+color:#64748b;
+font-size:13px;
+}
+
+.report-filter{
+display:flex;
+gap:20px;
+align-items:flex-end;
+margin-bottom:30px;
+flex-wrap:wrap;
+}
+
+.date-input{
+display:flex;
+flex-direction:column;
+}
+
+.date-input label{
+    margin-bottom: 5px;
+    font-size: 15px;
+    color: #3c4053;
+    font-family: math;
+    font-weight: 400;
+}
+
+.date-input input{
+    padding: 10px 12px;
+    border: 1px solid #444076;
+    border-radius: 8px;
+    color: #454a69;
+    background: #ffffff00;
+}
+
+.apply-filter-btn{
+padding:11px 20px;
+background:#3b3caa;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-weight:600;
+}
+
+.apply-filter-btn:hover{
+background:#3b3caa;
+}
+
+.filter-select{
+  padding:10px 14px;
+  border:1px solid #d1d5db;
+  border-radius:8px;
+  background:#fff;
+  font-size:14px;
+  cursor:pointer;
+}
+
+/* ==============================
+   Search + Dropdown
+================================ */
+
+.search-filter-row{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    margin:25px 0;
+
+    flex-wrap:wrap;
+
+}
+
+.search-box{
+    flex:1;
+    min-width:320px;
+}
+
+.processor-box{
+    width:220px;
+}
+
+.search-input{
+
+       width: auto;
+    height: 45px;
+    border: 1px solid #3a3d73;
+    border-radius: 6px;
+    padding: 0 18px;
+    font-size: 14px;
+    background: #ffffff00;
+    transition: .25s;
+    outline: none;
+    color: #404040;
+
+}
+
+.search-input:focus{
+
+    border-color:#2563eb;
+
+    box-shadow:0 0 0 4px rgba(37,99,235,.12);
+
+}
+.filter-select{
+
+        width: auto;
+    height: 45px;
+    border-radius: 6px;
+    border: 1px solid #353a6f;
+    padding: 0 16px;
+    color: #404040;
+    font-family: math;
+    background: #ffffff00;
+    font-size: 15px;
+    cursor: pointer;
+
+}
+.apply-filter-btn,
+.reset-filter-btn{
+
+      height: 38px;
+    padding: 0 22px;
+    color: white;
+    background: #4744a7;
+    border-radius: 6px;
+    font-weight: 500;
+
+}
+
+.search-input::placeholder{
+
+    color:#94a3b8;
+
+}
+
+.search-input:hover,
+.filter-select:hover{
+
+    border-color:#3b82f6;
+
+}
+
+.search-input:focus,
+.filter-select:focus{
+
+    border-color:#2563eb;
+
+    box-shadow:
+        0 0 0 4px rgba(37,99,235,.12);
+
+}
+
+.filter-select{
+
+    cursor:pointer;
+
+    appearance:none;
+
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='%2364748b' viewBox='0 0 16 16'%3E%3Cpath d='M3.2 5.5 8 10.3l4.8-4.8' stroke='%2364748b' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+
+    background-repeat:no-repeat;
+
+    background-position:right 15px center;
+
+    padding-right:42px;
+
+}
+.filter-select optgroup{
+
+    font-weight:700;
+
+    color:#0f172a;
+
+    background:#f8fafc;
+
+}
+
+.filter-select option{
+
+    padding:10px;
+
+    color:#334155;
+
+}
+@media(max-width:768px){
+
+.search-filter-row{
+
+    flex-direction:column;
+
+}
+
+.search-box,
+.processor-box{
+
+    width:100%;
+
+}
+
 }

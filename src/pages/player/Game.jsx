@@ -45,25 +45,22 @@ const openWithdrawal = () => {
     initialize();
 
   }, []);
+const loadBalance = async () => {
+  try {
 
-  const loadBalance = async () => {
+    const token = localStorage.getItem("token");
 
-    try {
+    const res = await api.get("/game", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-       const res = await api.get("/game");
+    setBalance(res.data.player?.balance || 0);
 
-setBalance(
-  res.data.player?.balance || 0
-);
-
-    }
-
-    catch(err){
-
-        console.log(err);
-
-    }
-
+  } catch (err) {
+    console.log(err);
+  }
 };
 
   async function initialize() {
@@ -105,77 +102,28 @@ localStorage.setItem(
   JSON.stringify(login.data.user)
 );
 
-const lobby = await api.get("/game", {
+const playerRes = await api.get("/game", {
   headers: {
-    Authorization: `Bearer ${token}`
-  }
+    Authorization: `Bearer ${token}`,
+  },
 });
 
-      const player = lobby.data.player;
+const catalogRes = await api.get("/catalog");
+
+const player = playerRes.data.player;
 
 setPlayer(player);
 
-setBalance(
-  player?.balance || 0
+setBalance(player.balance);
+
+setGames(
+  (catalogRes.data.games || []).map((game) => ({
+    ...game,
+    name: game.gameName,
+    featured: game.launchCount > 0,
+  }))
 );
-
-      setGames(
-
-    lobby.data.games ||
-
-    [
-
-      {
-        _id:1,
-        name:"Bingo",
-        provider:"Arkey",
-        featured:true,
-        image:"https://picsum.photos/400/300?1"
-      },
-
-      {
-        _id:2,
-        name:"Aviator",
-        provider:"Spribe",
-        featured:true,
-        image:"https://picsum.photos/400/300?2"
-      },
-
-      {
-        _id:3,
-        name:"Fast Keno",
-        provider:"Arkey",
-        featured:false,
-        image:"https://picsum.photos/400/300?3"
-      },
-
-      {
-        _id:4,
-        name:"Fish Hunter",
-        provider:"JDB",
-        featured:false,
-        image:"https://picsum.photos/400/300?4"
-      },
-
-      {
-        _id:5,
-        name:"Chicken Road",
-        provider:"Turbo",
-        featured:true,
-        image:"https://picsum.photos/400/300?5"
-      },
-
-      {
-        _id:6,
-        name:"Wheel",
-        provider:"Arkey",
-        featured:false,
-        image:"https://picsum.photos/400/300?6"
-      }
-
-    ]
-
-);
+ 
 
       setLoading(false);
 
