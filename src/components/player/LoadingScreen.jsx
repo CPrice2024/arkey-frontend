@@ -19,7 +19,7 @@ export default function LoadingScreen() {
         </p>
 
         <p className="loading-secure">
-          Secure with <strong>Arkeyin</strong>
+          Secure with <strong>ArkeyIN</strong>
         </p>
       </div>
     </div>

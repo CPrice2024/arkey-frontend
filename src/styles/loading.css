@@ -15,17 +15,16 @@
 }
 
 .loading-logo {
-  width: 85px;
-  height: 85px;
+  width: 105px;
+  height: 105px;
   object-fit: contain;
-  animation: float 2s ease-in-out infinite;
 }
 
 .loading-spinner {
   width: 24px;
   height: 24px;
   border: 2px solid #ececec;
-  border-top: 2px solid #1d4ed8;
+  border-top: 2px solid #3668f0;
   border-radius: 50%;
   animation: spin .8s linear infinite;
 }
