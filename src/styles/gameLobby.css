@@ -999,13 +999,11 @@ CARD
 
     background:
 
-        rgba(18,24,45,.90);
+        rgba(18, 24, 45, 0);
 
     backdrop-filter:blur(18px);
 
-    border:
-
-        1px solid rgba(255,255,255,.06);
+    border:none;
 
     box-shadow:
 
@@ -1039,7 +1037,7 @@ LOGO
 
         linear-gradient(
             135deg,
-            #0060748d,
+            #00617400,
             #0ea4e900
         );
 
