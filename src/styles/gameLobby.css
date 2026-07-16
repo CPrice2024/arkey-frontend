@@ -1027,9 +1027,9 @@ LOGO
 
 .loading-logo{
 
-    width:150px;
+    width:180px;
 
-    height:50px;
+    height:80px;
 
     margin-bottom:18px;
 
@@ -1049,15 +1049,11 @@ LOGO
 
     align-items:center;
 
-    animation:
-
-        pulse 2s infinite;
-
 }
 
 .loading-logo img{
 
-    width:64px;
+    width:100px;
 
 }
 
@@ -1067,15 +1063,15 @@ LOGO
 
 transform:scale(1);
 
-box-shadow:0 0 0 rgba(14,165,233,.5);
+box-shadow:0 0 0 rgba(14, 164, 233, 0.071);
 
 }
 
 50%{
 
-transform:scale(1.06);
+transform:scale(1);
 
-box-shadow:0 0 35px rgba(14,165,233,.5);
+box-shadow:0 0 35px rgba(14, 164, 233, 0.044);
 
 }
 
