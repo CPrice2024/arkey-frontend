@@ -1,4 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+} from "react";
 import api from "../../api";
 import { RefreshCw, Check, X, Clock} from "lucide-react";
 import "../../styles/DepositsPage.css";
@@ -32,41 +36,40 @@ const [page, setPage] = useState(1);
 
 const [pagination, setPagination] = useState({});
 
-const fetchWithdrawals = async () => {
+const fetchWithdrawals = useCallback(async () => {
   try {
-
     setLoading(true);
 
     const res = await api.get("/withdrawals", {
-  params: {
-    page,
-    status: filter,
-    search,
-    processedBy: processor,
-    startDate,
-    endDate,
-  },
-});
-setWithdrawals(res.data.withdrawals || []);
+      params: {
+        page,
+        status: filter,
+        search,
+        processedBy: processor,
+        startDate,
+        endDate,
+      },
+    });
 
-setPagination(res.data.pagination || {});
-
+    setWithdrawals(res.data.withdrawals || []);
+    setPagination(res.data.pagination || {});
   } catch (error) {
-
     console.log(error);
-
     setWithdrawals([]);
-
   } finally {
-
     setLoading(false);
   }
-};
+}, [
+  page,
+  filter,
+  search,
+  processor,
+  startDate,
+  endDate,
+]);
 
-const fetchSummary = async () => {
-
+const fetchSummary = useCallback(async () => {
   try {
-
     const res = await api.get(
       "/withdrawals/stats/summary",
       {
@@ -81,32 +84,25 @@ const fetchSummary = async () => {
     );
 
     setSummary(res.data);
-
   } catch (error) {
-
     console.log(error);
-
   }
+}, [
+  filter,
+  search,
+  processor,
+  startDate,
+  endDate,
+]);
 
-};
-
-const fetchProcessors = async () => {
-
+const fetchProcessors = useCallback(async () => {
   try {
-
-    const res = await api.get(
-      "/withdrawals/processors"
-    );
-
+    const res = await api.get("/withdrawals/processors");
     setProcessors(res.data);
-
   } catch (error) {
-
     console.log(error);
-
   }
-
-};
+}, []);
 
 const [notification, setNotification] = useState({
   show: false,
@@ -131,25 +127,13 @@ const showNotification = (type, message) => {
 };
 
 useEffect(() => {
-
   fetchWithdrawals();
-
   fetchSummary();
-
-}, [
-  page,
-  filter,
-  search,
-  processor,
-  startDate,
-  endDate,
-]);
+}, [fetchWithdrawals, fetchSummary]);
 
 useEffect(() => {
-
   fetchProcessors();
-
-}, []);
+}, [fetchProcessors]);
 
 const approveWithdrawal = async (id) => {
 
@@ -403,10 +387,13 @@ useEffect(() => {
 
   <button
     onClick={() => {
-      setPage(1);
-      fetchWithdrawals();
-      fetchSummary();
-    }}
+  if (page !== 1) {
+    setPage(1);
+  } else {
+    fetchWithdrawals();
+    fetchSummary();
+  }
+}}
     className="filter-btn"
   >
     <RefreshCw size={14} />

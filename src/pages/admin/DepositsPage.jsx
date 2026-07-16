@@ -1,4 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  useEffect,
+  useState,
+  useCallback,
+} from "react";
 import api from "../../api";
 import { Check, X, Clock} from "lucide-react";
 import "../../styles/DepositsPage.css";
@@ -19,61 +23,59 @@ const DepositsPage = () => {
   const [page, setPage] = useState(1);
   const [pagination, setPagination] = useState(null);
 
-const fetchDeposits = async () => {
+const fetchDeposits = useCallback(async () => {
   try {
-
     setLoading(true);
 
     const res = await api.get("/deposits", {
       params: {
-  status: filter,
-  processedBy,
-  startDate,
-  endDate,
-  search,
-  page
-}
+        status: filter,
+        processedBy,
+        startDate,
+        endDate,
+        search,
+        page,
+      },
     });
 
     setDeposits(res.data.deposits || []);
     setPagination(res.data.pagination);
-
   } catch (err) {
-
     console.log(err);
-
   } finally {
-
     setLoading(false);
-
   }
-};
-const fetchReport = async () => {
-
+}, [
+  filter,
+  processedBy,
+  startDate,
+  endDate,
+  search,
+  page,
+]);
+const fetchReport = useCallback(async () => {
   try {
-
-    const res = await api.get(
-      "/deposits/stats/summary",
-      {
-        params: {
-          status: filter,
-          processedBy,
-          startDate,
-          endDate,
-          search
-        },
-      }
-    );
+    const res = await api.get("/deposits/stats/summary", {
+      params: {
+        status: filter,
+        processedBy,
+        startDate,
+        endDate,
+        search,
+      },
+    });
 
     setReport(res.data);
-
   } catch (err) {
-
     console.log(err);
-
   }
-
-};
+}, [
+  filter,
+  processedBy,
+  startDate,
+  endDate,
+  search,
+]);
 const [notification, setNotification] = useState({
   show: false,
   type: "",
@@ -158,31 +160,23 @@ showNotification(
     }
   };
 
-  const fetchProcessors = async () => {
+const fetchProcessors = useCallback(async () => {
   try {
     const res = await api.get("/deposits/processors");
     setProcessors(res.data);
   } catch (err) {
     console.log(err);
   }
-};
-
+}, []);
 
 useEffect(() => {
   fetchProcessors();
-}, []);
+}, [fetchProcessors]);
 
 useEffect(() => {
   fetchDeposits();
   fetchReport();
-}, [
-  filter,
-  processedBy,
-  startDate,
-  endDate,
-  search,
-  page
-]);
+}, [fetchDeposits, fetchReport]);
 
 
 
@@ -543,14 +537,7 @@ useEffect(() => {
 <button
 disabled={page===1}
 className="um-page-btn"
-onClick={() => {
-  const newPage = page - 1;
-  setPage(newPage);
-
-  setTimeout(() => {
-    fetchDeposits();
-  }, 0);
-}}
+onClick={() => setPage((p) => p - 1)}
 >
 Previous
 </button>
@@ -568,14 +555,7 @@ of
 <button
 disabled={page >= (pagination?.totalPages || 1)}
 className="um-page-btn"
-onClick={() => {
-  const newPage = page + 1;
-  setPage(newPage);
-
-  setTimeout(() => {
-    fetchDeposits();
-  }, 0);
-}}
+onClick={() => setPage((p) => p + 1)}
 >
 Next
 </button>
