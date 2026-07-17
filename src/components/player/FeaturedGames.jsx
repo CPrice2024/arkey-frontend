@@ -2,18 +2,33 @@ import React, { useMemo } from "react";
 import GameCard from "./GameCard";
 
 export default function FeaturedGames({ games = [] }) {
+  // Show first 12 games as featured
   const featuredGames = useMemo(
-    () => games.filter((g) => g.featured),
+    () => games.slice(0, 12),
     [games]
   );
 
   const crashGames = useMemo(
-    () => games.filter((g) => g.category === "Crash"),
+    () =>
+      games.filter((g) =>
+        (g.category || "").toLowerCase().includes("crash")
+      ),
     [games]
   );
 
   const slotGames = useMemo(
-    () => games.filter((g) => g.category === "Slots"),
+    () =>
+      games.filter((g) =>
+        (g.category || "").toLowerCase().includes("slot")
+      ),
+    [games]
+  );
+
+  const instantGames = useMemo(
+    () =>
+      games.filter((g) =>
+        (g.category || "").toLowerCase().includes("instant")
+      ),
     [games]
   );
 
@@ -49,19 +64,25 @@ export default function FeaturedGames({ games = [] }) {
     <>
       {renderSection(
         "🔥 Featured Games",
-        "Most popular games",
+        "Recommended",
         featuredGames
       )}
 
       {renderSection(
+        "⚡ Instant Games",
+        "Play instantly",
+        instantGames
+      )}
+
+      {renderSection(
         "🚀 Crash Games",
-        "Fast action games",
+        "Crash games",
         crashGames
       )}
 
       {renderSection(
         "🎰 Slot Games",
-        "Classic casino slots",
+        "Slots",
         slotGames
       )}
     </>
