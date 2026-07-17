@@ -23,7 +23,7 @@
   width: 420px;
   max-width: 90vw;
   height: 100vh;
-  background: rgba(14, 14, 22, 0.95);
+  background: linear-gradient(180deg,#000733,#0d1635);
   backdrop-filter: blur(20px);
   border-left: 1px solid rgba(255, 255, 255, 0.04);
   z-index: 1000;
@@ -240,8 +240,9 @@
 .credit-box p {
   font-size: 10px;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.15);
+  color: #adadad;
   text-transform: uppercase;
+      font-family: math;
   letter-spacing: 0.5px;
   margin: 0 0 2px 0;
 }
@@ -283,7 +284,7 @@
 }
 
 .withdraw-btn {
-  background: #126f818a;
+  background: #125a81c8;
   color: #fffffff1;
 }
 

@@ -168,7 +168,7 @@ body{
 
     background:
 
-        #4b55634f;
+        #3b506d4f;
 
     color:#ffffff;
 
@@ -179,7 +179,6 @@ body{
 .refresh-btn:hover,
 .eye-btn:hover{
 
-    background:#2ea38c;
 
     transform:rotate(180deg);
 
@@ -220,7 +219,7 @@ body{
 
         linear-gradient(
             135deg,
-            #0fc68a,
+            #00699f,
             #09b4d7
         );
 
@@ -439,7 +438,7 @@ body{
 
     grid-template-columns:repeat(3,minmax(0,1fr));
 
-    gap:10px;
+    gap:5px;
 
     margin-top:14px;
 
@@ -452,7 +451,7 @@ body{
 
 .games-grid{
 
-    gap:10px;
+    gap:5px;
 
 }
 

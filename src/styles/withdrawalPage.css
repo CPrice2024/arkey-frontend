@@ -81,16 +81,11 @@
   height: 35px;
   border: none;
   border-radius: 50%;
-  background: #4b5563;
+  background: #3b506d4f;
   color: white;
   cursor: pointer;
   transition: .3s;
 }
-
-.refresh-btn:hover {
-  background: #0f9d91;
-}
-
 /* ===========================
    Cards
 =========================== */

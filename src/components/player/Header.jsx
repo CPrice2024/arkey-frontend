@@ -43,8 +43,6 @@ export default function Header({
             <RotateCw size={18} strokeWidth={1.5} />
           </button>
 
-          <Wallet size={16} strokeWidth={1.5} className="wallet-icon" />
-
           <span className="balance-amount">
             {showBalance
               ? `${Number(balance).toLocaleString()} ETB`
