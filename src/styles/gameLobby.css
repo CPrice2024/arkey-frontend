@@ -37,22 +37,10 @@ body{
 
 .game-page{
 
-    width:100%;
-
-    min-height:100vh;
-
-    background:
-        linear-gradient(
-            180deg,
-            #14172c 0%,
-            #0b1020 100%
-        );
-
-    padding:
-
-        18px
-        16px
-        110px;
+        background: linear-gradient(180deg, #000733, #0d1635);
+    min-height: 100vh;
+    padding: 12px 8px 110px;
+    width: stretch;
 
 }
 
@@ -180,7 +168,7 @@ body{
 
     background:
 
-        rgba(255,255,255,.08);
+        #4b55634f;
 
     color:#ffffff;
 
@@ -212,7 +200,7 @@ body{
 
     border:none;
 
-    border-radius:12px;
+    border-radius:5px;
 
     cursor:pointer;
 
@@ -303,36 +291,17 @@ body{
 
 .coupon-banner{
 
-    margin-bottom:22px;
-
-    padding:18px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    cursor:pointer;
-
-    border-radius:18px;
-
-    background:
-
-        linear-gradient(
-            135deg,
-            #1d2341,
-            #11182d
-        );
-
-    border:1px solid
-        rgba(255,255,255,.05);
-
-    box-shadow:
-        0 12px 30px rgba(0,0,0,.30);
-
-    transition:.28s;
-
+   align-items: center;
+    background: linear-gradient(135deg, #000b4f, #11182d);
+    border: 1px solid #ffffff0d;
+    border-radius: 13px;
+    box-shadow: 0 12px 30px #0000004d;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 22px;
+    padding: 18px;
+    transition: .28s;
 }
 
 .coupon-banner:hover{
@@ -527,17 +496,12 @@ body{
 
 .game-card{
 
-    background:#171d33;
-
-    border-radius:16px;
-
-    overflow:hidden;
-
-    border:1px solid rgba(255,255,255,.05);
-
-    box-shadow:0 8px 22px rgba(0,0,0,.25);
-
-    transition:.3s;
+    background: #0b1128;
+    border: 1px solid #ffffff0f;
+    border-radius: 8px;
+    box-shadow: 0 8px 22px #0000008f;
+    overflow: hidden;
+    transition: .3s;
 
 }
 
@@ -557,7 +521,7 @@ body{
 
     width:100%;
 
-    aspect-ratio:0.75;
+    aspect-ratio:0.99;
 
     overflow:hidden;
 
@@ -626,17 +590,12 @@ body{
 
 .game-info h3{
 
-    font-size:13px;
-
-    font-weight:700;
-
-    white-space:nowrap;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-
-    margin-bottom:2px;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: -5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
 }
 
@@ -656,25 +615,15 @@ body{
 
 .play-btn{
 
-    width:100%;
-
-    height:32px;
-
-    border:none;
-
-    border-radius:10px;
-
-    font-size:12px;
-
-    font-weight:700;
-
-    background:linear-gradient(
-        135deg,
-        #00d48a,
-        #0ea5e9
-    );
-
-    color:white;
+        background: linear-gradient(135deg, #004957, #0ea5e9);
+    border: none;
+    border-radius: 5px;
+    gap: 2px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    height: 32px;
+    width: 100%;
 
 }
 
@@ -692,13 +641,15 @@ body{
 
 .game-info{
 
-    padding:10px;
+    padding:4px;
 
 }
 
 .game-info h3{
 
-    font-size:12px;
+    font-size: 12px;
+        font-family: revert-rule;
+        color: #cecece;
 
 }
 
@@ -1178,23 +1129,16 @@ SECURITY
 
 .profile-drawer{
 
-    position:fixed;
-
-    left:0;
-
-    right:0;
-
-    bottom:0;
-
-    background:#12192c;
-
-    border-radius:28px 28px 0 0;
-
-    padding:24px;
-
-    animation:drawerUp .35s;
-
-    z-index:1000;
+   .profile-drawer {
+    animation: drawerUp .35s;
+    background: linear-gradient(180deg, #000733, #0d1635);
+    border-radius: 0px 0px 0 0;
+    bottom: 0;
+    left: 0;
+    padding: 24px;
+    position: fixed;
+    right: 0;
+    z-index: 1000;}
 
 }
 
@@ -1228,7 +1172,9 @@ margin-bottom:20px;
 
 .drawer-header h2{
 
-font-size:24px;
+font-size: 16px;
+    color: bisque;
+    font-family: monospace;
 
 }
 
