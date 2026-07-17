@@ -123,6 +123,7 @@ setGames(
     featured: game.launchCount > 0,
   }))
 );
+console.log("Catalog count:", catalogRes.data.games.length);
  
 
       setLoading(false);
