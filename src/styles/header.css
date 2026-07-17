@@ -45,8 +45,8 @@
 
 /* CENTER Section */
 .header-center {
-  flex: 1;
   display: flex;
+  flex: initial;
   justify-content: center;
   padding: 0 6px;
 }
