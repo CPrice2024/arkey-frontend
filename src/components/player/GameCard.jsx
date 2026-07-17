@@ -36,7 +36,6 @@ export default function GameCard({ game }) {
     }
   };
   console.log("Provider ID:", game.providerGameId);
-console.log("Mapped Key:", gameImageMap[game.providerGameId]);
   const image =
   gameImages[game.providerGameId] ||
   game.image ||
