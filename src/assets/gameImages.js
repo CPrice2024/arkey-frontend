@@ -67,7 +67,7 @@ import io_twist_new_year from "./games/io_TWIST_NEW_YEAR.png";
 import io_wheel_out from "./games/io_wheel-out.png";
 import io_wheel from "./games/io_wheel.png";
 
-export default {
+const gameImages = {
   "aviafly": io_aviafly,
   "aviafly-two": io_aviafly_two,
   "ballonix": io_ballonix,
@@ -135,17 +135,7 @@ export default {
   "wheel": io_wheel,
   "wheel-out": io_wheel_out,
 "frog-jump": io_frog_jump,
-"luckyducky": io_luckyducky,
-"ice-fish": io_ice_fish,
-"drop-the-billionaire": io_drop_the_billionaire,
-"fruit-love-fever": io_fruit_love_fever,
-"penalty-nations-cup": io_penalty_nations_cup,
-"joker-pyre": io_joker_pyre,
-"twist-san-quentin": io_twist_san_quentin,
-"jumper": io_jumper,
-"chicken-shoot": io_chicken_shoot,
-"ballonix": io_ballonix,
-"aviafly-two": io_aviafly_two,
 "dragon-pots": io_dragon_pots,
-  "wheel-out": io_wheel_out,
 };
+
+export default gameImages;
