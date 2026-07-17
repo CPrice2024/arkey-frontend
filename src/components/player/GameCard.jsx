@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Play, Star } from "lucide-react";
 import api from "../../api";
 import gameImages from "../../assets/gameImages";
-import gameImageMap from "../../assets/gameImageMap";
 
 export default function GameCard({ game }) {
   const [loading, setLoading] = useState(false);
@@ -36,9 +35,12 @@ export default function GameCard({ game }) {
       setLoading(false);
     }
   };
+  console.log("Provider ID:", game.providerGameId);
+console.log("Mapped Key:", gameImageMap[game.providerGameId]);
   const image =
-  gameImages[gameImageMap[game.providerGameId]] ||
-  game.image;
+  gameImages[game.providerGameId] ||
+  game.image ||
+  "/images/no-image.png";
 
   return (
     <div className="game-card">
