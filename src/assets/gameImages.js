@@ -94,7 +94,6 @@ export default {
   "fish-boom": io_fish_boom,
   "fish-road-v1": io_fish_road,
   "forest-fortune-v1": io_forest_arrow,
-  "frog-jump": io_frog_jump,
   "peperoad": io_frog_road,
   "fruit-love-fever": io_fruit_love_fever,
   "goblin-tower": io_goblin_tower,
@@ -147,5 +146,6 @@ export default {
 "chicken-shoot": io_chicken_shoot,
 "ballonix": io_ballonix,
 "aviafly-two": io_aviafly_two,
+"dragon-pots": io_dragon_pots,
   "wheel-out": io_wheel_out,
 };
