@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Play, Star } from "lucide-react";
 import api from "../../api";
+import gameImages from "../../assets/gameImages";
+import gameImageMap from "../../assets/gameImageMap";
 
 export default function GameCard({ game }) {
   const [loading, setLoading] = useState(false);
@@ -34,12 +36,15 @@ export default function GameCard({ game }) {
       setLoading(false);
     }
   };
+  const image =
+  gameImages[gameImageMap[game.providerGameId]] ||
+  game.image;
 
   return (
     <div className="game-card">
       <div className="game-image-wrapper">
         <img
-          src={game.image}
+          src={image}
           alt={game.name}
           className="game-image"
         />
@@ -64,7 +69,7 @@ export default function GameCard({ game }) {
         >
           <Play size={14} />
 
-          {loading ? "Launching..." : "Play"}
+          {loading ? "wait." : "Play"}
         </button>
       </div>
     </div>
