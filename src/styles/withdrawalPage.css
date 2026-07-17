@@ -170,7 +170,7 @@
   padding: 7px;
   background: #1a274061;
   color: white;
-  border: 1px solid #e0e0e041;
+  border: 1px solid #e0e0e000;
   border-radius: 8px;
   cursor: pointer;
   transition: .25s;
@@ -181,7 +181,10 @@
 }
 
 .method.active {
-  background: #001a2f;
+  background: #00224d;
+    border-color: #d5d5f4a8;
+    border-width: 1px;
+    border-style: solid;
 }
 
 /* ===========================

@@ -66,6 +66,7 @@
 .balance-card p{
 
     opacity:.8;
+    font-family: monospace;
 
     margin-bottom:8px;
 
@@ -104,9 +105,10 @@ h3 {
 }
 .deposit-card h3{
 
-    margin-bottom:15px;
-
-    font-size:16px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: #aaaaaa;
+    font-family: serif;
 
 }
 
@@ -149,7 +151,7 @@ h3 {
 
    background: #10183d;
     color: #fff;
-    border: 1px solid rgba(255, 255, 255, .05);
+    border: 1px solid #ffffff42;
     font-size: 15px;
     border-radius: 11px;
     outline: none;
@@ -370,9 +372,10 @@ transform:rotate(360deg);
 }
 
 .method.active {
-  background: rgba(99, 102, 241, 0.05);
-  border-color: rgba(99, 102, 241, 0.15);
-  color: rgba(255, 255, 255, 0.7);
+  background: #00224d;
+    border-color: #d5d5f4a8;
+    border-width: 1px;
+    border-style: solid;
 }
 
 .method span {
