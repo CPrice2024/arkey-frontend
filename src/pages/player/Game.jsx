@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../../api";
 
@@ -88,7 +88,7 @@ const loadTransactions = async () => {
   }
 };
 
-  async function initialize() {
+  const initialize = useCallback(async () => {
 
     try {
 
@@ -169,7 +169,7 @@ console.log("Catalog count:", catalogRes.data.games.length);
 
     }
 
-  }
+ }, []);
 
   if (loading) {
 
