@@ -1,0 +1,106 @@
+.featured-event{
+    position:relative;
+    margin:16px;
+    padding:20px;
+    border-radius:22px;
+
+    cursor:pointer;
+
+    overflow:hidden;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.55),
+        rgba(0,0,0,.8)
+    ),
+    url("/images/worldcup.jpg");
+
+    background-size:cover;
+    background-position:center;
+
+    border:1px solid #d7a728;
+}
+
+.event-badge{
+    width:max-content;
+
+    margin:auto;
+
+    padding:6px 16px;
+
+    border-radius:50px;
+
+    background:#d9d9d9;
+
+    color:#444;
+
+    font-weight:600;
+}
+
+.event-prize{
+
+    margin:22px 0;
+
+    text-align:center;
+
+    color:#ffcb2f;
+
+    font-size:36px;
+
+    font-weight:700;
+}
+
+.event-teams{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:30px;
+
+    margin-bottom:18px;
+}
+
+.team{
+
+    width:74px;
+
+    height:74px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.12);
+
+    font-size:42px;
+}
+
+.event-teams span{
+
+    color:white;
+
+    font-size:36px;
+
+    font-weight:bold;
+}
+
+.featured-event h2{
+
+    color:white;
+
+    text-align:center;
+}
+
+.featured-event p{
+
+    text-align:center;
+
+    color:#d7d7d7;
+}

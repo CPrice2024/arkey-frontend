@@ -10,7 +10,7 @@ import BottomNavigation from "../../components/player/BottomNavigation";
 import LoadingScreen from "../../components/player/LoadingScreen";
 import ErrorScreen from "../../components/player/ErrorScreen";
 import ProfileDrawer from "../../components/player/ProfileDrawer";
-
+import FeaturedEvent from "../../components/player/FeaturedEvent";
 
 import "../../styles/gameLobby.css";
 
@@ -204,14 +204,14 @@ console.log("Player:", player);
 />
 
       <CouponBanner
-    onClick={() => navigate("/promotions")}
+  onClick={() => navigate("/promotions")}
 />
 
-      <FeaturedGames
+<FeaturedEvent />
 
-        games={games}
-
-      />
+<FeaturedGames
+  games={games}
+/>
      <ProfileDrawer
   player={player}
   balance={balance}
