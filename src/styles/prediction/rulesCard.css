@@ -1,7 +1,7 @@
 .rules-card{
     margin:20px;
     padding:22px;
-    background:#161d28;
+        background: linear-gradient(180deg, #000733, #0d1635);
     border-radius:20px;
 }
 
@@ -16,7 +16,9 @@
 }
 
 .rules-card li{
-    color:#cbd5e1;
-    margin-bottom:12px;
-    line-height:1.7;
+       color: #cbd5e1;
+    line-height: 1.7;
+    font-size: 14px;
+    margin-bottom: 12px;
+    font-family: math;
 }

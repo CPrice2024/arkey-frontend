@@ -2,7 +2,7 @@
     margin:20px;
     padding:22px;
     border-radius:20px;
-    background:#161d28;
+        background: linear-gradient(180deg, #000733, #0d1635);
     box-shadow:0 10px 25px rgba(0,0,0,.3);
 }
 
@@ -18,16 +18,17 @@
 }
 
 .countdown-grid div{
-    background:#202938;
-    border-radius:16px;
-    padding:18px;
-    text-align:center;
+       background: #1a325761;
+    border-radius: 10px;
+    padding: 12px;
+    text-align: center;
 }
 
 .countdown-grid strong{
-    display:block;
-    color:#00d084;
-    font-size:28px;
+       color: #ffffff;
+    font-family: sans-serif;
+    display: block;
+    font-size: 18px;
 }
 
 .countdown-grid span{

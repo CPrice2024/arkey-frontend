@@ -6,7 +6,7 @@
 
     border-radius:20px;
 
-    background:#161d28;
+       background: linear-gradient(180deg, #000733, #0d1635);
 
     border:1px solid rgba(255,255,255,.06);
 
@@ -68,11 +68,10 @@
 
 .event-item strong{
 
-    display:block;
-
-    margin-top:5px;
-
-    font-size:18px;
+       display: block;
+    font-size: 16px;
+    font-family: math;
+    margin-top: 5px;
 
 }
 
