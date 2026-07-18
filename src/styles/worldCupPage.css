@@ -303,3 +303,56 @@
 
     text-align:center;
 }
+.prediction-header{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:20px;
+
+    background:#121722;
+
+    border-bottom:1px solid rgba(255,255,255,.06);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+}
+
+.back-btn{
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#222c3d;
+
+    color:white;
+
+    cursor:pointer;
+}
+
+.prediction-header h2{
+
+    margin:0;
+
+    font-size:20px;
+}
+
+.prediction-header p{
+
+    margin:3px 0 0;
+
+    color:#9ba3b2;
+
+    font-size:13px;
+}

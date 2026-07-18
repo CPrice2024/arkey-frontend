@@ -1,0 +1,149 @@
+.hero-card{
+
+    margin:20px;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    padding:25px;
+
+    background-size:cover;
+
+    background-position:center;
+
+    color:white;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.35);
+
+}
+
+.hero-top{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.hero-badge{
+
+    background:#f4c542;
+
+    color:#111;
+
+    padding:7px 16px;
+
+    border-radius:999px;
+
+    font-weight:700;
+
+    font-size:13px;
+
+}
+
+.status-open{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    color:#35d07f;
+
+    font-weight:600;
+
+    font-size:13px;
+
+}
+
+.hero-trophy{
+
+    margin:25px auto;
+
+    width:80px;
+
+    height:80px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.12);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.hero-match{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin:20px 0;
+
+}
+
+.team{
+
+    flex:1;
+
+    text-align:center;
+
+}
+
+.flag{
+
+    font-size:55px;
+
+}
+
+.team h3{
+
+    margin-top:10px;
+
+    font-size:24px;
+
+}
+
+.vs-area{
+
+    font-size:34px;
+
+    font-weight:700;
+
+    color:#ffd24d;
+
+}
+
+.hero-prize{
+
+    margin-top:30px;
+
+    text-align:center;
+
+}
+
+.hero-prize small{
+
+    opacity:.8;
+
+}
+
+.hero-prize h2{
+
+    margin-top:6px;
+
+    font-size:34px;
+
+    color:#ffe66d;
+
+}

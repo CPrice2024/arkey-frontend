@@ -4,8 +4,14 @@ import { X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 import "../../styles/worldCupPage.css";
-import worldCupBg from "../../assets/world-cup.png";
-
+import PredictionHeader from "../../components/prediction/PredictionHeader";
+import HeroCard from "../../components/prediction/HeroCard";
+import EventInfoCard from "../../components/prediction/EventInfoCard";
+import Countdown from "../../components/prediction/Countdown";
+import PredictionGrid from "../../components/prediction/PredictionGrid";
+import RulesCard from "../../components/prediction/RulesCard";
+import ConfirmModal from "../../components/prediction/ConfirmModal";
+import SuccessModal from "../../components/prediction/SuccessModal";
 
 
 export default function WorldCupPage() {
@@ -86,145 +92,44 @@ const confirmPrediction = async () => {
 
   return (
     <div className="worldcup-page">
-      {/* Hero */}
-      <div
-        className="worldcup-hero"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.8)), url(${worldCupBg})`,
-        }}
-      >
-        <button
-          className="close-page"
-          onClick={() => navigate(-1)}
-        >
-          <X size={26} />
-        </button>
+        <PredictionHeader
+    onBack={() => navigate(-1)}
+/>
 
-        <div className="event-label">
-          World Cup
-        </div>
+<HeroCard/>
 
-        <div className="teams-row">
-          <div className="flag-circle">
-            🇪🇸
-          </div>
+<EventInfoCard
+    balance={balance}
+    minimumBet={20}
+    prize="100,000 ETB"
+    participants={1235}
+/>
 
-          <div className="vs-text">
-            VS
-          </div>
+<Countdown
+    targetDate="2026-08-15T18:00:00"
+/>
 
-          <div className="flag-circle">
-            🇦🇷
-          </div>
-        </div>
+<PredictionGrid
+    onSelect={handlePrediction}
+/>
 
-        <div className="team-names">
-          <span>Spain</span>
+<RulesCard/>
 
-          <span>Argentina</span>
-        </div>
+<ConfirmModal
+    open={showConfirm}
+    score={selectedPrediction}
+    balance={balance}
+    entryFee={20}
+    onCancel={() => setShowConfirm(false)}
+    onConfirm={confirmPrediction}
+/>
 
-        <div className="prize-pill">
-          🔥 💰 ETB 100,000 💰 🔥
-        </div>
-        <div className="prediction-section">
+<SuccessModal
+    open={showSuccess}
+    score={selectedPrediction}
+    onClose={() => setShowSuccess(false)}
+/>
 
-  <h2>Select your prediction</h2>
-
-  <div className="prediction-grid">
-
-    {[
-      "1:0",
-      "2:0",
-      "2:1",
-      "3:0",
-      "3:1",
-      "3:2",
-    ].map((score) => (
-
-      <button
-        key={score}
-        className="prediction-btn"
-        onClick={() => handlePrediction(score)}
-      >
-        {score}
-      </button>
-
-    ))}
-
-  </div>
-  {showConfirm && (
-  <div className="prediction-modal-overlay">
-    <div className="prediction-modal">
-
-      <h2>Confirm Prediction</h2>
-
-      <p className="prediction-score">
-        Spain <strong>{selectedPrediction}</strong> Argentina
-      </p>
-
-      <div className="prediction-info">
-        <div>
-          <span>Entry Fee</span>
-          <strong>{MIN_BET} ETB</strong>
-        </div>
-
-        <div>
-          <span>Your Balance</span>
-          <strong>{balance.toFixed(2)} ETB</strong>
-        </div>
-      </div>
-
-      <div className="prediction-actions">
-
-        <button
-          className="cancel-btn"
-          onClick={() => setShowConfirm(false)}
-        >
-          Cancel
-        </button>
-
-        <button
-          className="confirm-btn"
-          onClick={confirmPrediction}
-        >
-          Confirm Prediction
-        </button>
-
-      </div>
-
-    </div>
-  </div>
-)}
-{showSuccess && (
-  <div className="prediction-modal-overlay">
-    <div className="prediction-modal success">
-
-      <h1>✅</h1>
-
-      <h2>Prediction Submitted!</h2>
-
-      <p>
-        Spain {selectedPrediction} Argentina
-      </p>
-
-      <p>
-        20 ETB has been reserved.
-      </p>
-
-      <button
-        className="confirm-btn"
-        onClick={() => setShowSuccess(false)}
-      >
-        OK
-      </button>
-
-    </div>
-  </div>
-)}
-
-</div>
-      </div>
     </div>
   );
 }
