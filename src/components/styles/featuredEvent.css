@@ -1,26 +1,17 @@
-.featured-event{
-    position:relative;
-    margin:16px;
-    padding:20px;
-    border-radius:22px;
+.featured-event {
+  position: relative;
+  margin: 16px;
+  padding: 20px;
+  border-radius: 22px;
+  cursor: pointer;
+  overflow: hidden;
 
-    cursor:pointer;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-    overflow:hidden;
-
-    background:
-    linear-gradient(
-        rgba(0,0,0,.55),
-        rgba(0,0,0,.8)
-    ),
-    url("/images/worldcup.jpg");
-
-    background-size:cover;
-    background-position:center;
-
-    border:1px solid #d7a728;
+  border: 1px solid #d7a728;
 }
-
 .event-badge{
     width:max-content;
 
