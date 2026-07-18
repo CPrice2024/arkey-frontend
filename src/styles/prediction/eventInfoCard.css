@@ -1,74 +1,47 @@
 .event-card{
-
     margin:20px;
-
     padding:22px;
-
     border-radius:20px;
-
-       background: linear-gradient(180deg, #000733, #0d1635);
-
+    background: linear-gradient(180deg, #000733, #0d1635);
     border:1px solid rgba(255,255,255,.06);
-
     box-shadow:0 15px 35px rgba(0,0,0,.35);
 
 }
 
 .event-card-title{
-
-    font-size:22px;
-
-    font-weight:700;
-
-    margin-bottom:20px;
-
+    font-size: 16px;
+    font-family: math;
+    font-weight: 700;
+    margin-bottom: 20px;
 }
 
 .event-grid{
-
     display:grid;
-
     grid-template-columns:repeat(2,1fr);
-
     gap:16px;
-
 }
 
 .event-item{
-
-    background:#202938;
-
-    padding:18px;
-
-    border-radius:16px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:14px;
-
-    transition:.25s;
-
+    align-items: center;
+    background: #20293833;
+    border-radius: 7px;
+    display: flex;
+    gap: 14px;
+    padding: 12px;
+    transition: .25s;
 }
 
 .event-item:hover{
-
     transform:translateY(-3px);
-
 }
 
 .event-item span{
-
     color:#9aa5b3;
-
     font-size:13px;
-
 }
 
 .event-item strong{
-
-       display: block;
+    display: block;
     font-size: 16px;
     font-family: math;
     margin-top: 5px;
@@ -76,37 +49,24 @@
 }
 
 .event-icon{
-
     width:46px;
-
     height:46px;
-
     padding:10px;
-
     border-radius:12px;
-
 }
 
 .green{
-
     background:#0b7c43;
-
 }
 
 .blue{
-
     background:#155eef;
-
 }
 
 .orange{
-
     background:#d97706;
-
 }
 
 .purple{
-
     background:#6d28d9;
-
 }

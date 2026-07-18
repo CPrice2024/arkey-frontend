@@ -3,7 +3,7 @@
     align-items:center;
     gap:16px;
     padding:18px 22px;
-    background:#111827;
+        background: linear-gradient(180deg, #000a4b, #040038);
     border-bottom:1px solid rgba(255,255,255,.06);
     position:sticky;
     top:0;
