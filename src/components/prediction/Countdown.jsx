@@ -2,6 +2,7 @@ import React, {
   useEffect,
   useState,
 } from "react";
+import "../../styles/prediction/countdown.css";
 
 const Countdown = ({ targetDate }) => {
 

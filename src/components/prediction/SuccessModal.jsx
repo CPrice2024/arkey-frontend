@@ -1,4 +1,5 @@
 import React from "react";
+import "../../styles/prediction/modal.css";
 
 const SuccessModal=({
 

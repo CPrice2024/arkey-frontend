@@ -1,5 +1,6 @@
 import React from "react";
 import { ArrowLeft } from "lucide-react";
+import "../../styles/prediction/predictionHeader.css";
 
 const PredictionHeader = ({ onBack }) => {
   return (

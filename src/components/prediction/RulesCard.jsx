@@ -1,4 +1,5 @@
 import React from "react";
+import "../../styles/prediction/rulesCard.css";
 
 const RulesCard=()=>{
 

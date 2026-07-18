@@ -1,0 +1,36 @@
+.prediction-section{
+    margin:20px;
+}
+
+.prediction-section h2{
+    color:white;
+    margin-bottom:18px;
+}
+
+.prediction-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+}
+
+.prediction-btn{
+    border:none;
+    border-radius:18px;
+    padding:22px;
+    background:linear-gradient(145deg,#202938,#151b25);
+    color:white;
+    font-size:24px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.25s;
+    box-shadow:0 8px 20px rgba(0,0,0,.25);
+}
+
+.prediction-btn:hover{
+    transform:translateY(-4px);
+    background:#2563eb;
+}
+
+.prediction-btn:active{
+    transform:scale(.96);
+}

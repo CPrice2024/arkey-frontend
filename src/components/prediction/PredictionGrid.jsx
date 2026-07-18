@@ -1,4 +1,5 @@
 import React from "react";
+import "../../styles/prediction/predictionGrid.css";
 
 const scores=[
 "1:0",

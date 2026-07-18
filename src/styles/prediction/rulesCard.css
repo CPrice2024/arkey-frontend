@@ -1,0 +1,22 @@
+.rules-card{
+    margin:20px;
+    padding:22px;
+    background:#161d28;
+    border-radius:20px;
+}
+
+.rules-card h3{
+    color:white;
+    margin-bottom:15px;
+}
+
+.rules-card ul{
+    margin:0;
+    padding-left:20px;
+}
+
+.rules-card li{
+    color:#cbd5e1;
+    margin-bottom:12px;
+    line-height:1.7;
+}
