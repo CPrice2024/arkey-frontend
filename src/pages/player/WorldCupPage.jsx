@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../../api";
-import { X } from "lucide-react";
+import {  } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 import "../../styles/worldCupPage.css";
