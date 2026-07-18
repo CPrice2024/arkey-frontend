@@ -42,17 +42,9 @@ const openWithdrawal = () => {
   navigate("/PlayerWithdrawal");
 };
 
-  useEffect(() => {
+  
 
-    initialize();
-
-  }, []);
-
-  useEffect(() => {
-  if (showProfile) {
-    loadTransactions();
-  }
-}, [showProfile]);
+ 
 
 const loadBalance = async () => {
   try {
@@ -72,7 +64,7 @@ const loadBalance = async () => {
   }
 };
 
-const loadTransactions = async () => {
+const loadTransactions = useCallback(async () => {
   try {
     const token = localStorage.getItem("token");
 
@@ -86,7 +78,7 @@ const loadTransactions = async () => {
   } catch (err) {
     console.log("Transaction Error:", err);
   }
-};
+}, []);
 
   const initialize = useCallback(async () => {
 
@@ -169,7 +161,17 @@ console.log("Catalog count:", catalogRes.data.games.length);
 
     }
 
- }, []);
+ }, [loadTransactions]);
+
+ useEffect(() => {
+  initialize();
+}, [initialize]);
+
+ useEffect(() => {
+  if (showProfile) {
+    loadTransactions();
+  }
+}, [showProfile, loadTransactions]);
 
   if (loading) {
 
