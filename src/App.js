@@ -21,6 +21,7 @@ import PromoPage from "./pages/player/PromoPage";
 
 import PlayerDeposit from "./pages/player/PlayerDeposit";
 import PlayerWithdrawal from "./pages/player/PlayerWithdrawal";
+import WorldCupPage from "./pages/player/WorldCupPage";
 
 function App() {
   const token = localStorage.getItem("token");
@@ -121,6 +122,10 @@ function App() {
         <Route
         path="/PlayerWithdrawal"
         element={<PlayerWithdrawal />}/>
+        <Route
+  path="/world-cup"
+  element={<WorldCupPage />}
+/>
 
       </Routes>
     </BrowserRouter>

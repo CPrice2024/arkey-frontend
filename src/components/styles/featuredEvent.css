@@ -13,32 +13,24 @@
   border: 1px solid #d7a728;
 }
 .event-badge{
-    width:max-content;
-
-    margin:auto;
-
-    padding:6px 16px;
-
-    border-radius:50px;
-
-    background:#d9d9d9;
-
-    color:#444;
-
-    font-weight:600;
+       background: #1dbaff61;
+    border-radius: 50px;
+    color: #ffffff;
+    font-weight: 600;
+    margin: auto;
+    padding: 6px 16px;
+    width: -webkit-max-content;
+    width: max-content;
 }
 
 .event-prize{
 
-    margin:22px 0;
-
-    text-align:center;
-
-    color:#ffcb2f;
-
-    font-size:36px;
-
-    font-weight:700;
+        color: #ffcb2f;
+    font-size: 36px;
+    font-family: monospace;
+    font-weight: 700;
+    margin: 22px 0;
+    text-align: center;
 }
 
 .event-teams{
@@ -56,21 +48,12 @@
 
 .team{
 
-    width:74px;
+      background: #ffffff61;
+    border-radius: 50%;
+    font-size: 25px;
+    height: 50px;
+    width: 50px;
 
-    height:74px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    border-radius:50%;
-
-    background:rgba(255,255,255,.12);
-
-    font-size:42px;
 }
 
 .event-teams span{
