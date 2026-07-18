@@ -28,6 +28,8 @@ export default function Game() {
 
   const [showProfile, setShowProfile] = useState(false);
 
+  const [transactions, setTransactions] = useState([]);
+
   const navigate = useNavigate();
 
   const openDeposit = () => {
@@ -45,6 +47,13 @@ const openWithdrawal = () => {
     initialize();
 
   }, []);
+
+  useEffect(() => {
+  if (showProfile) {
+    loadTransactions();
+  }
+}, [showProfile]);
+
 const loadBalance = async () => {
   try {
 
@@ -60,6 +69,22 @@ const loadBalance = async () => {
 
   } catch (err) {
     console.log(err);
+  }
+};
+
+const loadTransactions = async () => {
+  try {
+    const token = localStorage.getItem("token");
+
+    const res = await api.get("/transactions/player", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    setTransactions(res.data.transactions || []);
+  } catch (err) {
+    console.log("Transaction Error:", err);
   }
 };
 
@@ -115,6 +140,7 @@ const player = playerRes.data.player;
 setPlayer(player);
 
 setBalance(player.balance);
+await loadTransactions();
 
 setGames(
   (catalogRes.data.games || []).map((game) => ({
@@ -187,12 +213,9 @@ console.log("Player:", player);
      <ProfileDrawer
   player={player}
   balance={balance}
-  transactions={[]}
-
+  transactions={transactions}
   open={showProfile}
-
   onClose={() => setShowProfile(false)}
-
   onDeposit={openDeposit}
   onWithdraw={openWithdrawal}
 />

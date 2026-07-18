@@ -120,16 +120,31 @@ export default function ProfileDrawer({
           {transactions.length > 0 ? (
             transactions.slice(0, 5).map((item) => (
               <div key={item._id} className="transaction-item">
-                <div className="transaction-info">
-                  <strong>{item.type}</strong>
-                  <small className={`status-${item.status?.toLowerCase()}`}>
-                    {item.status}
-                  </small>
-                </div>
-                <span className="transaction-amount">
-                  {Number(item.amount).toLocaleString()} ETB
-                </span>
-              </div>
+  <div className="transaction-info">
+    <strong>{item.type}</strong>
+
+    <small>{item.method}</small>
+
+    <small>
+      {new Date(item.createdAt).toLocaleString()}
+    </small>
+
+    <small className={`status-${item.status?.toLowerCase()}`}>
+      {item.status}
+    </small>
+  </div>
+
+  <span
+    className={
+      item.type === "Deposit"
+        ? "transaction-amount deposit"
+        : "transaction-amount withdrawal"
+    }
+  >
+    {item.type === "Deposit" ? "+" : "-"}
+    {Number(item.amount).toLocaleString()} ETB
+  </span>
+</div>
             ))
           ) : (
             <div className="empty-transactions">
